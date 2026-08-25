@@ -1,0 +1,145 @@
+/* This changes the colors for the whole page. */
+:root {
+  --dark-blue: #243d63;
+  --green: #0d887c;
+  --light-green: #e5f1ee;
+  --light-blue: #eef0f7;
+  --light-gray: #f5f6f2;
+  --gray: #65708a;
+  --white: #ffffff;
+  --line: #dfe3dd;
+}
+
+/* This removes default space from the page. */
+* {
+  box-sizing: border-box;
+}
+
+/* This styles the full page. */
+body {
+  margin: 0;
+  background: var(--light-gray);
+  color: var(--dark-blue);
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* This keeps the content in the center. */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* This styles the top part of the page. */
+header {
+  margin-bottom: 28px;
+}
+
+/* This styles the small text at the top. */
+header p:first-child {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* This styles the project name. */
+h1 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 52px;
+}
+
+/* This styles section titles. */
+h2 {
+  font-family: Georgia, serif;
+}
+
+/* This puts the progress cards side by side. */
+.progress-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* This styles one progress card. */
+.progress-cards article {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+/* This styles the big progress number. */
+.progress-cards strong {
+  display: block;
+  font-size: 30px;
+  color: var(--green);
+}
+
+/* This styles the main lesson area. */
+.lesson-card,
+.weekly-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 18px;
+}
+
+/* This styles the lesson text cards. */
+.lesson-card article {
+  background: var(--light-green);
+  border-radius: 12px;
+  padding: 18px;
+  margin: 18px 0;
+}
+
+/* This styles all buttons. */
+button {
+  background: var(--dark-blue);
+  border: none;
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 6px 4px 6px 0;
+  padding: 10px 14px;
+}
+
+/* This changes the button color on mouse hover. */
+button:hover {
+  background: var(--green);
+}
+
+/* This styles the text box for your sentence. */
+textarea {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 8px 0;
+  min-height: 75px;
+  padding: 10px;
+  width: 100%;
+}
+
+/* This makes the page work on small screens. */
+@media (max-width: 600px) {
+  .progress-cards {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  .lesson-card,
+  .weekly-card {
+    padding: 20px;
+  }
+}
