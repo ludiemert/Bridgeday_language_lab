@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- This helps the browser read special letters. -->
+  <meta charset="UTF-8">
+
+  <!-- This helps the page work on mobile phones. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- This is the text in the browser tab. -->
+  <title>BridgeDay | Daily Language Lab</title>
+</head>
+
+<body>
+  <!-- This is the main page area. -->
+  <main>
+    <!-- This is the page header. -->
+    <header>
+      <p>YOUR DAILY LANGUAGE LAB</p>
+      <h1>BridgeDay</h1>
+      <p>Daily English and German for life and tech.</p>
+    </header>
+
+    <!-- These cards will show your progress. -->
+    <section>
+      <h2>Your progress</h2>
+
+      <article>
+        <p>Studied today</p>
+        <strong id="today-count">0</strong>
+        <p>lessons completed</p>
+      </article>
+
+      <article>
+        <p>Study streak</p>
+        <strong id="streak-count">0</strong>
+        <p>days in a row</p>
+      </article>
+
+      <article>
+        <p>This week</p>
+        <strong id="week-count">0</strong>
+        <p>lessons completed</p>
+      </article>
+    </section>
+
+    <!-- This is the daily lesson. -->
+    <section>
+      <p id="lesson-topic">DAILY LIFE</p>
+      <h2 id="lesson-title">My daily habit</h2>
+
+      <!-- This is the main language for today. -->
+      <article>
+        <h3>English</h3>
+        <p id="english-text">
+          I study English for thirty minutes every day.
+        </p>
+        <p id="portuguese-help">
+          Eu estudo inglês por trinta minutos todos os dias.
+        </p>
+
+        <button type="button">Listen</button>
+      </article>
+
+      <!-- This button will show German later. -->
+      <button type="button">Show German</button>
+
+      <!-- German is hidden at the start. -->
+      <article hidden>
+        <h3>Deutsch</h3>
+        <p id="german-text">
+          Ich lerne jeden Tag dreißig Minuten Englisch.
+        </p>
+        <p>Eu estudo inglês por trinta minutos todos os dias.</p>
+
+        <button type="button">Listen</button>
+      </article>
+
+      <!-- These are the words for today. -->
+      <section>
+        <h3>Vocabulary</h3>
+
+        <ul>
+          <li>study — estudar</li>
+          <li>thirty minutes — trinta minutos</li>
+          <li>every day — todos os dias</li>
+        </ul>
+      </section>
+
+      <!-- You will write your own sentence here. -->
+      <section>
+        <h3>My daily sentence</h3>
+
+        <label for="my-sentence">Write one sentence in English.</label>
+        <textarea
+          id="my-sentence"
+          placeholder="I study English every day."
+        ></textarea>
+
+        <button type="button">Save my sentence</button>
+      </section>
+
+      <!-- These buttons will work with JavaScript later. -->
+      <section>
+        <h3>Pronunciation</h3>
+        <p>Listen, repeat and record your voice.</p>
+
+        <button type="button">Record my voice</button>
+        <button type="button">Listen to my recording</button>
+      </section>
+
+      <!-- These buttons finish or change a lesson. -->
+      <footer>
+        <button type="button">Mark as studied</button>
+        <button type="button">Next lesson</button>
+      </footer>
+    </section>
+
+    <!-- This area will become the weekly dashboard. -->
+    <section>
+      <h2>Weekly review</h2>
+      <p>Your weekly study summary will appear here.</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,79 @@
+{
+  "project": "BridgeDay",
+  "sourceLanguage": "pt-BR",
+  "lessons": [
+    {
+      "id": "lesson-001",
+      "category": "daily-life",
+      "topic": "daily-study",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Meu hábito diário",
+      "textPt": "Eu estudo inglês por trinta minutos todos os dias.",
+      "keywordsPt": [
+        "estudo",
+        "trinta minutos",
+        "todos os dias"
+      ]
+    },
+    {
+      "id": "lesson-002",
+      "category": "daily-life",
+      "topic": "work",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Uma reunião",
+      "textPt": "Eu tenho uma reunião às dez horas.",
+      "keywordsPt": [
+        "reunião",
+        "dez horas"
+      ]
+    },
+    {
+      "id": "lesson-003",
+      "category": "daily-life",
+      "topic": "transport",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Ir ao trabalho",
+      "textPt": "Eu pego o trem para ir ao trabalho.",
+      "keywordsPt": [
+        "trem",
+        "trabalho"
+      ]
+    },
+    {
+      "id": "lesson-004",
+      "category": "tech",
+      "topic": "python",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Automação com Python",
+      "textPt": "Eu uso Python para automatizar tarefas repetitivas.",
+      "keywordsPt": [
+        "Python",
+        "automatizar",
+        "tarefas repetitivas"
+      ]
+    },
+    {
+      "id": "lesson-005",
+      "category": "tech",
+      "topic": "data",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Decisões com dados",
+      "textPt": "O dashboard ajuda a equipe a tomar melhores decisões.",
+      "keywordsPt": [
+        "dashboard",
+        "equipe",
+        "decisões"
+      ]
+    }
+  ]
+}
