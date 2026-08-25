@@ -87,3 +87,14 @@ Deutsch — vocabulary about daily routine
 Você está pensando como alguém que cria produto de verdade. Vamos fazer com calma, mas com estrutura profissional.
 
 ______________________________________
+
+Fase 0 — Estrutura profissional do projeto
+Fase 1 — Página de estudo em inglês A2
+Fase 2 — JavaScript: lições, áudio, respostas e progresso
+Fase 3 — Python + Argos Translate:
+          você escreve em português → gera inglês e alemão em lote
+Fase 4 — Revisão, palavras incompletas e dashboard
+Fase 5 — Automação do plano de estudo
+Fase 6 — IA para adaptar conteúdo e sugerir frases
+
+__________________________
