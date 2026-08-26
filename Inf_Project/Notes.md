@@ -106,3 +106,15 @@ addEventListener("click") espera um clique.
 hidden = false mostra o card.
 hidden = true esconde o botão.
 __________________________
+
+instal env para usar o python
+
+py --version
+
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+
+instala a biblioteca gratuita de tradução.
+.\.venv\Scripts\python.exe -m pip install argostranslate
+
+_____________________________
