@@ -543,6 +543,77 @@ textarea {
   }
 }
 
+/* This styles the study menu. */
+.study-nav {
+  display: flex;
+  gap: 8px;
+  margin: 22px 0;
+  padding-bottom: 4px;
+  overflow-x: auto;
+}
+
+/* This styles one study button. */
+.study-button {
+  padding: 9px 12px;
+  background: var(--soft);
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: var(--gray);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* This changes a study button on hover. */
+.study-button:hover {
+  color: var(--green);
+}
+
+/* This styles the active study button. */
+.active-study-button {
+  background: var(--light-green);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* This adds space to study content. */
+.study-content {
+  margin-top: 4px;
+}
+
+/* This styles help text on a page. */
+.page-help {
+  margin: 6px 0 20px;
+  color: var(--gray);
+}
+
+/* This styles an empty learning card. */
+.empty-card {
+  padding: 20px;
+  background: var(--soft);
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+}
+
+/* This styles the empty card title. */
+.empty-card h3 {
+  margin-bottom: 6px;
+}
+
+/* This styles text inside an empty card. */
+.empty-card p {
+  margin: 0;
+  color: var(--gray);
+}
+
+/* This changes study buttons on small screens. */
+@media (max-width: 540px) {
+  .study-nav {
+    margin: 18px -4px;
+  }
+}
+
 /* This changes the page for tablets. */
 @media (max-width: 760px) {
   .speaking-section {
