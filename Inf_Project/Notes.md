@@ -98,3 +98,11 @@ Fase 5 — Automação do plano de estudo
 Fase 6 — IA para adaptar conteúdo e sugerir frases
 
 __________________________
+
+id é o nome único de um elemento HTML.
+document.getElementById() encontra esse elemento.
+const guarda uma informação que não muda.
+addEventListener("click") espera um clique.
+hidden = false mostra o card.
+hidden = true esconde o botão.
+__________________________

@@ -1,16 +1,18 @@
-/* This changes the colors for the whole page. */
+/* These are the main page colors. */
 :root {
-  --dark-blue: #243d63;
-  --green: #0d887c;
-  --light-green: #e5f1ee;
-  --light-blue: #eef0f7;
-  --light-gray: #f5f6f2;
-  --gray: #65708a;
+  --blue: #1f3658;
+  --green: #168477;
+  --light-green: #e7f3ef;
+  --light-blue: #eef2fa;
+  --paper: #f5f6f2;
   --white: #ffffff;
-  --line: #dfe3dd;
+  --text: #1d2939;
+  --gray: #667085;
+  --line: #dde3dd;
+  --soft: #f0f3ef;
 }
 
-/* This removes default space from the page. */
+/* This makes page sizes easier. */
 * {
   box-sizing: border-box;
 }
@@ -18,26 +20,31 @@
 /* This styles the full page. */
 body {
   margin: 0;
-  background: var(--light-gray);
-  color: var(--dark-blue);
+  background: var(--paper);
+  color: var(--text);
   font-family: Arial, sans-serif;
   line-height: 1.5;
 }
 
-/* This keeps the content in the center. */
-main {
-  max-width: 900px;
+/* This keeps the page in the center. */
+.app {
+  max-width: 960px;
   margin: 0 auto;
-  padding: 40px 20px 60px;
+  padding: 36px 20px 64px;
 }
 
-/* This styles the top part of the page. */
-header {
-  margin-bottom: 28px;
+/* This styles the top of the page. */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
 }
 
-/* This styles the small text at the top. */
-header p:first-child {
+/* This styles small green titles. */
+.small-title {
+  margin: 0 0 5px;
   color: var(--green);
   font-size: 12px;
   font-weight: bold;
@@ -47,17 +54,51 @@ header p:first-child {
 /* This styles the project name. */
 h1 {
   margin: 0;
+  color: var(--blue);
   font-family: Georgia, serif;
-  font-size: 52px;
+  font-size: clamp(42px, 7vw, 62px);
+  line-height: 1;
 }
 
-/* This styles section titles. */
+/* This styles page titles. */
 h2 {
+  margin: 0;
+  color: var(--blue);
   font-family: Georgia, serif;
+  font-size: clamp(28px, 4vw, 38px);
 }
 
-/* This puts the progress cards side by side. */
-.progress-cards {
+/* This styles smaller titles. */
+h3 {
+  margin: 0;
+  color: var(--blue);
+}
+
+/* This styles the daily goal. */
+.daily-goal {
+  min-width: 110px;
+  padding: 11px 14px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* This styles small text in the daily goal. */
+.daily-goal span {
+  display: block;
+  color: var(--gray);
+  font-size: 12px;
+}
+
+/* This styles big text in the daily goal. */
+.daily-goal strong {
+  color: var(--green);
+  font-size: 18px;
+}
+
+/* This shows three small progress cards. */
+.quick-progress {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
@@ -65,81 +106,386 @@ h2 {
 }
 
 /* This styles one progress card. */
-.progress-cards article {
+.quick-progress div {
+  padding: 16px;
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 18px;
 }
 
-/* This styles the big progress number. */
-.progress-cards strong {
+/* This styles progress card text. */
+.quick-progress p {
+  margin: 0;
+  color: var(--gray);
+  font-size: 13px;
+}
+
+/* This styles progress card numbers. */
+.quick-progress strong {
   display: block;
-  font-size: 30px;
-  color: var(--green);
+  margin-top: 3px;
+  color: var(--blue);
+  font-size: 20px;
 }
 
 /* This styles the main lesson area. */
-.lesson-card,
+.lesson-panel,
 .weekly-card {
+  padding: clamp(20px, 4vw, 32px);
   background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 28px;
+  border-radius: 20px;
+}
+
+/* This adds space below the lesson. */
+.lesson-panel {
   margin-bottom: 18px;
 }
 
-/* This styles the lesson text cards. */
-.lesson-card article {
-  background: var(--light-green);
-  border-radius: 12px;
-  padding: 18px;
-  margin: 18px 0;
+/* This puts lesson title and level together. */
+.lesson-header,
+.section-title,
+.card-top,
+.speaking-section,
+.lesson-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-/* This styles all buttons. */
-button {
-  background: var(--dark-blue);
-  border: none;
-  border-radius: 8px;
+/* This styles help text. */
+.lesson-help,
+.weekly-text,
+.speaking-section p {
+  margin: 6px 0 0;
+  color: var(--gray);
+}
+
+/* This styles the level tag. */
+.level-tag {
+  padding: 7px 11px;
+  background: var(--light-green);
+  border-radius: 999px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* This styles lesson progress. */
+.lesson-progress {
+  margin: 26px 0 20px;
+}
+
+/* This puts progress text on one line. */
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: var(--gray);
+  font-size: 13px;
+}
+
+/* This is the empty progress line. */
+.progress-track {
+  height: 8px;
+  overflow: hidden;
+  background: var(--soft);
+  border-radius: 999px;
+}
+
+/* This is the green progress line. */
+.progress-value {
+  width: 25%;
+  height: 100%;
+  background: var(--green);
+  border-radius: 999px;
+}
+
+/* This styles both language cards. */
+.language-card {
+  margin: 16px 0;
+  padding: clamp(18px, 3vw, 24px);
+  border-radius: 16px;
+}
+
+/* This styles the English card. */
+.english-card {
+  background: var(--light-green);
+}
+
+/* This styles the German card. */
+.german-card {
+  background: var(--light-blue);
+}
+
+/* This styles the small card number. */
+.card-number {
+  margin: 0;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* This styles the main lesson sentence. */
+.main-phrase {
+  margin: 24px 0 14px;
+  color: var(--blue);
+  font-size: clamp(21px, 3vw, 28px);
+  font-weight: bold;
+  line-height: 1.3;
+}
+
+/* This styles the Portuguese help box. */
+.meaning-box {
+  padding-top: 12px;
+  border-top: 1px solid rgba(31, 54, 88, 0.15);
+}
+
+/* This styles text inside the meaning box. */
+.meaning-box p {
+  margin: 0;
+}
+
+/* This styles the small meaning label. */
+.meaning-box p:first-child {
+  margin-bottom: 3px;
+  color: var(--gray);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* This styles small buttons. */
+.soft-button,
+.show-language-button,
+.next-button {
+  padding: 10px 13px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* This changes a small button on hover. */
+.soft-button:hover,
+.show-language-button:hover,
+.next-button:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* This styles the German button. */
+.show-language-button {
+  width: 100%;
+  margin: 3px 0 8px;
+  background: var(--soft);
+}
+
+/* This adds space between lesson parts. */
+.vocabulary-section,
+.practice-section,
+.speaking-section {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+/* This styles the word count. */
+.section-title > span {
+  color: var(--gray);
+  font-size: 13px;
+}
+
+/* This shows vocabulary cards. */
+.word-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* This styles one vocabulary card. */
+.word-card {
+  padding: 14px;
+  background: var(--soft);
+  border-radius: 12px;
+}
+
+/* This styles the English word. */
+.word-card strong {
+  display: block;
+  color: var(--blue);
+}
+
+/* This styles the Portuguese word. */
+.word-card span {
+  color: var(--gray);
+  font-size: 14px;
+}
+
+/* This styles the text area label. */
+.practice-section label {
+  display: block;
+  margin: 16px 0 6px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* This styles the sentence box. */
+textarea {
+  width: 100%;
+  min-height: 90px;
+  margin-bottom: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  resize: vertical;
+}
+
+/* This styles the speaking area. */
+.speaking-section {
+  align-items: end;
+}
+
+/* This puts speaking buttons together. */
+.speaking-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* This styles the record button. */
+.record-button {
+  padding: 10px 13px;
+  background: #f9e7e3;
+  border: 1px solid #eccbc5;
+  border-radius: 9px;
+  color: #a23d2d;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* This styles the main lesson buttons. */
+.lesson-actions {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+/* This styles the main button. */
+.main-button {
+  padding: 12px 18px;
+  background: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 10px;
   color: var(--white);
   cursor: pointer;
   font-size: 15px;
   font-weight: bold;
-  margin: 6px 4px 6px 0;
-  padding: 10px 14px;
 }
 
-/* This changes the button color on mouse hover. */
-button:hover {
+/* This changes the main button on hover. */
+.main-button:hover {
   background: var(--green);
+  border-color: var(--green);
 }
 
-/* This styles the text box for your sentence. */
-textarea {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  display: block;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  margin: 8px 0;
-  min-height: 75px;
-  padding: 10px;
+/* This styles the weekly chart. */
+.week-bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 9px;
+  align-items: end;
+  height: 110px;
+  margin: 24px 0 10px;
+}
+
+/* This puts a bar and day name together. */
+.week-bars div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  height: 100%;
+  gap: 7px;
+}
+
+/* This styles one empty day bar. */
+.bar {
   width: 100%;
+  height: 12px;
+  background: var(--soft);
+  border-radius: 7px;
 }
 
-/* This makes the page work on small screens. */
-@media (max-width: 600px) {
-  .progress-cards {
+/* This styles day names. */
+.week-bars p {
+  margin: 0;
+  color: var(--gray);
+  font-size: 12px;
+}
+
+/* This hides an element when needed. */
+[hidden] {
+  display: none !important;
+}
+
+/* This changes the page for tablets. */
+@media (max-width: 760px) {
+  .speaking-section {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .word-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* This changes the page for mobile phones. */
+@media (max-width: 540px) {
+  .app {
+    padding: 24px 14px 45px;
+  }
+
+  .topbar,
+  .lesson-header,
+  .lesson-actions {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .daily-goal {
+    width: 100%;
+    text-align: left;
+  }
+
+  .quick-progress {
     grid-template-columns: 1fr;
   }
 
-  h1 {
-    font-size: 42px;
+  .word-list {
+    grid-template-columns: 1fr;
   }
 
-  .lesson-card,
-  .weekly-card {
-    padding: 20px;
+  .lesson-actions button {
+    width: 100%;
+  }
+
+  .speaking-buttons {
+    width: 100%;
+  }
+
+  .speaking-buttons button {
+    flex: 1;
   }
 }
