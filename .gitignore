@@ -1,0 +1,8 @@
+# This folder has local Python files.
+.venv/
+
+# This folder has Python cache files.
+__pycache__/
+
+# This file has private study data.
+data/progress.json

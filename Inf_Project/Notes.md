@@ -118,3 +118,40 @@ instala a biblioteca gratuita de tradução.
 .\.venv\Scripts\python.exe -m pip install argostranslate
 
 _____________________________
+
+O dashboard terá dados separados:
+English
+- Time studied
+- Correct answers
+- Errors
+- Words learned
+- Speaking practice
+
+Deutsch
+- Time studied
+- Correct answers
+- Errors
+- Words learned
+- Speaking practice
+E a cada cinco dias o app escolherá a revisão do idioma que estiver com mais erros ou há mais tempo sem revisão.
+
+___________________________
+BridgeDay
+│
+├── Home
+│   └── Meta do dia, idioma do dia e resumo rápido
+│
+├── Study
+│   ├── Text
+│   ├── Listening
+│   ├── Grammar
+│   ├── Vocabulary
+│   └── Speak & Write
+│
+├── Review
+│   └── Exercícios, erros e revisão de 5 em 5 dias
+│
+└── Progress
+    └── Tempo, acertos, erros, palavras e evolução
+
+    _________________________________________
