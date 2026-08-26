@@ -132,6 +132,57 @@
         <span class="level-tag">A2</span>
       </div>
 
+      <!-- This is the study menu. -->
+      <nav class="study-nav" aria-label="Study navigation">
+
+        <button
+          class="study-button active-study-button"
+          type="button"
+          data-study="text"
+        >
+          Text
+        </button>
+
+        <!-- This opens the listening area. -->
+        <button
+          class="study-button"
+          type="button"
+          data-study="listening"
+        >
+          Listening
+        </button>
+
+        <!-- This opens the grammar area. -->
+        <button
+          class="study-button"
+          type="button"
+          data-study="grammar"
+        >
+          Grammar
+        </button>
+
+        <!-- This opens the vocabulary area. -->
+        <button
+          class="study-button"
+          type="button"
+          data-study="vocabulary"
+        >
+          Vocabulary
+        </button>
+
+        <!-- This opens the speaking area. -->
+        <button
+          class="study-button"
+          type="button"
+          data-study="speaking"
+        >
+          Speak & Write
+        </button>
+      </nav>
+
+      <!-- This is the text study area. -->
+      <section class="study-content text-content">
+
       <!-- This shows your lesson progress. -->
       <div class="lesson-progress">
         <div class="progress-text">
@@ -211,8 +262,38 @@
         </div>
       </article>
 
+      </section>
+
+      <!-- This is the listening study area. -->
+      <section class="study-content listening-content" hidden>
+        <p class="small-title">LISTENING</p>
+        <h3>Listen and understand</h3>
+        <p class="page-help">
+          Audio exercises will appear here.
+        </p>
+
+        <article class="empty-card">
+          <h3>Listen to the daily sentence</h3>
+          <p>Listen, repeat and write what you hear.</p>
+        </article>
+      </section>
+
+      <!-- This is the grammar study area. -->
+      <section class="study-content grammar-content" hidden>
+        <p class="small-title">GRAMMAR</p>
+        <h3>Grammar for today</h3>
+        <p class="page-help">
+          Small grammar lessons will appear here.
+        </p>
+
+        <article class="empty-card">
+          <h3>One small rule at a time</h3>
+          <p>Learn grammar with short examples.</p>
+        </article>
+      </section>
+
       <!-- These are the words for today. -->
-      <section class="vocabulary-section">
+      <section vocabulary-section study-content vocabulary-content" hidden>
         <div class="section-title">
           <div>
             <p class="small-title">WORDS FOR TODAY</p>
@@ -241,7 +322,7 @@
       </section>
 
       <!-- This is your writing practice. -->
-      <section class="practice-section">
+      <section class="practice-section study-content speaking-content" hidden>
         <div class="section-title">
           <div>
             <p class="small-title">YOUR PRACTICE</p>
@@ -264,7 +345,7 @@
       </section>
 
       <!-- This is your speaking practice. -->
-      <section class="speaking-section">
+      <section class="speaking-section study-content speaking-content" hidden>
         <div>
           <p class="small-title">SPEAKING PRACTICE</p>
           <h3>Listen, repeat and record.</h3>
