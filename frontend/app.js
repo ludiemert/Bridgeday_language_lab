@@ -1,3 +1,12 @@
+// This finds all menu buttons.
+const navButtons = document.querySelectorAll(".nav-button");
+
+// This finds all page sections.
+const pageSections = document.querySelectorAll(".page-section");
+
+// This finds language buttons.
+const languageButtons = document.querySelectorAll(".language-button");
+
 // This finds the German button.
 const showGermanButton = document.getElementById("show-german-button");
 
@@ -13,6 +22,52 @@ const germanText = document.getElementById("german-text");
 // This gets all audio buttons.
 const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 
+// This shows one page.
+function showPage(pageName) {
+  // This checks every page section.
+  pageSections.forEach(function (section) {
+    // This checks the page name.
+    const isThisPage = section.classList.contains(pageName + "-page");
+
+    // This shows or hides the page.
+    section.hidden = !isThisPage;
+  });
+
+  // This checks every menu button.
+  navButtons.forEach(function (button) {
+    // This checks the button page name.
+    const isThisButton = button.dataset.page === pageName;
+
+    // This adds or removes the active style.
+    button.classList.toggle("active-page", isThisButton);
+  });
+}
+
+// This adds a click action to each menu button.
+navButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // This gets the page name.
+    const pageName = button.dataset.page;
+
+    // This shows the correct page.
+    showPage(pageName);
+  });
+});
+
+// This changes the active language style.
+languageButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // This checks every language button.
+    languageButtons.forEach(function (languageButton) {
+      // This removes the old active style.
+      languageButton.classList.remove("active-language");
+    });
+
+    // This adds the new active style.
+    button.classList.add("active-language");
+  });
+});
+
 // This shows the German card.
 showGermanButton.addEventListener("click", function () {
   germanCard.hidden = false;
@@ -22,11 +77,11 @@ showGermanButton.addEventListener("click", function () {
 // This speaks the text.
 function speakText(language) {
   // This starts with English text.
-  let text = englishText.textContent;
+  let text = englishText.textContent.trim();
 
   // This changes text for German.
   if (language === "de-DE") {
-    text = germanText.textContent;
+    text = germanText.textContent.trim();
   }
 
   // This stops old audio.
@@ -45,7 +100,7 @@ function speakText(language) {
   window.speechSynthesis.speak(speech);
 }
 
-// This adds a click action to each audio button.
+// This adds audio to each audio button.
 audioButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     // This gets the button language.
@@ -55,3 +110,6 @@ audioButtons.forEach(function (button) {
     speakText(language);
   });
 });
+
+// This opens Home first.
+showPage("home");

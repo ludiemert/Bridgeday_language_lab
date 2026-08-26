@@ -439,6 +439,110 @@ textarea {
   display: none !important;
 }
 
+
+/* This styles the language area. */
+.language-picker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+/* This styles the language title. */
+.language-picker p {
+  margin: 0;
+  color: var(--gray);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* This puts language buttons together. */
+.language-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* This styles one language button. */
+.language-button {
+  padding: 9px 12px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* This styles the level text. */
+.language-button span {
+  margin-left: 5px;
+  color: var(--gray);
+  font-size: 12px;
+}
+
+/* This styles the active language. */
+.active-language {
+  background: var(--light-green);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* This styles the main menu. */
+.main-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+}
+
+/* This styles one menu button. */
+.nav-button {
+  padding: 10px 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  color: var(--gray);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* This styles a menu button on hover. */
+.nav-button:hover {
+  color: var(--green);
+}
+
+/* This styles the active menu page. */
+.active-page {
+  border-bottom-color: var(--green);
+  color: var(--blue);
+}
+
+/* This changes the menu for small screens. */
+@media (max-width: 540px) {
+  .language-picker {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .language-buttons {
+    width: 100%;
+  }
+
+  .language-button {
+    flex: 1;
+  }
+}
+
 /* This changes the page for tablets. */
 @media (max-width: 760px) {
   .speaking-section {
