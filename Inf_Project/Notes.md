@@ -183,3 +183,7 @@ lessons-translated.json
 
 _______________________________
 
+instalar a biblioteca oficial do DeepL no ambiente virtual:
+.\.venv\Scripts\python.exe -m pip install deepl
+
+____________________________
