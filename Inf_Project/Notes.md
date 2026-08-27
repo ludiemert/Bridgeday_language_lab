@@ -163,3 +163,11 @@ Fundo lilás:    #F4F0FF
 Texto escuro:   #21142F
 
 _____________________________________
+
+update linguage
+
+.\.venv\Scripts\argospm.exe update
+.\.venv\Scripts\argospm.exe install translate-pt_en
+.\.venv\Scripts\argospm.exe install translate-en_de
+
+________________________________________________
