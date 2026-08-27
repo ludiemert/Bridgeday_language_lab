@@ -7,6 +7,13 @@
   <!-- This helps the page work on mobile phones. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- This shows the BridgeDay browser icon. -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="favicon.svg"
+  >
+
   <!-- This is the text in the browser tab. -->
   <title>BridgeDay | Daily Language Lab</title>
 
@@ -20,11 +27,17 @@
 
     <!-- This is the top of the page. -->
     <header class="topbar">
-      <div>
+      <!-- This is the main brand text. -->
+      <div class="brand-block">
         <p class="small-title">DAILY LANGUAGE LAB</p>
         <h1>BridgeDay</h1>
-      </div>
 
+        <!-- This text changes by JavaScript. -->
+        <p class="typing-line">
+          <span id="typing-text"></span>
+          <span class="typing-cursor">|</span>
+        </p>
+      </div>
       <!-- This shows a small daily goal. -->
       <div class="daily-goal">
         <span>Today</span>

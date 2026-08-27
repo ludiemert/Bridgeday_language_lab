@@ -607,6 +607,274 @@ textarea {
   color: var(--gray);
 }
 
+/* This makes the page soft and clean. */
+body {
+  background: #f3f6fa;
+  color: #1f2937;
+}
+
+/* This makes the page wider. */
+.app {
+  max-width: 1080px;
+}
+
+/* This styles the main brand area. */
+.topbar {
+  padding: 30px;
+  background: linear-gradient(135deg, #101a2d, #1c3155);
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(16, 26, 45, 0.16);
+}
+
+/* This styles the small brand text. */
+.topbar .small-title {
+  color: #82e0cf;
+}
+
+/* This styles the project name. */
+.topbar h1 {
+  color: #ffffff;
+}
+
+/* This styles the daily goal. */
+.daily-goal {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* This styles text in the daily goal. */
+.daily-goal span {
+  color: #d7e3f5;
+}
+
+/* This styles the goal time. */
+.daily-goal strong {
+  color: #82e0cf;
+}
+
+/* This gives cards a soft shadow. */
+.quick-progress div,
+.lesson-panel,
+.weekly-card,
+.language-picker {
+  box-shadow: 0 8px 22px rgba(31, 41, 55, 0.06);
+}
+
+/* This styles the main menu area. */
+.main-nav {
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+}
+
+/* This styles a menu button. */
+.nav-button {
+  border-radius: 8px;
+}
+
+/* This styles the active menu button. */
+.nav-button.active-page {
+  background: #e7f3ef;
+  border-bottom-color: transparent;
+  color: #0f766e;
+}
+
+/* This styles the study menu. */
+.study-nav {
+  padding: 6px;
+  background: #f3f6fa;
+  border-radius: 12px;
+}
+
+/* This styles the active study button. */
+.study-button.active-study-button {
+  background: #ffffff;
+  border-color: #cbe7e1;
+  box-shadow: 0 3px 10px rgba(15, 118, 110, 0.12);
+}
+
+/* This styles one word card. */
+.word-card {
+  border: 1px solid #e6ebf0;
+  background: #ffffff;
+}
+
+/* This styles the main action button. */
+.main-button {
+  background: #0f766e;
+  border-color: #0f766e;
+}
+
+/* This changes the main button on hover. */
+.main-button:hover {
+  background: #115e59;
+  border-color: #115e59;
+}
+
+/* This changes the top area on small screens. */
+@media (max-width: 540px) {
+  .topbar {
+    padding: 22px;
+  }
+}
+
+/* These are the new brand colors. */
+:root {
+  --purple: #7c3aed;
+  --dark-purple: #3b1764;
+  --lime: #c6ff3c;
+  --soft-purple: #f4f0ff;
+  --dark-text: #21142f;
+}
+
+/* This styles the main brand area. */
+.topbar {
+  background: linear-gradient(
+    135deg,
+    var(--dark-purple),
+    var(--purple)
+  );
+}
+
+/* This styles the small brand text. */
+.topbar .small-title {
+  color: var(--lime);
+}
+
+/* This styles the active language. */
+.active-language {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--dark-purple);
+}
+
+/* This styles the active page. */
+.nav-button.active-page {
+  background: var(--soft-purple);
+  color: var(--purple);
+}
+
+/* This styles the active study button. */
+.study-button.active-study-button {
+  border-color: #d9c7ff;
+  color: var(--purple);
+}
+
+/* This styles the main action button. */
+.main-button {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+
+/* This changes the main button on hover. */
+.main-button:hover {
+  background: var(--dark-purple);
+  border-color: var(--dark-purple);
+}
+
+/* This styles the progress line. */
+.progress-value {
+  background: var(--lime);
+}
+
+/* This styles the lesson topic. */
+.small-title {
+  color: var(--purple);
+}
+
+/* This shows lime in the brand text. */
+.topbar .small-title {
+  color: var(--lime);
+}
+
+/* This shows lime in the daily goal. */
+.daily-goal strong {
+  color: var(--lime);
+}
+
+/* This shows lime in the active language. */
+.language-button.active-language {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--dark-purple);
+}
+
+/* This shows lime in the lesson level. */
+.level-tag {
+  background: var(--lime);
+  color: var(--dark-purple);
+}
+
+/* This shows lime in the lesson progress. */
+.progress-value {
+  background: var(--lime);
+}
+
+/* This makes the main action bright. */
+.main-button {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--dark-purple);
+}
+
+/* This changes the main button on hover. */
+.main-button:hover {
+  background: #a8e600;
+  border-color: #a8e600;
+  color: var(--dark-purple);
+}
+
+/* This puts the brand in the center. */
+.topbar {
+  position: relative;
+  justify-content: center;
+  text-align: center;
+}
+
+/* This keeps the brand text in the center. */
+.brand-block {
+  text-align: center;
+}
+
+/* This styles the changing text. */
+.typing-line {
+  min-height: 24px;
+  margin: 12px 0 0;
+  color: #e8dcff;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* This styles the typing cursor. */
+.typing-cursor {
+  color: var(--lime);
+  animation: blink 0.8s infinite;
+}
+
+/* This makes the cursor blink. */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* This puts the goal in the corner. */
+.topbar .daily-goal {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+/* This changes the top area on phones. */
+@media (max-width: 540px) {
+  .topbar .daily-goal {
+    position: static;
+    margin-top: 20px;
+  }
+}
+
 /* This changes study buttons on small screens. */
 @media (max-width: 540px) {
   .study-nav {

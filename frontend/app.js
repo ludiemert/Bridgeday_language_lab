@@ -28,6 +28,63 @@ const germanText = document.getElementById("german-text");
 // This gets all audio buttons.
 const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 
+// This finds the typing text area.
+const typingText = document.getElementById("typing-text");
+
+// These are the changing sentences.
+const typingLines = [
+  "English for real communication.",
+  "Deutsch A1 step by step.",
+  "Life and tech every day.",
+  "Study, speak and grow.",
+];
+
+// This starts with the first sentence.
+let typingLineIndex = 0;
+
+// This starts with the first letter.
+let typingLetterIndex = 0;
+
+// This writes one letter at a time.
+function writeTypingText() {
+  // This gets the current sentence.
+  const currentLine = typingLines[typingLineIndex];
+
+  // This adds one letter.
+  typingText.textContent = currentLine.slice(0, typingLetterIndex);
+
+  // This checks if the sentence is complete.
+  if (typingLetterIndex < currentLine.length) {
+    typingLetterIndex += 1;
+
+    // This writes the next letter.
+    setTimeout(writeTypingText, 55);
+  } else {
+    // This waits before the next sentence.
+    setTimeout(changeTypingLine, 1800);
+  }
+}
+
+// This changes to the next sentence.
+function changeTypingLine() {
+  // This changes the sentence number.
+  typingLineIndex += 1;
+
+  // This goes back to the first sentence.
+  if (typingLineIndex === typingLines.length) {
+    typingLineIndex = 0;
+  }
+
+  // This starts with no letters.
+  typingLetterIndex = 0;
+
+  // This starts the new sentence.
+  writeTypingText();
+}
+
+// This starts the typing effect.
+writeTypingText();
+
 // This shows one page.
 function showPage(pageName) {
   // This checks every page section.

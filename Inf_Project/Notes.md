@@ -155,3 +155,11 @@ BridgeDay
     └── Tempo, acertos, erros, palavras e evolução
 
     _________________________________________
+
+Lilás principal: #7C3AED
+Lilás escuro:   #3B1764
+Verde-limão:    #C6FF3C
+Fundo lilás:    #F4F0FF
+Texto escuro:   #21142F
+
+_____________________________________
