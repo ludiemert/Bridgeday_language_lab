@@ -1,0 +1,248 @@
+{
+  "project": "BridgeDay",
+  "sourceLanguage": "pt-BR",
+  "lessons": [
+    {
+      "id": "lesson-001",
+      "category": "daily-life",
+      "topic": "daily-study",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Meu hábito diário",
+      "textPt": "Eu estudo inglês por trinta minutos todos os dias.",
+      "keywordsPt": [
+        "estudo",
+        "trinta minutos",
+        "todos os dias"
+      ],
+      "translations": {
+        "en": {
+          "title": "My daily habit",
+          "text": "I study English for 30 minutes every day.",
+          "keywords": [
+            "study",
+            "thirty minutes",
+            "Every day"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        },
+        "de": {
+          "title": "Meine tägliche Gewohnheit",
+          "text": "Ich lerne täglich 30 Minuten Englisch.",
+          "keywords": [
+            "Studie",
+            "30 Minuten",
+            "Jeden Tag"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        }
+      },
+      "needsReview": true
+    },
+    {
+      "id": "lesson-002",
+      "category": "daily-life",
+      "topic": "work",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Uma reunião",
+      "textPt": "Eu tenho uma reunião às dez horas.",
+      "keywordsPt": [
+        "reunião",
+        "dez horas"
+      ],
+      "translations": {
+        "en": {
+          "title": "A meeting",
+          "text": "I have a ten o'clock meeting.",
+          "keywords": [
+            "meeting",
+            "ten hours"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        },
+        "de": {
+          "title": "Ein Treffen",
+          "text": "Ich habe eine Sitzung um zehn Uhr.",
+          "keywords": [
+            "Sitzung",
+            "10 Stunden"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        }
+      },
+      "needsReview": true
+    },
+    {
+      "id": "lesson-003",
+      "category": "daily-life",
+      "topic": "transport",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Ir ao trabalho",
+      "textPt": "Eu pego o trem para ir ao trabalho.",
+      "keywordsPt": [
+        "trem",
+        "trabalho"
+      ],
+      "translations": {
+        "en": {
+          "title": "Go to work",
+          "text": "I'll take the train to work.",
+          "keywords": [
+            "train",
+            "work"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        },
+        "de": {
+          "title": "Gehen Sie zur Arbeit",
+          "text": "Ich nehme den Zug zur Arbeit.",
+          "keywords": [
+            "Zug",
+            "Arbeit"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        }
+      },
+      "needsReview": true
+    },
+    {
+      "id": "lesson-004",
+      "category": "tech",
+      "topic": "python",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Automação com Python",
+      "textPt": "Eu uso Python para automatizar tarefas repetitivas.",
+      "keywordsPt": [
+        "Python",
+        "automatizar",
+        "tarefas repetitivas"
+      ],
+      "translations": {
+        "en": {
+          "title": "Python Automation",
+          "text": "I use Python to automate repetitive tasks.",
+          "keywords": [
+            "Python",
+            "automate",
+            "repetitive tasks"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        },
+        "de": {
+          "title": "Python Automation",
+          "text": "Ich verwende Python, um sich wiederholende Aufgaben zu automatisieren.",
+          "keywords": [
+            "Python",
+            "Automatisierung",
+            "sich wiederholende Aufgaben"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        }
+      },
+      "needsReview": true
+    },
+    {
+      "id": "lesson-005",
+      "category": "tech",
+      "topic": "data",
+      "englishLevel": "A2",
+      "germanLevel": "A1",
+      "estimatedMinutes": 10,
+      "titlePt": "Decisões com dados",
+      "textPt": "O dashboard ajuda a equipe a tomar melhores decisões.",
+      "keywordsPt": [
+        "dashboard",
+        "equipe",
+        "decisões"
+      ],
+      "translations": {
+        "en": {
+          "title": "Data decisions",
+          "text": "The dashboard helps the team make better decisions.",
+          "keywords": [
+            "dashboard",
+            "team",
+            "decisions"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        },
+        "de": {
+          "title": "Datenentscheidungen",
+          "text": "Das Dashboard hilft dem Team, bessere Entscheidungen zu treffen.",
+          "keywords": [
+            "Armatur",
+            "Team",
+            "Beschlüsse"
+          ],
+          "grammar": "",
+          "speakingPrompt": ""
+        }
+      },
+      "needsReview": true
+    },
+    {
+      "id": "lesson-006",
+      "category": "daily-life",
+      "topic": "asking-for-help-at-work",
+      "englishLevel": "B1",
+      "germanLevel": "A1",
+      "estimatedMinutes": 30,
+      "titlePt": "Pedir ajuda no trabalho",
+      "textPt": "Estou com dificuldade para entender este relatório. Você pode me mostrar como usar o sistema?",
+      "keywordsPt": [
+        "dificuldade",
+        "entender",
+        "relatório",
+        "mostrar",
+        "sistema"
+      ],
+      "grammarPt": "Use você pode mais um verbo para fazer um pedido educado.",
+      "speakingPromptPt": "Peça ajuda para uma pessoa em uma situação de trabalho.",
+      "translations": {
+        "en": {
+          "title": "Ask for help at work",
+          "text": "I am having difficulty understanding this report. Can you show me how to use the system?",
+          "keywords": [
+            "difficulty",
+            "understand",
+            "report",
+            "show",
+            "system"
+          ],
+          "grammar": "Use you can another verb to make an educated request.",
+          "speakingPrompt": "Ask someone for help in a work situation."
+        },
+        "de": {
+          "title": "Bitte um Hilfe bei der Arbeit",
+          "text": "Ich habe Schwierigkeiten, diesen Bericht zu verstehen. Können Sie mir zeigen, wie man das System benutzt?",
+          "keywords": [
+            "Schwierigkeit",
+            "verstehen",
+            "Bericht",
+            "Show",
+            "System"
+          ],
+          "grammar": "Verwenden sie ein anderes verb, um eine gebildete anfrage zu stellen.",
+          "speakingPrompt": "Bitten Sie jemanden um Hilfe in einer Arbeitssituation."
+        }
+      },
+      "needsReview": true
+    }
+  ]
+}

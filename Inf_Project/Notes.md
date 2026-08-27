@@ -171,3 +171,15 @@ update linguage
 .\.venv\Scripts\argospm.exe install translate-en_de
 
 ________________________________________________
+
+automação real em Python.
+lessons-pt.json
+      ↓
+translate_lessons.py
+      ↓
+Argos Translate
+      ↓
+lessons-translated.json
+
+_______________________________
+
