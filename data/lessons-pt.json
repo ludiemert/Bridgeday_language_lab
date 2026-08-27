@@ -74,6 +74,25 @@
         "equipe",
         "decisões"
       ]
+    },
+    {
+      "id": "lesson-006",
+      "category": "daily-life",
+      "topic": "asking-for-help-at-work",
+      "englishLevel": "B1",
+      "germanLevel": "A1",
+      "estimatedMinutes": 30,
+      "titlePt": "Pedir ajuda no trabalho",
+      "textPt": "Estou com dificuldade para entender este relatório. Você pode me mostrar como usar o sistema?",
+      "keywordsPt": [
+        "dificuldade",
+        "entender",
+        "relatório",
+        "mostrar",
+        "sistema"
+      ],
+      "grammarPt": "Use você pode mais um verbo para fazer um pedido educado.",
+      "speakingPromptPt": "Peça ajuda para uma pessoa em uma situação de trabalho."
     }
   ]
 }
