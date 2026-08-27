@@ -187,3 +187,8 @@ instalar a biblioteca oficial do DeepL no ambiente virtual:
 .\.venv\Scripts\python.exe -m pip install deepl
 
 ____________________________
+
+instalamos uma biblioteca pequena para o Python ler o arquivo .env com segurança:
+.\.venv\Scripts\python.exe -m pip install python-dotenv
+
+___________________
