@@ -6,3 +6,6 @@ __pycache__/
 
 # This file has private study data.
 data/progress.json
+
+# This file has private keys.
+.env
