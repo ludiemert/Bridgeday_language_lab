@@ -7,6 +7,12 @@ const pageSections = document.querySelectorAll(".page-section");
 // This finds language buttons.
 const languageButtons = document.querySelectorAll(".language-button");
 
+// This finds study buttons.
+const studyButtons = document.querySelectorAll(".study-button");
+
+// This finds study content areas.
+const studyContents = document.querySelectorAll(".study-content");
+
 // This finds the German button.
 const showGermanButton = document.getElementById("show-german-button");
 
@@ -51,6 +57,38 @@ navButtons.forEach(function (button) {
 
     // This shows the correct page.
     showPage(pageName);
+  });
+});
+
+// This shows one study area.
+function showStudyArea(studyName) {
+  // This checks every study area.
+  studyContents.forEach(function (area) {
+    // This checks the area name.
+    const isThisArea = area.classList.contains(studyName + "-content");
+
+    // This shows or hides the area.
+    area.hidden = !isThisArea;
+  });
+
+  // This checks every study button.
+  studyButtons.forEach(function (button) {
+    // This checks the button name.
+    const isThisButton = button.dataset.study === studyName;
+
+    // This adds or removes the active style.
+    button.classList.toggle("active-study-button", isThisButton);
+  });
+}
+
+// This adds a click action to each study button.
+studyButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // This gets the study area name.
+    const studyName = button.dataset.study;
+
+    // This shows the correct study area.
+    showStudyArea(studyName);
   });
 });
 
@@ -113,3 +151,6 @@ audioButtons.forEach(function (button) {
 
 // This opens Home first.
 showPage("home");
+
+// This opens Text first.
+showStudyArea("text");
