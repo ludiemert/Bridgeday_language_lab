@@ -192,3 +192,13 @@ instalamos uma biblioteca pequena para o Python ler o arquivo .env com seguranç
 .\.venv\Scripts\python.exe -m pip install python-dotenv
 
 ___________________
+
+No terminal, dentro da pasta principal Bridgeday_language_lab, execute:
+.\.venv\Scripts\python.exe -m http.server 5500
+Deixe esse terminal aberto. Depois abra no navegador:
+http://localhost:5500/frontend/
+Não use http://127.0.0.1:5000/frontend/index.html agora.
+A mensagem esperada no terminal é parecida com:
+Serving HTTP on :: port 5500 ...
+Isso também permitirá que, no próximo passo, o JavaScript leia data/lessons-translated.json.
+_________________________

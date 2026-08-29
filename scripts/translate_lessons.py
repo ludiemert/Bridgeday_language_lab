@@ -1,11 +1,17 @@
 # This imports the JSON tool.
 import json
 
+# This reads private environment values.
+import os
+
+# This uses the DeepL translation service.
+import deepl
+
+# This loads the private .env file.
+from dotenv import load_dotenv
+
 # This imports file paths.
 from pathlib import Path
-
-# This imports the translation tool.
-import argostranslate.translate
 
 # This finds the main project folder.
 PROJECT_FOLDER = Path(__file__).resolve().parent.parent
@@ -16,11 +22,39 @@ INPUT_FILE = PROJECT_FOLDER / "data" / "lessons-pt.json"
 # This is the translated lesson file.
 OUTPUT_FILE = PROJECT_FOLDER / "data" / "lessons-translated.json"
 
+# This loads the private key from .env.
+load_dotenv(PROJECT_FOLDER / ".env")
 
-# This translates one text.
+# This gets the private DeepL key.
+DEEPL_AUTH_KEY = os.getenv("DEEPL_AUTH_KEY")
+
+# This stops the program when the key is missing.
+if not DEEPL_AUTH_KEY:
+    raise ValueError("DEEPL_AUTH_KEY was not found in .env")
+
+# This creates the DeepL translator.
+translator = deepl.Translator(DEEPL_AUTH_KEY)
+
+# This maps our app languages to DeepL languages.
+TARGET_LANGUAGES = {"en": "EN-GB", "de": "DE"}
+
+
+# This translates one text with DeepL.
 def translate_text(text, target_language):
-    # This translates from Portuguese.
-    return argostranslate.translate.translate(text, "pt", target_language)
+    # This avoids translating an empty text.
+    if not text:
+        return ""
+
+    # This gets the DeepL target language.
+    deepl_language = TARGET_LANGUAGES[target_language]
+
+    # This sends the text to DeepL.
+    result = translator.translate_text(
+        text, source_lang="PT", target_lang=deepl_language
+    )
+
+    # This sends back the translated text.
+    return result.text
 
 
 # This translates one lesson.

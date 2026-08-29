@@ -932,3 +932,94 @@ body {
     flex: 1;
   }
 }
+
+/* This makes the desktop page shorter and cleaner. */
+@media (min-width: 761px) {
+  /* This reduces the outside page space. */
+  .app {
+    padding: 18px 20px 24px;
+  }
+
+  /* This makes the top area smaller. */
+  .topbar {
+    margin-bottom: 12px;
+    padding: 16px 26px 14px;
+    border-radius: 16px;
+  }
+
+  /* This makes the project title smaller. */
+  .topbar h1 {
+    margin: 4px 0;
+    font-size: clamp(28px, 3.2vw, 40px);
+    line-height: 1.05;
+  }
+
+  /* This makes the typing text smaller. */
+  .typing-line {
+    min-height: 18px;
+    margin-top: 6px;
+    font-size: 13px;
+  }
+
+  /* This makes the daily goal smaller. */
+  .topbar .daily-goal {
+    top: 18px;
+    right: 22px;
+    min-width: 96px;
+    padding: 7px 10px;
+    border-radius: 10px;
+  }
+
+  /* This makes the language area smaller. */
+  .language-picker {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+  }
+
+  /* This makes the main menu smaller. */
+  .main-nav {
+    gap: 4px;
+    margin: 10px 0 12px;
+    padding: 5px;
+  }
+
+  /* This makes menu buttons smaller. */
+  .nav-button {
+    padding: 8px 11px;
+  }
+
+  /* This reduces progress card size. */
+  .quick-progress {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  /* This reduces progress card space. */
+  .quick-progress div {
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  /* This makes progress numbers smaller. */
+  .quick-progress strong {
+    font-size: 18px;
+  }
+
+  /* This makes main cards more compact. */
+  .lesson-panel,
+  .weekly-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  /* This makes the weekly chart shorter. */
+  .week-bars {
+    height: 75px;
+    margin: 14px 0 6px;
+  }
+
+  /* This removes extra space under a page. */
+  .page-section {
+    padding-bottom: 10px;
+  }
+}
