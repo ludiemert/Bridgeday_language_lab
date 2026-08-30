@@ -285,3 +285,22 @@ Docs interativas → funcionando
 Banco SQLite    → próxima etapa
 Login           → próxima etapa após o banco
 __________________________________________
+
+criar duas tabelas fundamentais:
+users
+└── conta, e-mail, senha protegida, data de criação
+
+user_language_profiles
+└── idioma escolhido, nível escolhido e vínculo com o usuário
+_____________________________
+uma mesma pessoa poderá ter, por exemplo:
+English → A2
+Deutsch → A1
+____________________________________
+
+projeto realmente gratuito, minha recomendação é:
+BridgeDay API   → FastAPI + SQLite
+Traduções       → Argos Translate, local e gratuito
+DeepL           → não usar na versão 1
+
+_____________________________________
