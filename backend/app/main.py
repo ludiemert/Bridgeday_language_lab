@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
+
+from .database import engine
 
 # Create the API app.
 app = FastAPI(
@@ -20,11 +23,16 @@ app.add_middleware(
 )
 
 
-# Check if the API is working.
+# Check the API and database.
 @app.get("/api/health")
 def read_health():
-    # Send a simple message.
+    # Open a short database connection.
+    with engine.connect() as connection:
+        connection.execute(text("SELECT 1"))
+
+    # Send the system status.
     return {
         "status": "ok",
         "app": "BridgeDay API",
+        "database": "ok",
     }
