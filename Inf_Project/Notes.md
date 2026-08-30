@@ -234,3 +234,21 @@ Usaremos:
 - JWT: login persistente.
 
 _____________________________
+
+# Show the Python path.
+.\.venv\Scripts\python.exe -c "import sys; print(sys.executable)"
+
+# Show the installed FastAPI version.
+.\.venv\Scripts\python.exe -c "import fastapi; print(fastapi.__version__)"
+
+# Show the installed SQLAlchemy version.
+.\.venv\Scripts\python.exe -c "import sqlalchemy; print(sqlalchemy.__version__)"
+_________________________________________________________
+
+# Open the backend folder.
+Get-ChildItem backend -Recurse
+
+Get-ChildItem é um comando seguro do PowerShell para listar o conteúdo de uma pasta.
+- Get-ChildItem backend mostra o que existe dentro de backend.
+- -Recurse pede para mostrar também as subpastas.
+______________________________
