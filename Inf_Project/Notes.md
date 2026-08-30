@@ -252,3 +252,36 @@ Get-ChildItem é um comando seguro do PowerShell para listar o conteúdo de uma 
 - Get-ChildItem backend mostra o que existe dentro de backend.
 - -Recurse pede para mostrar também as subpastas.
 ______________________________
+
+Start project terminal
+
+# Start the API server.
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+
+- http://127.0.0.1:8000/api/health
+- http://127.0.0.1:8000/docs
+A primeira mostra que a API está viva; a segunda é a documentação automática profissional do FastAPI.
+_____________________________________________
+
+esponde:
+{"status":"ok","app":"BridgeDay API"}
+Isso confirma três coisas:
+- O servidor FastAPI iniciou.
+- O endereço da rota funciona.
+- O navegador consegue receber dados da API.
+Ela é usada por desenvolvedores, serviços de hospedagem e também pelo próprio time para verificar rapidamente se o sistema está ativo. Mais tarde, ela poderá confirmar também se o banco SQLite está acessível.
+A página /docs é a documentação interativa criada automaticamente pelo FastAPI. É uma ferramenta muito boa porque, quando criarmos rotas como login, lição diária, registrar resposta e dashboard, todas aparecerão ali automaticamente.
+Na sua tela:
+- GET /api/health: é a rota existente.
+- GET: significa “buscar informação”, sem alterar dados.
+- Try it out: permite testar a rota dentro da própria documentação.
+- 200 Successful Response: significa que o servidor respondeu com sucesso.
+- /openapi.json: é a versão técnica dessa documentação, usada por ferramentas e pelo front se necessário.
+O exemplo "string" que aparece na documentação não é um problema agora. A API está retornando o objeto correto na página Health. Nas próximas rotas vamos declarar modelos de resposta, e a documentação mostrará exatamente os campos reais, por exemplo usuário, idioma, nível, sequência e métricas.
+Neste momento, você tem:
+Front existente → pronto para receber dados
+FastAPI         → funcionando
+Docs interativas → funcionando
+Banco SQLite    → próxima etapa
+Login           → próxima etapa após o banco
+__________________________________________
