@@ -202,3 +202,35 @@ A mensagem esperada no terminal é parecida com:
 Serving HTTP on :: port 5500 ...
 Isso também permitirá que, no próximo passo, o JavaScript leia data/lessons-translated.json.
 _________________________
+
+
+____________________
+estagio novo do projeto com login
+
+terminal dentro da pasta principal do BridgeDay e rode:
+# Check the Python version.
+py --version
+
+# Create the main folders.
+New-Item -ItemType Directory -Force front, backend, data, scripts
+
+# Create the Python environment.
+py -m venv .venv
+
+# Update pip.
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+
+# Install the backend tools.
+.\.venv\Scripts\python.exe -m pip install fastapi "uvicorn[standard]" sqlalchemy alembic passlib[bcrypt] "pyth
+
+__________________________________
+
+Usaremos:
+- FastAPI: API e documentação automática.
+- SQLite: banco gratuito em data/bridgeday.db.
+- SQLAlchemy: comunicação segura com o banco.
+- Alembic: evolução do banco sem apagar dados.
+- Passlib + bcrypt: senhas protegidas.
+- JWT: login persistente.
+
+_____________________________
