@@ -324,3 +324,12 @@ aplicar a migração ao SQLite:
 .\.venv\Scripts\python.exe -c "from sqlalchemy import inspect; from backend.app.database import engine; print(inspect(engine).get_table_names())"
 
 ____________________________________
+
+instale a validação de e-mail e gere uma chave secreta.
+# Install email validation.
+.\.venv\Scripts\python.exe -m pip install email-validator
+
+# Create a secret key.
+.\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_urlsafe(32))"
+
+______________________
