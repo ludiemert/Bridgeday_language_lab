@@ -333,3 +333,107 @@ instale a validação de e-mail e gere uma chave secreta.
 .\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_urlsafe(32))"
 
 ______________________
+
+cada parte faz.
+Bridgeday_language_lab/
+│
+├── .venv/
+├── .env
+├── alembic.ini
+├── front/
+├── backend/
+├── data/
+└── scripts/
+Pasta ou arquivo	Função
+.venv/	Ambiente Python isolado. Guarda FastAPI, SQLAlchemy e bibliotecas do projeto.
+.env	Guarda dados privados, como SECRET_KEY. Nunca vai para Git ou para o front.
+alembic.ini	Configuração geral do Alembic.
+front/	Seu HTML, CSS e JavaScript. É a tela que o aluno usa.
+backend/	Todo o servidor Python/FastAPI.
+data/	Banco bridgeday.db e arquivos JSON de conteúdo.
+scripts/	Programas que você executa manualmente para importar lições ou preparar conteúdo.
+
+
+Dentro de backend/:
+backend/
+├── app/
+│   ├── api/
+│   ├── core/
+│   ├── models/
+│   ├── schemas/
+│   ├── services/
+│   ├── database.py
+│   └── main.py
+└── migrations/
+    └── versions/
+Pasta ou arquivo	Função
+app/main.py	Inicia a API e conecta todas as rotas.
+app/database.py	Define onde está o SQLite, cria conexões e sessões do banco.
+app/api/	Rotas da API: login, lições, progresso e dashboard. auth.py contém cadastro, login e usuário atual.
+app/core/	Configurações globais e segurança.
+core/config.py	Lê a chave secreta do .env e define duração do token.
+core/security.py	Protege senhas e cria/lê tokens de login.
+app/models/	Desenhos das tabelas SQLite usando Python/SQLAlchemy.
+models/user.py	Tabela users: e-mail, senha protegida e status da conta.
+models/language_profile.py	Tabela de níveis: English e Deutsch para cada usuário.
+app/schemas/	Define e valida dados recebidos/enviados pela API.
+schemas/auth.py	Valida cadastro, login e resposta segura do usuário.
+app/services/	Regras de negócio. Depois ficará aqui a regra de ciclo de 5 dias, revisão e cálculo de métricas.
+migrations/	Histórico das mudanças no banco.
+migrations/versions/	Arquivos de cada versão do banco, como a criação das tabelas atuais.
+migrations/env.py	Liga o Alembic aos modelos e ao SQLite.
+
+
+O caminho dos dados ficará assim:
+Front
+  ↓
+API route: auth.py
+  ↓
+Schema: auth.py valida os dados
+  ↓
+Security: protege senha ou lê token
+  ↓
+Model + database: salva ou busca no SQLite
+  ↓
+API responde ao front
+
+________________________________________
+
+Sobre os imports de main.py:
+# Import the FastAPI app class.
+from fastapi import FastAPI
+FastAPI cria a aplicação servidor. É o objeto principal do backend.
+# Import the browser access tool.
+from fastapi.middleware.cors import CORSMiddleware
+CORSMiddleware permite que o navegador aberto em localhost:5500 — onde estará seu front — faça pedidos à API em localhost:8000. Sem isso, o navegador bloquearia a comunicação por segurança.
+# Import simple SQL text.
+from sqlalchemy import text
+text permite enviar uma consulta SQL simples. Usamos isso apenas no Health para executar SELECT 1 e confirmar que o SQLite está acessível.
+# Import the login route group.
+from .api.auth import router as auth_router
+- . significa “a pasta atual”, ou seja, backend/app/.
+- .api.auth aponta para backend/app/api/auth.py.
+- router é o grupo com as rotas de cadastro, login e usuário atual.
+- as auth_router renomeia esse objeto para ficar claro no main.py.
+# Add the login routes.
+app.include_router(auth_router)
+Essa linha registra as rotas de auth.py dentro da API principal. Sem ela, o arquivo existiria, mas /api/auth/register, /api/auth/login e /api/auth/me não apareceriam nem funcionariam.
+__________________________________________________
+
+O /docs não é uma tela do aluno. É uma ferramenta de desenvolvimento gerada automaticamente pelo FastAPI para testar e documentar sua API.
+Na sua página aparecem:
+- POST /api/auth/register: cria uma conta com e-mail, senha e níveis de English/Deutsch.
+- POST /api/auth/login: verifica a senha e devolve um token de acesso.
+- GET /api/auth/me: mostra o usuário conectado. O cadeado significa que precisa de token.
+- GET /api/health: confirma que API e banco estão ativos.
+- Schemas: os formatos de dados aceitos e devolvidos, como RegisterRequest e TokenResponse.
+Como ela funciona:
+1. Clique em uma rota.
+2. Clique em Try it out.
+3. Preencha os dados de teste.
+4. Clique em Execute.
+5. A Docs mostra o pedido enviado, o código da resposta e os dados devolvidos.
+O botão Authorize serve para informar seu token à Docs. Depois disso, ela envia esse token automaticamente ao testar a rota protegida /api/auth/me.
+As imagens provam que as rotas, os schemas e a documentação foram criados corretamente. Elas ainda não comprovam que cadastro e login foram executados; isso será confirmado quando aparecer 201 Created no cadastro e 200 OK no login.
+
+______________________________________________
