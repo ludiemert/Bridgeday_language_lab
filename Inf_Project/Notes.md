@@ -304,3 +304,23 @@ Traduções       → Argos Translate, local e gratuito
 DeepL           → não usar na versão 1
 
 _____________________________________
+
+FastAPI          → API do BridgeDay
+SQLite           → banco local
+Alembic          → histórico seguro das tabelas
+DeepL API Free   → geração em lote de traduções
+Argos Translate  → não usar
+
+_______________________________
+
+aplicar a migração ao SQLite:
+# Create the first database tables.
+.\.venv\Scripts\alembic.exe upgrade head
+
+# Show the current database version.
+.\.venv\Scripts\alembic.exe current
+
+# Show the database table names.
+.\.venv\Scripts\python.exe -c "from sqlalchemy import inspect; from backend.app.database import engine; print(inspect(engine).get_table_names())"
+
+____________________________________
