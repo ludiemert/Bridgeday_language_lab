@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
+from .api.auth import router as auth_router
+
 from .database import engine
 
 # Create the API app.
@@ -21,6 +23,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Add the login routes.
+app.include_router(auth_router)
 
 
 # Check the API and database.
