@@ -490,3 +490,15 @@ JOIN user_language_profiles
 ORDER BY users.id, user_language_profiles.language_code;
 
 _______________________________
+
+falta no projeto, em ordem profissional:
+1. Confirmar login e usuário conectado
+2. Criar banco de lições, traduções e vocabulário
+3. Importar conteúdo em lote
+4. Entregar a lição diária pela API
+5. Registrar estudo, respostas, erros e acertos
+6. Criar revisão inteligente de cinco dias
+7. Criar dashboard diário, mensal e anual
+8. Conectar tudo ao seu front existente
+
+_____________________________________________
