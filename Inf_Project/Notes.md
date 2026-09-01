@@ -524,3 +524,10 @@ _________________________________
 .\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
 
 _______________________________________________
+gerar migration =>  gere a migração
+
+gere a migração:
+# Create the content database migration.
+.\.venv\Scripts\alembic.exe revision --autogenerate -m "create lesson content tables"
+
+_______________________________
