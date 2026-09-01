@@ -531,3 +531,9 @@ gere a migração:
 .\.venv\Scripts\alembic.exe revision --autogenerate -m "create lesson content tables"
 
 _______________________________
+
+revisar a receita antes de aplicá-la ao banco:
+# Show the content migration file.
+Get-Content backend\migrations\versions\71637c5a63d0_create_lesson_content_tables.py
+
+___________________________________________
