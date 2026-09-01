@@ -462,3 +462,15 @@ Uma comparação simples:
 “API” é um conceito, não um programa específico. Poderíamos criar uma API com Flask, Django, Node.js, Java ou outras tecnologias. Escolhemos FastAPI porque é rápido, gratuito, organizado e cria essa documentação automaticamente.
 Você também poderia usar Postman ou Insomnia para testar a API, mas não precisa agora: a página /docs já faz esse trabalho muito bem, sem instalar outro aplicativo.
 _______________________________________
+Docs para criar sua primeira conta de teste. Isso confirmará o fluxo completo:
+Docs → FastAPI → senha protegida → SQLite → token de login
+
+__________________________
+comando para start no projeto:
+
+(.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab> # Start the API server.
+>> .\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+
+"Use o Python do meu ambiente virtual, execute o servidor Uvicorn, carregue a aplicação app que está em backend/app/main.py e reinicie automaticamente quando eu modificar o código."
+
+__________________________________________________
