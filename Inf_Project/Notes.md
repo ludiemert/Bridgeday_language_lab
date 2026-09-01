@@ -508,3 +508,19 @@ Login → senha verificada
 Login válido → token gerado
 
 ___________________________________________________
+
+Gere uma nova SECRET_KEY
+
+na pasta principal do BridgeDay:
+1. No terminal onde a API está rodando, pressione Ctrl + C.
+2. Gere uma nova chave:
+# Create a new secret key.
+.\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_urlsafe(32))"
+
+_________________________________
+
+6. inicie a API:
+# Start the API server.
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+
+_______________________________________________
