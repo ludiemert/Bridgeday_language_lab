@@ -537,3 +537,12 @@ revisar a receita antes de aplicá-la ao banco:
 Get-Content backend\migrations\versions\71637c5a63d0_create_lesson_content_tables.py
 
 ___________________________________________
+
+aplique a migração:
+# Create the content tables.
+.\.venv\Scripts\alembic.exe upgrade head
+
+# Show the current database version.
+.\.venv\Scripts\alembic.exe current
+
+___________________________________________
