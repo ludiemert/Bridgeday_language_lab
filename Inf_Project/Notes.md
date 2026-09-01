@@ -474,3 +474,19 @@ comando para start no projeto:
 "Use o Python do meu ambiente virtual, execute o servidor Uvicorn, carregue a aplicação app que está em backend/app/main.py e reinicie automaticamente quando eu modificar o código."
 
 __________________________________________________
+
+SQL, use esta consulta segura para ver sua conta e os níveis:
+-- Show users and language levels.
+SELECT
+    users.id,
+    users.email,
+    users.is_active,
+    users.created_at,
+    user_language_profiles.language_code,
+    user_language_profiles.level_code
+FROM users
+JOIN user_language_profiles
+    ON user_language_profiles.user_id = users.id
+ORDER BY users.id, user_language_profiles.language_code;
+
+_______________________________
