@@ -437,3 +437,28 @@ O botão Authorize serve para informar seu token à Docs. Depois disso, ela envi
 As imagens provam que as rotas, os schemas e a documentação foram criados corretamente. Elas ainda não comprovam que cadastro e login foram executados; isso será confirmado quando aparecer 201 Created no cadastro e 200 OK no login.
 
 ______________________________________________
+
+tudo funcionando corretamente.
+- Application startup complete.: FastAPI iniciou sem erro.
+- GET /api/health 200 OK: a Health respondeu com sucesso; API e SQLite estão ativos.
+- GET /docs 200 OK: a documentação abriu.
+- GET /openapi.json 200 OK: FastAPI gerou o contrato técnico usado pela Docs.
+- 404 /.well-known/appspecific/com.chrome.devtools.json: é uma tentativa automática do Chrome/DevTools de procurar um arquivo opcional. Ele não existe no BridgeDay e não afeta nada.
+
+________________________________________
+
+O /docs não é banco de dados. Ele é uma página de teste e documentação da API.
+A separação é esta:
+Front            → tela que o aluno vê
+FastAPI          → ferramenta Python que cria o servidor
+API              → regras/endpoints que o front pode chamar
+SQLite           → arquivo que guarda os dados
+Docs             → painel para testar e entender a API
+Uma comparação simples:
+- SQLite é o caderno onde os dados ficam guardados.
+- API é o atendente que recebe pedidos e devolve respostas.
+- FastAPI é a ferramenta Python usada para construir esse atendente.
+- Docs é o painel de treinamento do atendente: mostra o que ele sabe fazer e permite testar cada pedido.
+“API” é um conceito, não um programa específico. Poderíamos criar uma API com Flask, Django, Node.js, Java ou outras tecnologias. Escolhemos FastAPI porque é rápido, gratuito, organizado e cria essa documentação automaticamente.
+Você também poderia usar Postman ou Insomnia para testar a API, mas não precisa agora: a página /docs já faz esse trabalho muito bem, sem instalar outro aplicativo.
+_______________________________________
