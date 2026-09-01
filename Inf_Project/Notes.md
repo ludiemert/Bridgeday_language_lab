@@ -502,3 +502,9 @@ falta no projeto, em ordem profissional:
 8. Conectar tudo ao seu front existente
 
 _____________________________________________
+
+Cadastro → senha protegida no SQLite
+Login → senha verificada
+Login válido → token gerado
+
+___________________________________________________
