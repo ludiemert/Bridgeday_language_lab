@@ -553,3 +553,31 @@ executar a primeira licao
 .\.venv\Scripts\python.exe -m scripts.seed_first_lesson
 
 ____________________
+
+data/
+└── lessons-source.json        → muitas lições organizadas
+
+scripts/
+└── import_lessons.py          → um único script que importa tudo
+
+SQLite
+└── bridgeday.db               → guarda todas as lições reais
+
+FastAPI
+└── entrega a lição certa para cada usuário
+
+front/
+└── mostra a lição do dia
+
+Ou seja:
+- scripts/ terá poucos programas úteis, não centenas de lições.
+- data/ poderá ter um arquivo com 30, 100 ou 1.000 lições.
+- SQLite suporta isso tranquilamente e continua leve.
+- O script importará apenas lições novas ou atualizadas, sem duplicar conteúdo.
+- O banco será a fonte de dados usada diariamente pelo app.
+A sequência mais produtiva agora é:
+1. Criar a rota FastAPI para buscar a primeira lição.
+2. Testá-la na Docs.
+3. Conectar seu app.js a essa rota.
+4. Depois criar o importador em lote para todas as lições.
+___________________________________________________
