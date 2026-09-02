@@ -546,3 +546,10 @@ aplique a migração:
 .\.venv\Scripts\alembic.exe current
 
 ___________________________________________
+
+executar a primeira licao
+
+# Add the first lesson to SQLite.
+.\.venv\Scripts\python.exe -m scripts.seed_first_lesson
+
+____________________
