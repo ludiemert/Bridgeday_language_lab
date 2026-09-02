@@ -6,6 +6,9 @@ from .api.auth import router as auth_router
 
 from .database import engine
 
+# Import the lesson routes.
+from .api.lessons import router as lesson_router
+
 # Create the API app.
 app = FastAPI(
     title="BridgeDay API",
@@ -26,6 +29,9 @@ app.add_middleware(
 
 # Add the login routes.
 app.include_router(auth_router)
+
+# Add the lesson routes.
+app.include_router(lesson_router)
 
 
 # Check the API and database.
