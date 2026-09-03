@@ -581,3 +581,8 @@ A sequência mais produtiva agora é:
 3. Conectar seu app.js a essa rota.
 4. Depois criar o importador em lote para todas as lições.
 ___________________________________________________
+Agora já temos:
+SQLite → lição real
+FastAPI → entrega a lição
+Docs → testa a lição
+_______________________

@@ -42,11 +42,9 @@ const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 // This finds the typing text area.
 const typingText = document.getElementById("typing-text");
 
-// This is the JSON lesson file.
-const LESSON_FILE = "../data/lessons-translated.json";
-
-// This is the lesson for today.
-const DAILY_LESSON_ID = "lesson-006";
+// Set the lesson API address.
+const LESSON_API_URL =
+  "http://127.0.0.1:8000/api/lessons/en-a2-work-routine-001";
 
 // This has language information.
 const languageSettings = {
@@ -281,37 +279,88 @@ function renderLesson() {
     "Listen to the sentence in " + mainSettings.label + ".";
 }
 
-// This loads lesson data.
+// Change API data to front data.
+function mapLessonFromApi(apiLesson) {
+  // Find translations by language.
+  const translationsByLanguage = Object.fromEntries(
+    apiLesson.translations.map(function (item) {
+      return [item.language_code, item];
+    }),
+  );
+
+  // Create the main lesson data.
+  const mainLesson = {
+    title: apiLesson.title,
+    text: apiLesson.text,
+    grammar: apiLesson.grammar_note || "",
+    keywords: apiLesson.vocabulary_items.map(function (item) {
+      return item.target_word;
+    }),
+  };
+
+  // Create English lesson data.
+  const englishLesson =
+    apiLesson.language_code === "en"
+      ? mainLesson
+      : {
+          title: translationsByLanguage.en?.title || "",
+          text: translationsByLanguage.en?.text || "",
+          grammar: apiLesson.grammar_note || "",
+          keywords: mainLesson.keywords,
+        };
+
+  // Create German lesson data.
+  const germanLesson =
+    apiLesson.language_code === "de"
+      ? mainLesson
+      : {
+          title: translationsByLanguage.de?.title || "",
+          text: translationsByLanguage.de?.text || "",
+          grammar: apiLesson.grammar_note || "",
+          keywords: mainLesson.keywords,
+        };
+
+  // Send data in the old front format.
+  return {
+    category: apiLesson.category,
+    englishLevel:
+      apiLesson.language_code === "en" ? apiLesson.level_code : "A2",
+    germanLevel: apiLesson.language_code === "de" ? apiLesson.level_code : "A1",
+    textPt: translationsByLanguage.pt?.text || "",
+    keywordsPt: apiLesson.vocabulary_items.map(function (item) {
+      return item.meaning_pt;
+    }),
+    translations: {
+      en: englishLesson,
+      de: germanLesson,
+    },
+  };
+}
+
+// Load one lesson from the API.
 async function loadLesson() {
   try {
-    // This gets the JSON file.
-    const response = await fetch(LESSON_FILE);
+    // Ask the API for lesson data.
+    const response = await fetch(LESSON_API_URL);
 
-    // This checks the file.
+    // Check the API response.
     if (!response.ok) {
-      throw new Error("Lesson file was not found.");
+      throw new Error("Lesson was not found.");
     }
 
-    // This reads JSON data.
+    // Read the API data.
     const lessonData = await response.json();
 
-    // This finds today lesson.
-    currentLesson = lessonData.lessons.find(function (lesson) {
-      return lesson.id === DAILY_LESSON_ID;
-    });
+    // Change API data for the front.
+    currentLesson = mapLessonFromApi(lessonData);
 
-    // This checks today lesson.
-    if (!currentLesson) {
-      throw new Error("Daily lesson was not found.");
-    }
-
-    // This shows the lesson.
+    // Show the lesson on screen.
     renderLesson();
   } catch (error) {
-    // This shows a safe error message.
+    // Show a safe error message.
     lessonTitle.textContent = "Lesson data was not found.";
 
-    // This shows the error for development.
+    // Show the error for development.
     console.error(error);
   }
 }
