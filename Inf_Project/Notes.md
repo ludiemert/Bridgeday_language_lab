@@ -253,7 +253,7 @@ Get-ChildItem é um comando seguro do PowerShell para listar o conteúdo de uma 
 - -Recurse pede para mostrar também as subpastas.
 ______________________________
 
-Start project terminal
+Start API project terminal
 
 # Start the API server.
 .\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
@@ -261,6 +261,17 @@ Start project terminal
 - http://127.0.0.1:8000/api/health
 - http://127.0.0.1:8000/docs
 A primeira mostra que a API está viva; a segunda é a documentação automática profissional do FastAPI.
+
+
+Start backend => API
+
+# Start the API server.
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+
+Start front
+
+# Start the front server.
+.\.venv\Scripts\python.exe -m http.server 5500 --directory front
 _____________________________________________
 
 esponde:
