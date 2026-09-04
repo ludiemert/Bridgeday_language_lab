@@ -606,3 +606,13 @@ SQLite → lição real
 FastAPI → entrega a lição
 Docs → testa a lição
 _______________________
+
+SQLite → FastAPI → app.js → tela BridgeDay
+_______________________________
+
+gerar a migration
+
+# Create the progress database migration.
+.\.venv\Scripts\alembic.exe revision --autogenerate -m "create study progress tables"
+
+______________________________________
