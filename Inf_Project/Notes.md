@@ -621,4 +621,11 @@ conferir as alteracoes das migrations
 # Show the progress migration file.
 Get-Content backend\migrations\versions\3b775a3d3c07_create_study_progress_tables.py
 
+
+aplique a migração:
+# Create the progress tables.
+.\.venv\Scripts\alembic.exe upgrade head
+
+# Show the current database version.
+.\.venv\Scripts\alembic.exe current
 ______________________________________
