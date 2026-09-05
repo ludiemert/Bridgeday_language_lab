@@ -664,3 +664,21 @@ FastAPI → recebe POST /api/progress/complete
 Docs    → envia esse POST para teste
 SQLite  → salva a conclusão da lição
 ______________________________________
+
+Beekeeper, confirme o registro:
+-- Show completed lesson progress.
+SELECT
+    users.email,
+    lessons.title,
+    lesson_progress.status,
+    lesson_progress.study_seconds,
+    lesson_progress.completed_at,
+    lesson_progress.next_review_at
+FROM lesson_progress
+JOIN users
+    ON users.id = lesson_progress.user_id
+JOIN lessons
+    ON lessons.id = lesson_progress.lesson_id;
+Isso provará que sua conclusão foi salva permanentemente no SQLite.
+
+_________________________________
