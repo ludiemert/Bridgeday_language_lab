@@ -650,4 +650,17 @@ banco já guarda:
 Conteúdo        → lições, traduções, palavras e exercícios
 Usuários        → contas e níveis
 Aprendizado     → conclusão, tempo, erros, acertos e escrita
+
+
+Alembic   → altera a estrutura do banco
+FastAPI   → recebe pedidos do app
+Docs      → testa a FastAPI no navegador
+Insomnia  → outro app para testar a FastAPI
+SQLite    → guarda os dados
+
+
+Alembic → cria uma tabela nova, coluna, índice ou relação
+FastAPI → recebe POST /api/progress/complete
+Docs    → envia esse POST para teste
+SQLite  → salva a conclusão da lição
 ______________________________________
