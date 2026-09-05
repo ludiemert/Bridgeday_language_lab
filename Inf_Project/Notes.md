@@ -615,4 +615,10 @@ gerar a migration
 # Create the progress database migration.
 .\.venv\Scripts\alembic.exe revision --autogenerate -m "create study progress tables"
 
+conferir as alteracoes das migrations
+"""create study progress tables
+
+# Show the progress migration file.
+Get-Content backend\migrations\versions\3b775a3d3c07_create_study_progress_tables.py
+
 ______________________________________
