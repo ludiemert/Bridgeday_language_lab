@@ -42,9 +42,38 @@ const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 // This finds the typing text area.
 const typingText = document.getElementById("typing-text");
 
+// Find the login form.
+const loginForm = document.getElementById("login-form");
+
+// Find login input fields.
+const loginEmail = document.getElementById("login-email");
+const loginPassword = document.getElementById("login-password");
+
+// Find login status text.
+const authStatus = document.getElementById("auth-status");
+
+// Find the logout button.
+const logoutButton = document.getElementById("logout-button");
+
+// Find the finish lesson button.
+const finishLessonButton = document.getElementById("finish-lesson-button");
+
 // Set the lesson API address.
 const LESSON_API_URL =
   "http://127.0.0.1:8000/api/lessons/en-a2-work-routine-001";
+
+// Set the API base address.
+const API_BASE_URL = "http://127.0.0.1:8000";
+
+// Read saved local login data.
+let accessToken = localStorage.getItem("bridgeday_access_token");
+
+let currentUser = JSON.parse(
+  localStorage.getItem("bridgeday_current_user") || "null",
+);
+
+// Save the lesson start time.
+let lessonStartedAt = null;
 
 // This has language information.
 const languageSettings = {
@@ -337,6 +366,163 @@ function mapLessonFromApi(apiLesson) {
   };
 }
 
+// Update the login area.
+function updateAuthArea() {
+  if (currentUser) {
+    // Show the signed in user.
+    authStatus.textContent = "Signed in as " + currentUser.email + ".";
+
+    // Hide the login form.
+    loginForm.hidden = true;
+
+    // Show the logout button.
+    logoutButton.hidden = false;
+    return;
+  }
+
+  // Show the signed out user.
+  authStatus.textContent = "Sign in to save your lessons.";
+
+  // Show the login form.
+  loginForm.hidden = false;
+
+  // Hide the logout button.
+  logoutButton.hidden = true;
+}
+
+// Start the lesson timer.
+function startLessonTimer() {
+  if (!lessonStartedAt) {
+    lessonStartedAt = Date.now();
+  }
+}
+
+// Sign in with the API.
+async function signInUser(event) {
+  // Stop the page refresh.
+  event.preventDefault();
+
+  try {
+    // Send login data to the API.
+    const response = await fetch(API_BASE_URL + "/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: loginEmail.value,
+        password: loginPassword.value,
+      }),
+    });
+
+    // Read the API response.
+    const data = await response.json();
+
+    // Check the login response.
+    if (!response.ok) {
+      throw new Error(data.detail || "Login was not successful.");
+    }
+
+    // Save local login data.
+    accessToken = data.access_token;
+    currentUser = data.user;
+
+    localStorage.setItem("bridgeday_access_token", accessToken);
+
+    localStorage.setItem("bridgeday_current_user", JSON.stringify(currentUser));
+
+    // Clear the password field.
+    loginPassword.value = "";
+
+    // Update the login area.
+    updateAuthArea();
+  } catch (error) {
+    // Show a safe login error.
+    authStatus.textContent = error.message;
+  }
+}
+
+// Sign out from the local browser.
+function signOutUser() {
+  // Remove local login data.
+  localStorage.removeItem("bridgeday_access_token");
+  localStorage.removeItem("bridgeday_current_user");
+
+  // Clear local values.
+  accessToken = null;
+  currentUser = null;
+
+  // Update the login area.
+  updateAuthArea();
+}
+
+// Save the completed lesson.
+async function finishCurrentLesson() {
+  // Check if the user is signed in.
+  if (!accessToken || !currentUser) {
+    authStatus.textContent = "Please sign in before finishing a lesson.";
+
+    showPage("home");
+    return;
+  }
+
+  // Check if the lesson exists.
+  if (!currentLesson?.lessonCode) {
+    return;
+  }
+
+  // Start the timer when needed.
+  startLessonTimer();
+
+  // Calculate the study time.
+  const studySeconds = Math.max(
+    1,
+    Math.floor((Date.now() - lessonStartedAt) / 1000),
+  );
+
+  try {
+    // Send completion data to the API.
+    const response = await fetch(API_BASE_URL + "/api/progress/complete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
+      },
+      body: JSON.stringify({
+        // Save the lesson code for progress.
+        lesson_code: currentLesson.lessonCode,
+        category: apiLesson.category,
+        study_seconds: studySeconds,
+      }),
+    });
+
+    // Read the API response.
+    const data = await response.json();
+
+    // Check the completion response.
+    if (!response.ok) {
+      throw new Error(data.detail || "Lesson was not saved.");
+    }
+
+    // Update the finish button.
+    finishLessonButton.textContent = "Lesson completed ✓";
+
+    finishLessonButton.disabled = true;
+
+    // Stop the lesson timer.
+    lessonStartedAt = null;
+
+    // Show the saved message.
+    alert(
+      "Lesson saved. Review date: " +
+        new Date(data.next_review_at).toLocaleDateString(),
+    );
+  } catch (error) {
+    // Show a safe completion error.
+    alert(error.message);
+  }
+}
+
 // Load one lesson from the API.
 async function loadLesson() {
   try {
@@ -386,7 +572,13 @@ function speakText(button, text) {
 // This adds page clicks.
 navButtons.forEach(function (button) {
   button.addEventListener("click", function () {
+    // Show the selected page.
     showPage(button.dataset.page);
+
+    // Start the timer on the study page.
+    if (button.dataset.page === "study") {
+      startLessonTimer();
+    }
   });
 });
 
@@ -443,6 +635,18 @@ showPage("home");
 
 // This opens Text first.
 showStudyArea("text");
+
+// Add login form action.
+loginForm.addEventListener("submit", signInUser);
+
+// Add logout button action.
+logoutButton.addEventListener("click", signOutUser);
+
+// Add finish lesson action.
+finishLessonButton.addEventListener("click", finishCurrentLesson);
+
+// Show the first login state.
+updateAuthArea();
 
 // This loads the lesson file.
 loadLesson();

@@ -129,6 +129,55 @@
       </div>
     </section>
 
+    <!-- This shows the local login area. -->
+    <section class="auth-card page-section home-page">
+      <div>
+        <p class="small-title">YOUR ACCOUNT</p>
+        <h2>Study with your progress</h2>
+        <p class="page-help" id="auth-status">
+          Sign in to save your lessons.
+        </p>
+      </div>
+
+      <!-- This sends login data to the API. -->
+      <form class="auth-form" id="login-form">
+        <label>
+          Email
+          <input
+            id="login-email"
+            type="email"
+            required
+            placeholder="you@example.com"
+          >
+        </label>
+
+        <label>
+          Password
+          <input
+            id="login-password"
+            type="password"
+            required
+            minlength="8"
+            placeholder="Your password"
+          >
+        </label>
+
+        <button class="main-button" type="submit">
+          Sign in
+        </button>
+      </form>
+
+      <!-- This logs out the local user. -->
+      <button
+        class="soft-button"
+        id="logout-button"
+        type="button"
+        hidden
+      >
+        Sign out
+      </button>
+    </section>
+
     <!-- This is the main lesson card. -->
     <section class="lesson-panel page-section study-page" hidden>
 
@@ -380,7 +429,12 @@
 
       <!-- These are the main lesson actions. -->
       <footer class="lesson-actions">
-        <button class="main-button" type="button">
+        <!-- This saves the completed lesson. -->
+        <button
+          class="main-button"
+          id="finish-lesson-button"
+          type="button"
+        >
           Finish lesson
         </button>
 

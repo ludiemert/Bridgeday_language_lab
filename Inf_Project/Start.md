@@ -29,3 +29,8 @@ http://127.0.0.1:5500
 _____________________________________________
 
 gerar outra senha .env
+
+# Create a new secret key.
+.\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_urlsafe(32))"
+
+______________________________________________

@@ -605,6 +605,56 @@ textarea {
   display: none !important;
 }
 
+/* This styles the login card. */
+.auth-card {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 12px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* This styles the login form. */
+.auth-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+/* This styles login labels. */
+.auth-form label {
+  display: grid;
+  gap: 5px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* This styles login inputs. */
+.auth-form input {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+}
+
+/* This changes the form on small screens. */
+@media (max-width: 540px) {
+  .auth-form {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-form button {
+    width: 100%;
+  }
+}
+
+
 /* This changes the page for tablets. */
 @media (max-width: 760px) {
   .topbar {
