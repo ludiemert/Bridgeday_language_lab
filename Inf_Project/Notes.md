@@ -628,4 +628,26 @@ aplique a migração:
 
 # Show the current database version.
 .\.venv\Scripts\alembic.exe current
+
+O que cada comando fez:
+.\.venv\Scripts\alembic.exe upgrade head
+- upgrade: aplicar mudanças no banco.
+- head: aplicar até a versão mais recente disponível.
+- O Alembic viu que seu banco estava na versão 71637c5a63d0.
+
+Essa mudança criou:
+lesson_progress
+exercise_attempts
+writing_entries
+Ele não recriou as tabelas antigas e não apagou dados.
+.\.venv\Scripts\alembic.exe current
+Esse comando apenas pergunta ao banco: “qual versão você já possui?”
+A resposta:
+3b775a3d3c07 (head)
+significa que o SQLite está na versão mais nova do projeto.
+
+banco já guarda:
+Conteúdo        → lições, traduções, palavras e exercícios
+Usuários        → contas e níveis
+Aprendizado     → conclusão, tempo, erros, acertos e escrita
 ______________________________________
