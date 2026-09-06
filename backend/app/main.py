@@ -12,6 +12,9 @@ from .api.lessons import router as lesson_router
 # Import the progress routes.
 from .api.progress import router as progress_router
 
+# Import the dashboard routes.
+from .api.dashboard import router as dashboard_router
+
 # Create the API app.
 app = FastAPI(
     title="BridgeDay API",
@@ -38,9 +41,6 @@ app.include_router(lesson_router)
 
 # Add the progress routes.
 app.include_router(progress_router)
-
-# Import the dashboard routes.
-from .api.dashboard import router as dashboard_router
 
 
 # Check the API and database.

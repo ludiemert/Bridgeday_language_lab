@@ -1,3 +1,6 @@
+# This file defines dashboard response data.
+# It tells the API what dashboard data looks like.
+
 # Import date and time tools.
 from datetime import date, datetime, timedelta, timezone
 

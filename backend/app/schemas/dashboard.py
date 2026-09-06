@@ -1,3 +1,6 @@
+# This file defines dashboard response data.
+# It tells the API what dashboard data looks like.
+
 # Import the data model tool.
 from pydantic import BaseModel
 
