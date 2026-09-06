@@ -351,6 +351,10 @@ function mapLessonFromApi(apiLesson) {
 
   // Send data in the old front format.
   return {
+    // Save the lesson code for progress.
+    lessonCode: apiLesson.lesson_code,
+    // Save the lesson category.
+    category: apiLesson.category,
     category: apiLesson.category,
     englishLevel:
       apiLesson.language_code === "en" ? apiLesson.level_code : "A2",
@@ -490,8 +494,9 @@ async function finishCurrentLesson() {
       },
       body: JSON.stringify({
         // Save the lesson code for progress.
+        // Send the lesson code.
         lesson_code: currentLesson.lessonCode,
-        category: apiLesson.category,
+        // Send the study time.
         study_seconds: studySeconds,
       }),
     });
