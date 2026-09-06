@@ -39,6 +39,9 @@ app.include_router(lesson_router)
 # Add the progress routes.
 app.include_router(progress_router)
 
+# Import the dashboard routes.
+from .api.dashboard import router as dashboard_router
+
 
 # Check the API and database.
 @app.get("/api/health")
