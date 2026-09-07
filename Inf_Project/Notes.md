@@ -704,3 +704,8 @@ Para testar Dashboard:
 A resposta deverá trazer seus números reais, como tempo total, lições concluídas e a lista com en-a2-work-routine-001.
 
 ________________________________
+vamos usar /docs sempre que houver uma API nos projetos. É excelente para aprender, testar e demonstrar o backend. Em projetos que não usam FastAPI, existe a mesma ideia com OpenAPI/Swagger, Postman ou Insomnia.
+O terminal também confirma tudo:
+POST /api/auth/login ... 200 OK
+GET /api/dashboard ... 200 OK
+__________________________________
