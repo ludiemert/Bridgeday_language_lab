@@ -1,3 +1,6 @@
+// This file runs the BridgeDay front page.
+// It loads lessons, login, and dashboard data.
+
 // This finds all menu buttons.
 const navButtons = document.querySelectorAll(".nav-button");
 
