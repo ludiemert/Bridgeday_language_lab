@@ -49,6 +49,20 @@
       </div>
     </header>
 
+<!-- This shows the signed in user at the top. -->
+<section class="account-strip" id="account-strip" hidden>
+  <p id="top-user-label">Signed in user</p>
+
+  <!-- This signs out the current user. -->
+  <button
+    class="logout-button"
+    id="logout-button"
+    type="button"
+  >
+    Sign out
+  </button>
+</section>
+
     <!-- This chooses the study language. -->
 <section class="language-picker">
   <p>Study language</p>
@@ -131,10 +145,19 @@
         <p>Today</p>
         <strong id="today-count">0 lessons</strong>
       </div>
+
+      <!-- This shows all completed lessons. -->
+      <div>
+        <p>Total lessons</p>
+        <strong id="total-count">0 lessons</strong>
+      </div>
     </section>
 
-    <!-- This shows the local login area. -->
-    <section class="auth-card page-section home-page">
+    <!-- This is the login card. -->
+    <section
+      class="auth-card page-section home-page"
+      id="auth-card"
+    >
       <div>
         <p class="small-title">YOUR ACCOUNT</p>
         <h2>Study with your progress</h2>
@@ -157,29 +180,34 @@
 
         <label>
           Password
-          <input
-            id="login-password"
-            type="password"
-            required
-            minlength="8"
-            placeholder="Your password"
-          >
+
+          <!-- This groups password input and eye button. -->
+          <span class="password-field">
+            <input
+              id="login-password"
+              type="password"
+              required
+              minlength="8"
+              placeholder="Your password"
+            >
+
+            <!-- This shows or hides the password. -->
+            <button
+              class="password-toggle"
+              id="password-toggle"
+              type="button"
+              aria-label="Show password"
+              title="Show password"
+            >
+              👁
+            </button>
+          </span>
         </label>
 
         <button class="main-button" type="submit">
           Sign in
         </button>
       </form>
-
-      <!-- This logs out the local user. -->
-      <button
-        class="soft-button"
-        id="logout-button"
-        type="button"
-        hidden
-      >
-        Sign out
-      </button>
     </section>
 
     <!-- This is the main lesson card. -->

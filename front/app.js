@@ -61,10 +61,18 @@ const logoutButton = document.getElementById("logout-button");
 // Find the finish lesson button.
 const finishLessonButton = document.getElementById("finish-lesson-button");
 
+// Find account elements.
+const authCard = document.getElementById("auth-card");
+const accountStrip = document.getElementById("account-strip");
+const topUserLabel = document.getElementById("top-user-label");
+const passwordToggle = document.getElementById("password-toggle");
+
 // Find dashboard elements.
 const streakCount = document.getElementById("streak-count");
 const weekCount = document.getElementById("week-count");
 const todayCount = document.getElementById("today-count");
+// Find total lesson count.
+const totalCount = document.getElementById("total-count");
 const weeklyMinutes = document.getElementById("weekly-minutes");
 const weeklyText = document.getElementById("weekly-text");
 const progressTitle = document.getElementById("progress-title");
@@ -419,6 +427,7 @@ function renderDashboard() {
     streakCount.textContent = "0 days";
     weekCount.textContent = "0 lessons";
     todayCount.textContent = "0 lessons";
+    totalCount.textContent = "0 lessons";
     weeklyMinutes.textContent = "0 min total";
     weeklyText.textContent = "Sign in to see your saved progress.";
     progressTitle.textContent = "Start your first lesson";
@@ -436,13 +445,24 @@ function renderDashboard() {
   streakCount.textContent = currentDashboard.current_streak_days + " days";
   weekCount.textContent = currentDashboard.completed_this_week + " lessons";
   todayCount.textContent = currentDashboard.completed_today + " lessons";
+  totalCount.textContent =
+    currentDashboard.total_completed_lessons + " lessons";
   weeklyMinutes.textContent = totalMinutes + " min total";
 
-  // Show the weekly message.
-  weeklyText.textContent =
-    "You completed " +
-    currentDashboard.completed_this_week +
-    " lesson(s) this week.";
+  // Show a helpful weekly message.
+  if (currentDashboard.completed_this_week > 0) {
+    weeklyText.textContent =
+      "You completed " +
+      currentDashboard.completed_this_week +
+      " lesson(s) this week.";
+  } else if (currentDashboard.total_completed_lessons > 0) {
+    weeklyText.textContent =
+      "New week, new start. You have " +
+      currentDashboard.total_completed_lessons +
+      " completed lesson(s) in total.";
+  } else {
+    weeklyText.textContent = "Complete your first lesson to see your progress.";
+  }
 
   // Show Progress information.
   progressTitle.textContent =
@@ -502,28 +522,28 @@ async function loadDashboard() {
   }
 }
 
-// Update the login area.
+// Update the login and account areas.
 function updateAuthArea() {
   if (currentUser) {
     // Show the signed in user.
-    authStatus.textContent = "Signed in as " + currentUser.email + ".";
+    topUserLabel.textContent = "Signed in as " + currentUser.email + ".";
 
-    // Hide the login form.
-    loginForm.hidden = true;
+    // Hide the login card.
+    authCard.hidden = true;
 
-    // Show the logout button.
-    logoutButton.hidden = false;
+    // Show the top account area.
+    accountStrip.hidden = false;
     return;
   }
 
   // Show the signed out user.
   authStatus.textContent = "Sign in to save your lessons.";
 
-  // Show the login form.
-  loginForm.hidden = false;
+  // Show the login card.
+  authCard.hidden = false;
 
-  // Hide the logout button.
-  logoutButton.hidden = true;
+  // Hide the top account area.
+  accountStrip.hidden = true;
 }
 
 // Start the lesson timer.
@@ -531,6 +551,23 @@ function startLessonTimer() {
   if (!lessonStartedAt) {
     lessonStartedAt = Date.now();
   }
+}
+
+// Show or hide the password text.
+function togglePasswordVisibility() {
+  // Check the current password type.
+  const isHidden = loginPassword.type === "password";
+
+  // Change the password type.
+  loginPassword.type = isHidden ? "text" : "password";
+
+  // Update the button label.
+  passwordToggle.setAttribute(
+    "aria-label",
+    isHidden ? "Hide password" : "Show password",
+  );
+
+  passwordToggle.title = isHidden ? "Hide password" : "Show password";
 }
 
 // Sign in with the API.
@@ -789,6 +826,9 @@ loginForm.addEventListener("submit", signInUser);
 
 // Add logout button action.
 logoutButton.addEventListener("click", signOutUser);
+
+// Add password eye action.
+passwordToggle.addEventListener("click", togglePasswordVisibility);
 
 // Add finish lesson action.
 finishLessonButton.addEventListener("click", finishCurrentLesson);

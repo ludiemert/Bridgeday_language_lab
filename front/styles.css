@@ -1,3 +1,6 @@
+/* This file styles the BridgeDay front page. */
+/* It controls layout, colors, cards, and mobile screens. */
+
 /* These are the project colors. */
 :root {
   --purple: #7c3aed;
@@ -237,7 +240,7 @@ h3 {
 /* This shows progress cards. */
 .quick-progress {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin-bottom: 12px;
 }
@@ -617,6 +620,61 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+/* This styles the top signed in area. */
+.account-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+/* This styles the signed in user text. */
+.account-strip p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* This styles the logout button. */
+.logout-button {
+  padding: 8px 12px;
+  background: var(--danger-soft);
+  border: 1px solid #f2c5be;
+  border-radius: 8px;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* This puts the password controls together. */
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* This lets the password input use free space. */
+.password-field input {
+  flex: 1;
+}
+
+/* This styles the password eye button. */
+.password-toggle {
+  min-width: 40px;
+  padding: 8px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 /* This styles the login form. */
 .auth-form {
   display: grid;
@@ -662,6 +720,11 @@ textarea {
   }
 
   .word-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* This shows two progress cards on tablets. */
+  .quick-progress {
     grid-template-columns: repeat(2, 1fr);
   }
 
