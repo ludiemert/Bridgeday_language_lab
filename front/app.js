@@ -793,11 +793,11 @@ logoutButton.addEventListener("click", signOutUser);
 // Add finish lesson action.
 finishLessonButton.addEventListener("click", finishCurrentLesson);
 
-// Load new dashboard data.
-await loadDashboard();
-
 // Show the first login state.
 updateAuthArea();
 
 // This loads the lesson file.
 loadLesson();
+
+// Load saved dashboard data.
+loadDashboard();
