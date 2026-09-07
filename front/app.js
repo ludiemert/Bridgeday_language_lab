@@ -61,12 +61,27 @@ const logoutButton = document.getElementById("logout-button");
 // Find the finish lesson button.
 const finishLessonButton = document.getElementById("finish-lesson-button");
 
+// Find dashboard elements.
+const streakCount = document.getElementById("streak-count");
+const weekCount = document.getElementById("week-count");
+const todayCount = document.getElementById("today-count");
+const weeklyMinutes = document.getElementById("weekly-minutes");
+const weeklyText = document.getElementById("weekly-text");
+const progressTitle = document.getElementById("progress-title");
+const progressSummary = document.getElementById("progress-summary");
+const progressReview = document.getElementById("progress-review");
+const reviewTitle = document.getElementById("review-title");
+const reviewText = document.getElementById("review-text");
+
 // Set the lesson API address.
 const LESSON_API_URL =
   "http://127.0.0.1:8000/api/lessons/en-a2-work-routine-001";
 
 // Set the API base address.
 const API_BASE_URL = "http://127.0.0.1:8000";
+
+// Set the dashboard API address.
+const DASHBOARD_API_URL = API_BASE_URL + "/api/dashboard";
 
 // Read saved local login data.
 let accessToken = localStorage.getItem("bridgeday_access_token");
@@ -101,6 +116,9 @@ let selectedLanguage = "english";
 
 // This stores the daily lesson.
 let currentLesson = null;
+
+// Store the saved dashboard data.
+let currentDashboard = null;
 
 // These are the changing sentences.
 const typingLines = [
@@ -358,7 +376,6 @@ function mapLessonFromApi(apiLesson) {
     lessonCode: apiLesson.lesson_code,
     // Save the lesson category.
     category: apiLesson.category,
-    category: apiLesson.category,
     englishLevel:
       apiLesson.language_code === "en" ? apiLesson.level_code : "A2",
     germanLevel: apiLesson.language_code === "de" ? apiLesson.level_code : "A1",
@@ -371,6 +388,118 @@ function mapLessonFromApi(apiLesson) {
       de: germanLesson,
     },
   };
+}
+
+// Update the finish button with saved progress.
+function updateFinishButton() {
+  // Stop when lesson data is missing.
+  if (!currentLesson) {
+    return;
+  }
+
+  // Check if this lesson is complete.
+  const isCompleted =
+    currentDashboard?.completed_lesson_codes.includes(
+      currentLesson.lessonCode,
+    ) || false;
+
+  // Show the correct button text.
+  finishLessonButton.textContent = isCompleted
+    ? "Lesson completed ✓"
+    : "Finish lesson";
+
+  // Disable only completed lessons.
+  finishLessonButton.disabled = isCompleted;
+}
+
+// Show dashboard data on the page.
+function renderDashboard() {
+  // Show empty values without login.
+  if (!currentDashboard) {
+    streakCount.textContent = "0 days";
+    weekCount.textContent = "0 lessons";
+    todayCount.textContent = "0 lessons";
+    weeklyMinutes.textContent = "0 min total";
+    weeklyText.textContent = "Sign in to see your saved progress.";
+    progressTitle.textContent = "Start your first lesson";
+    progressSummary.textContent = "Sign in to save study data.";
+    progressReview.textContent = "No review data is available.";
+    reviewTitle.textContent = "Next review";
+    reviewText.textContent = "Sign in to see your review status.";
+    return;
+  }
+
+  // Change seconds to full minutes.
+  const totalMinutes = Math.floor(currentDashboard.study_seconds_total / 60);
+
+  // Show Home numbers.
+  streakCount.textContent = currentDashboard.current_streak_days + " days";
+  weekCount.textContent = currentDashboard.completed_this_week + " lessons";
+  todayCount.textContent = currentDashboard.completed_today + " lessons";
+  weeklyMinutes.textContent = totalMinutes + " min total";
+
+  // Show the weekly message.
+  weeklyText.textContent =
+    "You completed " +
+    currentDashboard.completed_this_week +
+    " lesson(s) this week.";
+
+  // Show Progress information.
+  progressTitle.textContent =
+    currentDashboard.total_completed_lessons + " completed lesson(s)";
+  progressSummary.textContent =
+    "Total study time: " + totalMinutes + " minutes.";
+  progressReview.textContent =
+    "Reviews ready now: " + currentDashboard.reviews_due + ".";
+
+  // Show Review information.
+  reviewTitle.textContent =
+    currentDashboard.reviews_due > 0 ? "Review ready" : "No review today";
+
+  reviewText.textContent =
+    currentDashboard.reviews_due > 0
+      ? "Open a lesson review when you are ready."
+      : "Your next review will appear here.";
+}
+
+// Load real dashboard data from the API.
+async function loadDashboard() {
+  // Clear data when the user is signed out.
+  if (!accessToken || !currentUser) {
+    currentDashboard = null;
+    renderDashboard();
+    updateFinishButton();
+    return;
+  }
+
+  try {
+    // Ask the API for saved progress.
+    const response = await fetch(DASHBOARD_API_URL, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    });
+
+    // Check the dashboard response.
+    if (!response.ok) {
+      throw new Error("Dashboard data was not found.");
+    }
+
+    // Save dashboard data.
+    currentDashboard = await response.json();
+
+    // Update the page.
+    renderDashboard();
+    updateFinishButton();
+  } catch (error) {
+    // Show empty data when the API has an error.
+    currentDashboard = null;
+    renderDashboard();
+    updateFinishButton();
+
+    // Show the error for development.
+    console.error(error);
+  }
 }
 
 // Update the login area.
@@ -443,6 +572,8 @@ async function signInUser(event) {
 
     // Update the login area.
     updateAuthArea();
+    // Load saved dashboard data.
+    await loadDashboard();
   } catch (error) {
     // Show a safe login error.
     authStatus.textContent = error.message;
@@ -461,6 +592,11 @@ function signOutUser() {
 
   // Update the login area.
   updateAuthArea();
+
+  // Clear dashboard data on screen.
+  currentDashboard = null;
+  renderDashboard();
+  updateFinishButton();
 }
 
 // Save the completed lesson.
@@ -496,7 +632,6 @@ async function finishCurrentLesson() {
         Authorization: "Bearer " + accessToken,
       },
       body: JSON.stringify({
-        // Save the lesson code for progress.
         // Send the lesson code.
         lesson_code: currentLesson.lessonCode,
         // Send the study time.
@@ -516,6 +651,9 @@ async function finishCurrentLesson() {
     finishLessonButton.textContent = "Lesson completed ✓";
 
     finishLessonButton.disabled = true;
+
+    // Load new dashboard data.
+    await loadDashboard();
 
     // Stop the lesson timer.
     lessonStartedAt = null;
@@ -550,6 +688,8 @@ async function loadLesson() {
 
     // Show the lesson on screen.
     renderLesson();
+    // Update the button after lesson loading.
+    updateFinishButton();
   } catch (error) {
     // Show a safe error message.
     lessonTitle.textContent = "Lesson data was not found.";
@@ -652,6 +792,9 @@ logoutButton.addEventListener("click", signOutUser);
 
 // Add finish lesson action.
 finishLessonButton.addEventListener("click", finishCurrentLesson);
+
+// Load new dashboard data.
+await loadDashboard();
 
 // Show the first login state.
 updateAuthArea();

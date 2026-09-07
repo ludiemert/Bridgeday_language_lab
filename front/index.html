@@ -1,7 +1,8 @@
-// This file runs the BridgeDay front page.
-// It loads lessons, login, and dashboard data.
-
 <!DOCTYPE html>
+
+<!-- This file creates the BridgeDay page structure. -->
+<!-- It shows menus, study pages, and account areas. -->
+
 <html lang="en">
 <head>
   <!-- This helps the browser read special letters. -->
@@ -447,17 +448,20 @@
       </footer>
     </section>
 
-    <!-- This is the review page. -->
+<!-- This is the review page. -->
 <section class="review-page page-section" hidden>
   <p class="small-title">REVIEW</p>
   <h2>Review your learning</h2>
   <p class="page-help">
-    Your word and grammar reviews will appear here.
+    Your reviews are planned by the BridgeDay API.
   </p>
 
+  <!-- This shows the next review status. -->
   <article class="empty-card">
-    <h3>Next review</h3>
-    <p>Complete lessons to unlock your first review.</p>
+    <h3 id="review-title">Next review</h3>
+    <p id="review-text">
+      Sign in to see your review status.
+    </p>
   </article>
 </section>
 
@@ -466,12 +470,18 @@
   <p class="small-title">PROGRESS</p>
   <h2>Your language progress</h2>
   <p class="page-help">
-    Your time, answers and learning data will appear here.
+    Your real study data comes from the BridgeDay API.
   </p>
 
+  <!-- This shows saved progress data. -->
   <article class="empty-card">
-    <h3>Start your first lesson</h3>
-    <p>Your data will grow with every study session.</p>
+    <h3 id="progress-title">Start your first lesson</h3>
+    <p id="progress-summary">
+      Your data will grow with every study session.
+    </p>
+    <p id="progress-review">
+      Sign in to see your review information.
+    </p>
   </article>
 </section>
 
@@ -483,7 +493,8 @@
           <h2>Your week</h2>
         </div>
 
-        <span>0 min total</span>
+        <!-- This shows real study time. -->
+        <span id="weekly-minutes">0 min total</span>
       </div>
 
       <!-- These bars will show study days later. -->
@@ -497,7 +508,8 @@
         <div><span class="bar"></span><p>Sun</p></div>
       </div>
 
-      <p class="weekly-text">
+      <!-- This shows a real weekly message. -->
+      <p class="weekly-text" id="weekly-text">
         Complete your first lesson to see your progress.
       </p>
     </section>
