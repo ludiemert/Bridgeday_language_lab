@@ -603,14 +603,17 @@ function stopSessionTimer() {
 // Update the login and account areas.
 function updateAuthArea() {
   if (currentUser) {
-    // Show the signed in user.
-    topUserLabel.textContent = "Signed in as " + currentUser.email + ".";
+    // Show the signed in email.
+    topUserLabel.textContent = currentUser.email;
 
     // Hide the login card.
     authCard.hidden = true;
 
     // Show the top account area.
     accountStrip.hidden = false;
+
+    // Start the session clock.
+    startSessionTimer();
     return;
   }
 
@@ -622,6 +625,9 @@ function updateAuthArea() {
 
   // Hide the top account area.
   accountStrip.hidden = true;
+
+  // Stop the session clock.
+  stopSessionTimer();
 }
 
 // Start the lesson timer.
