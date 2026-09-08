@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!-- This file creates the BridgeDay page structure. -->
-<!-- It shows menus, study pages, and account areas. -->
+<!-- It shows the dashboard, study pages, and account areas. -->
 
 <html lang="en">
 <head>
@@ -29,29 +29,70 @@
   <!-- This is the main page area. -->
   <main class="app">
 
-    <!-- This is the top of the page. -->
-    <header class="topbar">
-      <!-- This is the main brand text. -->
+    <!-- This is the main app header. -->
+    <header class="app-header">
+      <!-- This shows the BridgeDay brand. -->
       <div class="brand-block">
-        <p class="small-title">DAILY LANGUAGE LAB</p>
-        <h1>BridgeDay</h1>
+        <div class="brand-icon">B</div>
 
-        <!-- This text changes by JavaScript. -->
-        <p class="typing-line">
-          <span id="typing-text"></span>
-          <span class="typing-cursor">|</span>
-        </p>
+        <div>
+          <p class="brand-label">DAILY LANGUAGE LAB</p>
+          <h1>BridgeDay</h1>
+
+          <!-- This text changes by JavaScript. -->
+          <p class="typing-line">
+            <span id="typing-text"></span>
+            <span class="typing-cursor">|</span>
+          </p>
+        </div>
       </div>
+
+      <!-- This is the main app menu. -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <button
+          class="nav-button active-page"
+          type="button"
+          data-page="home"
+        >
+          ⌂ Home
+        </button>
+
+        <button
+          class="nav-button"
+          type="button"
+          data-page="study"
+        >
+          ▣ Study
+        </button>
+
+        <button
+          class="nav-button"
+          type="button"
+          data-page="review"
+        >
+          ▥ Review
+        </button>
+
+        <button
+          class="nav-button"
+          type="button"
+          data-page="progress"
+        >
+          ♜ Progress
+        </button>
+      </nav>
 
       <!-- This shows the signed in user session. -->
       <section class="account-strip" id="account-strip" hidden>
+        <div class="account-avatar">L</div>
+
         <div class="account-details">
-          <span class="account-label">SIGNED IN</span>
           <strong id="top-user-label">user@example.com</strong>
 
           <!-- This shows the current browser session time. -->
-          <span class="session-time">
-            Session <span id="session-timer">00:00:00</span>
+          <span>
+            <i class="online-dot"></i>
+            Online · Session <span id="session-timer">00:00:00</span>
           </span>
         </div>
 
@@ -66,120 +107,185 @@
       </section>
     </header>
 
-<!-- This shows the signed in user at the top. -->
-<section class="account-strip" id="account-strip" hidden>
-  <p id="top-user-label">Signed in user</p>
+    <!-- This is the Home dashboard. -->
+    <section class="home-dashboard page-section home-page">
+      <!-- This welcomes the user. -->
+      <div class="home-welcome">
+        <div>
+          <p class="small-title">YOUR DAILY SPACE</p>
+          <h2 id="greeting-title">Good evening 👋</h2>
+          <p id="greeting-question">
+            Ready for your next English lesson?
+          </p>
+        </div>
 
-  <!-- This signs out the current user. -->
-  <button
-    class="logout-button"
-    id="logout-button"
-    type="button"
-  >
-    Sign out
-  </button>
-</section>
+        <!-- This chooses the study language. -->
+        <section class="language-picker">
+          <p>Study language</p>
 
-    <!-- This chooses the study language. -->
-<section class="language-picker">
-  <p>Study language</p>
+          <div class="language-buttons">
+            <button
+              class="language-button active-language"
+              type="button"
+              data-language="english"
+            >
+              English <span>A2+/B1</span>
+            </button>
 
-  <div class="language-buttons">
-    <!-- This is the English button. -->
-    <button
-      class="language-button active-language"
-      type="button"
-      data-language="english"
-    >
-      English
-      <span>A2+/B1</span>
-    </button>
-
-    <!-- This is the German button. -->
-    <button
-      class="language-button"
-      type="button"
-      data-language="german"
-    >
-      Deutsch
-      <span>A1</span>
-    </button>
-  </div>
-</section>
-
-<!-- This is the main menu. -->
-<nav class="main-nav" aria-label="Main navigation">
-  <!-- This opens the home page. -->
-  <button
-    class="nav-button active-page"
-    type="button"
-    data-page="home"
-  >
-    Home
-  </button>
-
-  <!-- This opens the study page. -->
-  <button
-    class="nav-button"
-    type="button"
-    data-page="study"
-  >
-    Study
-  </button>
-
-  <!-- This opens the review page. -->
-  <button
-    class="nav-button"
-    type="button"
-    data-page="review"
-  >
-    Review
-  </button>
-
-  <!-- This opens the progress page. -->
-  <button
-    class="nav-button"
-    type="button"
-    data-page="progress"
-  >
-    Progress
-  </button>
-</nav>
-
-    <!-- This shows your small progress. -->
-    <section class="quick-progress page-section home-page">
-      <div>
-        <p>Study streak</p>
-        <strong id="streak-count">0 days</strong>
+            <button
+              class="language-button"
+              type="button"
+              data-language="german"
+            >
+              Deutsch <span>A1</span>
+            </button>
+          </div>
+        </section>
       </div>
 
-      <div>
-        <p>This week</p>
-        <strong id="week-count">0 lessons</strong>
-      </div>
+      <!-- This holds the main dashboard cards. -->
+      <div class="dashboard-grid">
 
-      <div>
-        <p>Today</p>
-        <strong id="today-count">0 lessons</strong>
-      </div>
+        <!-- This shows the next lesson. -->
+        <article class="continue-card">
+          <p class="card-label">CONTINUE LEARNING</p>
+          <h3 id="home-lesson-title">Your next English lesson</h3>
+          <p id="home-lesson-description">
+            Keep your streak going with a short daily session.
+          </p>
 
-      <!-- This shows all completed lessons. -->
-      <div>
-        <p>Total lessons</p>
-        <strong id="total-count">0 lessons</strong>
+          <div class="lesson-meta">
+            <span id="home-lesson-language">▣ English</span>
+            <span id="home-lesson-level">A2+/B1</span>
+            <span>◷ 10 min</span>
+          </div>
+
+          <!-- This shows a simple daily goal. -->
+          <div class="goal-area">
+            <div class="goal-text">
+              <span>Today's goal</span>
+              <strong id="home-goal-text">0 / 1 lesson</strong>
+            </div>
+
+            <div class="goal-track">
+              <div class="goal-fill" id="home-goal-fill"></div>
+            </div>
+          </div>
+
+          <!-- This opens the Study page. -->
+          <button
+            class="continue-button"
+            id="continue-button"
+            type="button"
+          >
+            Start today's lesson →
+          </button>
+        </article>
+
+        <!-- This shows today's real progress. -->
+        <article class="today-card">
+          <div class="today-title">
+            <span>◎</span>
+            <h3>Today's progress</h3>
+          </div>
+
+          <!-- This ring changes with daily progress. -->
+          <div class="progress-ring" id="daily-progress-ring">
+            <strong id="daily-progress-percent">0%</strong>
+          </div>
+
+          <strong class="today-completed" id="daily-progress-count">
+            0 lessons completed
+          </strong>
+
+          <div class="today-goal">
+            <span>Daily goal</span>
+            <strong>1 lesson</strong>
+          </div>
+
+          <p class="encouragement">
+            🌱 Every lesson counts. You can do it!
+          </p>
+        </article>
+
+        <!-- This shows weekly activity. -->
+        <article class="weekly-progress-card">
+          <div class="card-heading">
+            <div>
+              <p class="card-label">WEEKLY PROGRESS</p>
+              <h3>Weekly progress</h3>
+              <p>Your learning activity this week</p>
+            </div>
+
+            <span id="weekly-minutes">0 min total</span>
+          </div>
+
+          <!-- These bars will use real activity later. -->
+          <div class="week-bars">
+            <div><span class="week-bar"></span><p>Mon</p></div>
+            <div><span class="week-bar"></span><p>Tue</p></div>
+            <div><span class="week-bar"></span><p>Wed</p></div>
+            <div><span class="week-bar"></span><p>Thu</p></div>
+            <div><span class="week-bar"></span><p>Fri</p></div>
+            <div><span class="week-bar"></span><p>Sat</p></div>
+            <div><span class="week-bar"></span><p>Sun</p></div>
+          </div>
+
+          <p class="weekly-text" id="weekly-text">
+            Complete your first lesson to see your progress.
+          </p>
+        </article>
+
+        <!-- This shows real totals from the API. -->
+        <article class="stats-card">
+          <div class="card-heading">
+            <div>
+              <p class="card-label">YOUR STATS</p>
+              <h3>Your stats</h3>
+            </div>
+
+            <span>Keep going!</span>
+          </div>
+
+          <div class="stats-grid">
+            <div>
+              <span>🔥</span>
+              <strong id="streak-count">0</strong>
+              <p>day streak</p>
+            </div>
+
+            <div>
+              <span>📚</span>
+              <strong id="week-count">0</strong>
+              <p>lessons this week</p>
+            </div>
+
+            <div>
+              <span>✓</span>
+              <strong id="today-count">0</strong>
+              <p>lessons today</p>
+            </div>
+
+            <div>
+              <span>🏆</span>
+              <strong id="total-count">0</strong>
+              <p>total lessons</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- This is the login card. -->
+    <!-- This is the sign in card. -->
     <section
       class="auth-card page-section home-page"
       id="auth-card"
     >
       <div>
         <p class="small-title">YOUR ACCOUNT</p>
-        <h2>Study with your progress</h2>
+        <h2>Save your learning journey</h2>
         <p class="page-help" id="auth-status">
-          Sign in to save your lessons.
+          Sign in to save your lessons and progress.
         </p>
       </div>
 
@@ -229,15 +335,11 @@
 
     <!-- This is the main lesson card. -->
     <section class="lesson-panel page-section study-page" hidden>
-
-      <!-- This is the lesson header. -->
       <div class="lesson-header">
         <div>
           <p class="small-title" id="lesson-topic">DAILY LIFE</p>
-          <h2 id="lesson-title">My daily habit</h2>
-          <p class="lesson-help">
-            Study one language at a time.
-          </p>
+          <h2 id="lesson-title">My work routine</h2>
+          <p class="lesson-help">Study one language at a time.</p>
         </div>
 
         <span class="level-tag" id="lesson-level">A2</span>
@@ -245,7 +347,6 @@
 
       <!-- This is the study menu. -->
       <nav class="study-nav" aria-label="Study navigation">
-
         <button
           class="study-button active-study-button"
           type="button"
@@ -254,194 +355,130 @@
           Text
         </button>
 
-        <!-- This opens the listening area. -->
-        <button
-          class="study-button"
-          type="button"
-          data-study="listening"
-        >
+        <button class="study-button" type="button" data-study="listening">
           Listening
         </button>
 
-        <!-- This opens the grammar area. -->
-        <button
-          class="study-button"
-          type="button"
-          data-study="grammar"
-        >
+        <button class="study-button" type="button" data-study="grammar">
           Grammar
         </button>
 
-        <!-- This opens the vocabulary area. -->
-        <button
-          class="study-button"
-          type="button"
-          data-study="vocabulary"
-        >
+        <button class="study-button" type="button" data-study="vocabulary">
           Vocabulary
         </button>
 
-        <!-- This opens the speaking area. -->
-        <button
-          class="study-button"
-          type="button"
-          data-study="speaking"
-        >
+        <button class="study-button" type="button" data-study="speaking">
           Speak & Write
         </button>
       </nav>
 
       <!-- This is the text study area. -->
       <section class="study-content text-content">
-
-      <!-- This shows your lesson progress. -->
-      <div class="lesson-progress">
-        <div class="progress-text">
-          <span>Lesson progress</span>
-          <span>Step 1 of 4</span>
-        </div>
-
-        <div class="progress-track">
-          <div class="progress-value"></div>
-        </div>
-      </div>
-
-      <!-- This is the English lesson. -->
-      <article class="language-card english-card">
-        <div class="card-top">
-          <div>
-            <p class="card-number">01</p>
-            <h3 id="primary-language-label">English</h3>
+        <div class="lesson-progress">
+          <div class="progress-text">
+            <span>Lesson progress</span>
+            <span>Step 1 of 4</span>
           </div>
 
-          <!-- This button will play the English audio. -->
-          <button
-            class="soft-button"
-            type="button"
-            data-language="en-GB"
-          >
-            Listen
-          </button>
+          <div class="progress-track">
+            <div class="progress-value"></div>
+          </div>
         </div>
 
-        <p class="main-phrase" id="english-text">
-          I study English for thirty minutes every day.
-        </p>
+        <!-- This is the main language card. -->
+        <article class="language-card english-card">
+          <div class="card-top">
+            <div>
+              <p class="card-number">01</p>
+              <h3 id="primary-language-label">English</h3>
+            </div>
 
-        <div class="meaning-box">
-          <p>Meaning in Portuguese</p>
-          <p id="portuguese-help">
-            Eu estudo inglês por trinta minutos todos os dias.
-          </p>
-        </div>
-      </article>
-
-      <!-- This button shows German when you are ready. -->
-      <button
-        class="show-language-button"
-        type="button"
-        id="show-german-button"
-      >
-        Show German version
-      </button>
-
-      <!-- This card is hidden at the start. -->
-      <article class="language-card german-card" id="german-card" hidden>
-        <div class="card-top">
-          <div>
-            <p class="card-number">02</p>
-            <h3 id="comparison-language-label">Deutsch</h3>
+            <button
+              class="soft-button"
+              type="button"
+              data-language="en-GB"
+            >
+              Listen
+            </button>
           </div>
 
-          <!-- This button will play the German audio. -->
-          <button
-            class="soft-button"
-            type="button"
-            data-language="de-DE"
-          >
-            Listen
-          </button>
-        </div>
+          <p class="main-phrase" id="english-text"></p>
 
-        <p class="main-phrase" id="german-text">
-          Ich lerne jeden Tag dreißig Minuten Englisch.
-        </p>
+          <div class="meaning-box">
+            <p>Meaning in Portuguese</p>
+            <p id="portuguese-help"></p>
+          </div>
+        </article>
 
-        <div class="meaning-box">
-          <p>Meaning in Portuguese</p>
-          <p id="comparison-portuguese-help">
-            Eu estudo inglês por trinta minutos todos os dias.
-          </p>
-        </div>
-      </article>
+        <!-- This shows the comparison language. -->
+        <button
+          class="show-language-button"
+          type="button"
+          id="show-german-button"
+        >
+          Show German version
+        </button>
 
+        <article class="language-card german-card" id="german-card" hidden>
+          <div class="card-top">
+            <div>
+              <p class="card-number">02</p>
+              <h3 id="comparison-language-label">Deutsch</h3>
+            </div>
+
+            <button
+              class="soft-button"
+              type="button"
+              data-language="de-DE"
+            >
+              Listen
+            </button>
+          </div>
+
+          <p class="main-phrase" id="german-text"></p>
+
+          <div class="meaning-box">
+            <p>Meaning in Portuguese</p>
+            <p id="comparison-portuguese-help"></p>
+          </div>
+        </article>
       </section>
 
-      <!-- This is the listening study area. -->
+      <!-- This is the listening area. -->
       <section class="study-content listening-content" hidden>
         <p class="small-title">LISTENING</p>
         <h3>Listen and understand</h3>
-        <p class="page-help">
-          Audio exercises will appear here.
-        </p>
-
-        <article class="empty-card">
-          <h3>Listen to the daily sentence</h3>
-          <p>Listen, repeat and write what you hear.</p>
-        </article>
+        <p class="page-help">Listen to the sentence and repeat it.</p>
       </section>
 
-      <!-- This is the grammar study area. -->
+      <!-- This is the grammar area. -->
       <section class="study-content grammar-content" hidden>
         <p class="small-title">GRAMMAR</p>
         <h3>Grammar for today</h3>
-        <p class="page-help">
-          Small grammar lessons will appear here.
-        </p>
-
-        <article class="empty-card">
-          <h3>One small rule at a time</h3>
-          <p>Learn grammar with short examples.</p>
-        </article>
+        <p class="page-help">Small grammar lessons appear here.</p>
       </section>
 
-      <!-- These are the words for today. -->
-      <section class="vocabulary-section study-content vocabulary-content" hidden>
+      <!-- This is the vocabulary area. -->
+      <section
+        class="vocabulary-section study-content vocabulary-content"
+        hidden
+      >
         <div class="section-title">
           <div>
             <p class="small-title">WORDS FOR TODAY</p>
             <h3>Vocabulary</h3>
           </div>
 
-          <span id="word-count">3 words</span>
+          <span id="word-count">0 words</span>
         </div>
 
-        <div class="word-list" id="word-list">
-          <article class="word-card">
-            <strong>study</strong>
-            <span>estudar</span>
-          </article>
-
-          <article class="word-card">
-            <strong>thirty minutes</strong>
-            <span>trinta minutos</span>
-          </article>
-
-          <article class="word-card">
-            <strong>every day</strong>
-            <span>todos os dias</span>
-          </article>
-        </div>
+        <div class="word-list" id="word-list"></div>
       </section>
 
-      <!-- This is your writing practice. -->
+      <!-- This is the writing area. -->
       <section class="practice-section study-content speaking-content" hidden>
-        <div class="section-title">
-          <div>
-            <p class="small-title">YOUR PRACTICE</p>
-            <h3>My daily sentence</h3>
-          </div>
-        </div>
+        <p class="small-title">YOUR PRACTICE</p>
+        <h3>My daily sentence</h3>
 
         <label for="my-sentence">
           Write one sentence in English.
@@ -457,28 +494,8 @@
         </button>
       </section>
 
-      <!-- This is your speaking practice. -->
-      <section class="speaking-section study-content speaking-content" hidden>
-        <div>
-          <p class="small-title">SPEAKING PRACTICE</p>
-          <h3>Listen, repeat and record.</h3>
-          <p>Use your voice to practise the sentence.</p>
-        </div>
-
-        <div class="speaking-buttons">
-          <button class="record-button" type="button">
-            Record voice
-          </button>
-
-          <button class="soft-button" type="button">
-            Listen to recording
-          </button>
-        </div>
-      </section>
-
-      <!-- These are the main lesson actions. -->
+      <!-- These are the lesson actions. -->
       <footer class="lesson-actions">
-        <!-- This saves the completed lesson. -->
         <button
           class="main-button"
           id="finish-lesson-button"
@@ -493,70 +510,33 @@
       </footer>
     </section>
 
-<!-- This is the review page. -->
-<section class="review-page page-section" hidden>
-  <p class="small-title">REVIEW</p>
-  <h2>Review your learning</h2>
-  <p class="page-help">
-    Your reviews are planned by the BridgeDay API.
-  </p>
+    <!-- This is the review page. -->
+    <section class="review-page page-section" hidden>
+      <p class="small-title">REVIEW</p>
+      <h2>Review your learning</h2>
+      <p class="page-help">Your reviews are planned by BridgeDay.</p>
 
-  <!-- This shows the next review status. -->
-  <article class="empty-card">
-    <h3 id="review-title">Next review</h3>
-    <p id="review-text">
-      Sign in to see your review status.
-    </p>
-  </article>
-</section>
+      <article class="empty-card">
+        <h3 id="review-title">Next review</h3>
+        <p id="review-text">Sign in to see your review status.</p>
+      </article>
+    </section>
 
-<!-- This is the progress page. -->
-<section class="progress-page page-section" hidden>
-  <p class="small-title">PROGRESS</p>
-  <h2>Your language progress</h2>
-  <p class="page-help">
-    Your real study data comes from the BridgeDay API.
-  </p>
+    <!-- This is the progress page. -->
+    <section class="progress-page page-section" hidden>
+      <p class="small-title">PROGRESS</p>
+      <h2>Your language progress</h2>
+      <p class="page-help">Your real data comes from BridgeDay API.</p>
 
-  <!-- This shows saved progress data. -->
-  <article class="empty-card">
-    <h3 id="progress-title">Start your first lesson</h3>
-    <p id="progress-summary">
-      Your data will grow with every study session.
-    </p>
-    <p id="progress-review">
-      Sign in to see your review information.
-    </p>
-  </article>
-</section>
-
-    <!-- This is the small weekly dashboard. -->
-    <section class="weekly-card page-section home-page">
-      <div class="section-title">
-        <div>
-          <p class="small-title">WEEKLY REVIEW</p>
-          <h2>Your week</h2>
-        </div>
-
-        <!-- This shows real study time. -->
-        <span id="weekly-minutes">0 min total</span>
-      </div>
-
-      <!-- These bars will show study days later. -->
-      <div class="week-bars">
-        <div><span class="bar"></span><p>Mon</p></div>
-        <div><span class="bar"></span><p>Tue</p></div>
-        <div><span class="bar"></span><p>Wed</p></div>
-        <div><span class="bar"></span><p>Thu</p></div>
-        <div><span class="bar"></span><p>Fri</p></div>
-        <div><span class="bar"></span><p>Sat</p></div>
-        <div><span class="bar"></span><p>Sun</p></div>
-      </div>
-
-      <!-- This shows a real weekly message. -->
-      <p class="weekly-text" id="weekly-text">
-        Complete your first lesson to see your progress.
-      </p>
+      <article class="empty-card">
+        <h3 id="progress-title">Start your first lesson</h3>
+        <p id="progress-summary">
+          Your data will grow with every study session.
+        </p>
+        <p id="progress-review">
+          Sign in to see your review information.
+        </p>
+      </article>
     </section>
   </main>
 
