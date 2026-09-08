@@ -65,6 +65,8 @@ const finishLessonButton = document.getElementById("finish-lesson-button");
 const authCard = document.getElementById("auth-card");
 const accountStrip = document.getElementById("account-strip");
 const topUserLabel = document.getElementById("top-user-label");
+// Find the session timer text.
+const sessionTimer = document.getElementById("session-timer");
 const passwordToggle = document.getElementById("password-toggle");
 
 // Find dashboard elements.
@@ -127,6 +129,13 @@ let currentLesson = null;
 
 // Store the saved dashboard data.
 let currentDashboard = null;
+
+// Read the saved session start time.
+let sessionStartedAt =
+  Number(localStorage.getItem("bridgeday_session_started_at")) || null;
+
+// Store the browser timer.
+let sessionTimerId = null;
 
 // These are the changing sentences.
 const typingLines = [
@@ -520,6 +529,75 @@ async function loadDashboard() {
     // Show the error for development.
     console.error(error);
   }
+}
+
+// Change seconds to a clock format.
+function formatSessionTime(totalSeconds) {
+  // Find hours.
+  const hours = Math.floor(totalSeconds / 3600);
+
+  // Find minutes.
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+
+  // Find seconds.
+  const seconds = totalSeconds % 60;
+
+  // Send a two digit clock.
+  return [hours, minutes, seconds]
+    .map(function (value) {
+      return String(value).padStart(2, "0");
+    })
+    .join(":");
+}
+
+// Update the session clock.
+function updateSessionTimer() {
+  // Stop when no session exists.
+  if (!sessionStartedAt) {
+    sessionTimer.textContent = "00:00:00";
+    return;
+  }
+
+  // Find time from the login moment.
+  const totalSeconds = Math.floor((Date.now() - sessionStartedAt) / 1000);
+
+  // Show the session clock.
+  sessionTimer.textContent = formatSessionTime(totalSeconds);
+}
+
+// Start the session clock.
+function startSessionTimer() {
+  // Create a start time when needed.
+  if (!sessionStartedAt) {
+    sessionStartedAt = Date.now();
+
+    localStorage.setItem(
+      "bridgeday_session_started_at",
+      String(sessionStartedAt),
+    );
+  }
+
+  // Stop an old timer.
+  clearInterval(sessionTimerId);
+
+  // Show time now.
+  updateSessionTimer();
+
+  // Update time every second.
+  sessionTimerId = setInterval(updateSessionTimer, 1000);
+}
+
+// Stop and clear the session clock.
+function stopSessionTimer() {
+  // Stop the browser timer.
+  clearInterval(sessionTimerId);
+
+  // Clear timer values.
+  sessionTimerId = null;
+  sessionStartedAt = null;
+
+  // Remove saved session time.
+  localStorage.removeItem("bridgeday_session_started_at");
 }
 
 // Update the login and account areas.

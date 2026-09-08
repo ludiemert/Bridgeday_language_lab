@@ -42,11 +42,28 @@
           <span class="typing-cursor">|</span>
         </p>
       </div>
-      <!-- This shows a small daily goal. -->
-      <div class="daily-goal">
-        <span>Today</span>
-        <strong>10 min</strong>
-      </div>
+
+      <!-- This shows the signed in user session. -->
+      <section class="account-strip" id="account-strip" hidden>
+        <div class="account-details">
+          <span class="account-label">SIGNED IN</span>
+          <strong id="top-user-label">user@example.com</strong>
+
+          <!-- This shows the current browser session time. -->
+          <span class="session-time">
+            Session <span id="session-timer">00:00:00</span>
+          </span>
+        </div>
+
+        <!-- This signs out the current user. -->
+        <button
+          class="logout-button"
+          id="logout-button"
+          type="button"
+        >
+          Sign out
+        </button>
+      </section>
     </header>
 
 <!-- This shows the signed in user at the top. -->

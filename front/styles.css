@@ -48,22 +48,21 @@ textarea {
 
 /* This styles the top brand area. */
 .topbar {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 126px;
-  padding: 18px 180px 18px 24px;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 132px;
+  padding: 20px 24px;
   overflow: hidden;
   background: linear-gradient(135deg, var(--purple-dark), var(--purple));
   border-radius: 18px;
   box-shadow: 0 14px 28px rgba(53, 19, 95, 0.18);
-  text-align: center;
 }
 
-/* This keeps the brand in the center. */
+/* This keeps the brand on the left. */
 .brand-block {
-  text-align: center;
+  text-align: left;
 }
 
 /* This styles small labels. */
@@ -620,36 +619,59 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-/* This styles the top signed in area. */
+/* This styles the signed in header area. */
 .account-strip {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 14px;
+  min-width: 270px;
   padding: 10px 12px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 12px;
 }
 
-/* This styles the signed in user text. */
-.account-strip p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
+/* This groups account text. */
+.account-details {
+  display: grid;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* This styles the small account label. */
+.account-label {
+  color: var(--lime);
+  font-size: 10px;
   font-weight: bold;
+  letter-spacing: 0.8px;
+}
+
+/* This styles the signed in email. */
+.account-details strong {
+  overflow: hidden;
+  color: var(--surface);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* This styles the session clock. */
+.session-time {
+  color: #eee5ff;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
 }
 
 /* This styles the logout button. */
 .logout-button {
-  padding: 8px 12px;
-  background: var(--danger-soft);
-  border: 1px solid #f2c5be;
+  padding: 8px 10px;
+  background: rgba(180, 35, 24, 0.2);
+  border: 1px solid rgba(255, 210, 205, 0.45);
   border-radius: 8px;
-  color: var(--danger);
+  color: #fff3f1;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -707,11 +729,21 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .auth-form button {
+  /* This styles only the login button. */
+  .auth-form > .main-button {
     width: 100%;
-  }
+}
+/* This stacks the header on phones. */
+.topbar {
+  align-items: flex-start;
+  flex-direction: column;
 }
 
+/* This makes the account area full width. */
+.account-strip {
+  width: 100%;
+}
+}
 
 /* This changes the page for tablets. */
 @media (max-width: 760px) {
