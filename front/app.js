@@ -688,6 +688,14 @@ async function signInUser(event) {
 
     localStorage.setItem("bridgeday_current_user", JSON.stringify(currentUser));
 
+    // Start a new login session.
+    sessionStartedAt = Date.now();
+
+    localStorage.setItem(
+      "bridgeday_session_started_at",
+      String(sessionStartedAt),
+    );
+
     // Clear the password field.
     loginPassword.value = "";
 
