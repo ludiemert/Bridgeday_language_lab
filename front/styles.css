@@ -1,22 +1,24 @@
 /* This file styles the BridgeDay front page. */
-/* It controls layout, colors, cards, and mobile screens. */
+/* It controls the dashboard, study pages, and mobile screens. */
 
-/* These are the project colors. */
 :root {
-  --purple: #7c3aed;
-  --purple-dark: #35135f;
-  --purple-soft: #f1ebff;
+  --purple-950: #20104e;
+  --purple-800: #3e1a8f;
+  --purple-700: #6034d7;
+  --purple-500: #8d5cff;
+  --purple-100: #eee8ff;
+  --purple-50: #f8f6ff;
   --lime: #c6ff3c;
-  --lime-dark: #a8e600;
-  --background: #f7f5ff;
+  --lime-dark: #9ce300;
+  --green: #25b86c;
+  --orange: #ff9d28;
+  --red: #d94b49;
+  --text: #21154d;
+  --muted: #75699e;
+  --line: #e8e1fa;
   --surface: #ffffff;
-  --surface-soft: #faf9ff;
-  --text: #21142f;
-  --muted: #746a82;
-  --line: #e5ddf3;
-  --danger: #b42318;
-  --danger-soft: #fff0ee;
-  --shadow: 0 10px 30px rgba(53, 19, 95, 0.08);
+  --background: #f7f5ff;
+  --shadow: 0 16px 38px rgba(55, 29, 122, 0.1);
 }
 
 /* This makes sizes easier. */
@@ -27,63 +29,80 @@
 /* This styles the full page. */
 body {
   margin: 0;
-  background: var(--background);
+  background:
+    radial-gradient(circle at 75% 5%, #e5dcff 0, transparent 28%),
+    var(--background);
   color: var(--text);
-  font-family: Arial, sans-serif;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
   line-height: 1.45;
 }
 
-/* This gives buttons the page font. */
+/* This gives controls the page font. */
 button,
+input,
 textarea {
   font: inherit;
 }
 
-/* This keeps the page in the center. */
+/* This keeps the app in the center. */
 .app {
-  width: min(1120px, calc(100% - 32px));
+  width: min(1400px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 16px 0 24px;
+  padding: 20px 0 32px;
 }
 
-/* This styles the top brand area. */
-.topbar {
+/* This styles the main header. */
+.app-header {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 28px;
+  min-height: 96px;
+  padding: 16px 22px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+/* This puts the brand items together. */
+.brand-block {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 132px;
-  padding: 20px 24px;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--purple-dark), var(--purple));
-  border-radius: 18px;
-  box-shadow: 0 14px 28px rgba(53, 19, 95, 0.18);
+  gap: 12px;
 }
 
-/* This keeps the brand on the left. */
-.brand-block {
-  text-align: left;
+/* This styles the brand icon. */
+.brand-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  background: linear-gradient(135deg, var(--purple-700), var(--purple-500));
+  border-radius: 13px;
+  box-shadow: 0 9px 18px rgba(92, 51, 209, 0.25);
+  color: var(--surface);
+  font-size: 26px;
+  font-weight: 800;
 }
 
 /* This styles small labels. */
-.small-title {
-  margin: 0 0 4px;
-  color: var(--purple);
+.brand-label,
+.small-title,
+.card-label {
+  margin: 0;
+  color: var(--purple-700);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.9px;
 }
 
-/* This styles the top label. */
-.topbar .small-title {
-  color: var(--lime);
-}
-
-/* This styles the main project title. */
+/* This styles the brand title. */
 h1 {
   margin: 0;
-  color: var(--surface);
-  font-size: clamp(32px, 4vw, 44px);
+  color: var(--purple-950);
+  font-size: clamp(29px, 3vw, 38px);
   line-height: 1;
   letter-spacing: -1.4px;
 }
@@ -91,31 +110,30 @@ h1 {
 /* This styles section titles. */
 h2 {
   margin: 0;
-  color: var(--text);
-  font-size: clamp(24px, 3vw, 32px);
-  line-height: 1.15;
+  color: var(--purple-950);
+  font-size: clamp(27px, 3vw, 38px);
+  line-height: 1.12;
 }
 
-/* This styles small titles. */
+/* This styles card titles. */
 h3 {
   margin: 0;
-  color: var(--text);
-  font-size: 17px;
+  color: var(--purple-950);
+  font-size: 20px;
 }
 
-/* This styles the changing text. */
+/* This styles the changing brand line. */
 .typing-line {
   min-height: 18px;
-  margin: 7px 0 0;
-  color: #eee5ff;
-  font-family: "Courier New", monospace;
+  margin: 2px 0 0;
+  color: var(--muted);
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* This styles the typing cursor. */
 .typing-cursor {
-  color: var(--lime);
+  color: var(--purple-700);
   animation: blink 0.8s infinite;
 }
 
@@ -126,581 +144,553 @@ h3 {
   }
 }
 
-/* This styles the daily goal. */
-.daily-goal {
-  position: absolute;
-  top: 18px;
-  right: 22px;
-  min-width: 104px;
-  padding: 9px 12px;
-  background: rgba(255, 255, 255, 0.13);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+/* This styles the main menu. */
+.main-nav {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* This styles menu buttons. */
+.nav-button {
+  padding: 12px 15px;
+  background: transparent;
+  border: 0;
   border-radius: 12px;
-  text-align: center;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 750;
+  white-space: nowrap;
 }
 
-/* This styles goal text. */
-.daily-goal span {
-  display: block;
-  color: #eee5ff;
-  font-size: 11px;
+/* This styles the active menu button. */
+.nav-button.active-page {
+  background: var(--purple-100);
+  color: var(--purple-700);
 }
 
-/* This styles goal time. */
-.daily-goal strong {
-  color: var(--lime);
+/* This styles menu hover. */
+.nav-button:hover {
+  background: var(--purple-50);
+  color: var(--purple-700);
+}
+
+/* This styles the signed in user area. */
+.account-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 290px;
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+
+/* This styles the user letter. */
+.account-avatar {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  background: linear-gradient(135deg, #c5acff, var(--purple-700));
+  border-radius: 50%;
+  color: var(--surface);
   font-size: 17px;
+  font-weight: 800;
+}
+
+/* This groups account text. */
+.account-details {
+  display: grid;
+  min-width: 0;
+}
+
+/* This styles the account email. */
+.account-details strong {
+  overflow: hidden;
+  color: var(--purple-950);
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* This styles the online text. */
+.account-details span {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* This styles the online dot. */
+.online-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 4px;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+/* This styles the logout button. */
+.logout-button {
+  padding: 10px 13px;
+  background: #fff6f5;
+  border: 1px solid #f2b8b4;
+  border-radius: 11px;
+  color: var(--red);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* This styles logout hover. */
+.logout-button:hover {
+  background: #ffe9e6;
+}
+
+/* This adds space below the header. */
+.home-dashboard {
+  margin-top: 28px;
+}
+
+/* This styles the welcome area. */
+.home-welcome {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* This styles the welcome question. */
+.home-welcome > div > p:last-child {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: clamp(17px, 2vw, 23px);
+  font-weight: 600;
 }
 
 /* This styles the language area. */
 .language-picker {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  margin-top: 10px;
-  padding: 9px 12px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
 }
 
 /* This styles language text. */
-.language-picker p {
+.language-picker > p {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 /* This puts language buttons together. */
 .language-buttons {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 /* This styles one language button. */
 .language-button {
-  padding: 7px 10px;
+  padding: 12px 14px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--text);
+  border-radius: 13px;
+  color: var(--purple-950);
   cursor: pointer;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 6px 15px rgba(55, 29, 122, 0.06);
 }
 
 /* This styles language levels. */
 .language-button span {
-  margin-left: 4px;
+  margin-left: 7px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 /* This styles the active language. */
 .language-button.active-language {
-  background: var(--lime);
-  border-color: var(--lime);
-  color: var(--purple-dark);
+  background: linear-gradient(135deg, var(--purple-700), var(--purple-500));
+  border-color: var(--purple-500);
+  color: var(--surface);
 }
 
-/* This styles the main menu. */
-.main-nav {
-  display: flex;
-  gap: 4px;
-  margin: 10px 0 12px;
-  padding: 5px;
-  overflow-x: auto;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
+/* This styles the active language level. */
+.language-button.active-language span {
+  color: #eee8ff;
 }
 
-/* This styles main menu buttons. */
-.nav-button {
-  padding: 8px 12px;
-  background: transparent;
-  border: 0;
-  border-radius: 8px;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-/* This styles an active page button. */
-.nav-button.active-page {
-  background: var(--purple-soft);
-  color: var(--purple);
-}
-
-/* This shows progress cards. */
-.quick-progress {
+/* This creates the dashboard grid. */
+.dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 12px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(310px, 0.9fr);
+  gap: 18px;
 }
 
-/* This styles one progress card. */
-.quick-progress div {
-  padding: 11px 13px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-}
-
-/* This styles progress labels. */
-.quick-progress p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-/* This styles progress values. */
-.quick-progress strong {
-  display: block;
-  margin-top: 2px;
-  color: var(--text);
-  font-size: 18px;
-}
-
-/* This styles large cards. */
+/* This styles dashboard cards. */
+.continue-card,
+.today-card,
+.weekly-progress-card,
+.stats-card,
+.auth-card,
 .lesson-panel,
-.weekly-card {
-  padding: 18px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 16px;
+.empty-card {
+  border-radius: 20px;
   box-shadow: var(--shadow);
 }
 
-/* This adds space below the lesson. */
-.lesson-panel {
-  margin-bottom: 12px;
+/* This styles the main learning card. */
+.continue-card {
+  position: relative;
+  min-height: 328px;
+  padding: 28px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 76% 34%, rgba(222, 208, 255, 0.32) 0 13%, transparent 13.5%),
+    linear-gradient(135deg, var(--purple-950), var(--purple-700) 65%, #8a58ff);
+  color: var(--surface);
 }
 
-/* This styles lines with two sides. */
-.lesson-header,
-.section-title,
-.card-top,
-.speaking-section,
-.lesson-actions {
+/* This adds a book icon to the lesson card. */
+.continue-card::after {
+  position: absolute;
+  top: 52px;
+  right: 52px;
+  content: "📖";
+  filter: drop-shadow(0 12px 12px rgba(29, 9, 85, 0.35));
+  font-size: 86px;
+  transform: rotate(-7deg);
+}
+
+/* This styles labels on the lesson card. */
+.continue-card .card-label {
+  color: #e8dcff;
+}
+
+/* This styles the lesson card title. */
+.continue-card h3 {
+  max-width: 580px;
+  margin-top: 8px;
+  color: var(--surface);
+  font-size: clamp(28px, 3vw, 40px);
+  letter-spacing: -1px;
+}
+
+/* This styles lesson card help text. */
+.continue-card > p:not(.card-label) {
+  max-width: 480px;
+  margin: 8px 0 22px;
+  color: #ebe4ff;
+  font-size: 17px;
+}
+
+/* This styles lesson meta items. */
+.lesson-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+/* This styles one lesson meta item. */
+.lesson-meta span {
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  color: var(--surface);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+/* This styles the goal area. */
+.goal-area {
+  max-width: 620px;
+}
+
+/* This styles goal text. */
+.goal-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: #eee7ff;
+  font-size: 13px;
+}
+
+/* This styles the goal track. */
+.goal-track {
+  height: 13px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+}
+
+/* This styles the goal fill. */
+.goal-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--lime);
+  border-radius: inherit;
+  transition: width 0.4s ease;
+}
+
+/* This styles the continue button. */
+.continue-button {
+  margin-top: 22px;
+  padding: 14px 19px;
+  background: var(--lime);
+  border: 0;
+  border-radius: 13px;
+  color: var(--purple-950);
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+/* This styles continue hover. */
+.continue-button:hover {
+  background: var(--lime-dark);
+  transform: translateY(-1px);
+}
+
+/* This styles the daily progress card. */
+.today-card,
+.weekly-progress-card,
+.stats-card {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid rgba(232, 225, 250, 0.9);
+}
+
+/* This styles the daily progress title. */
+.today-title {
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+/* This styles the daily icon. */
+.today-title > span {
+  color: var(--purple-500);
+  font-size: 30px;
+}
+
+/* This centers daily information. */
+.today-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* This keeps title on the left. */
+.today-card .today-title {
+  align-self: stretch;
+  text-align: left;
+}
+
+/* This styles the daily progress ring. */
+.progress-ring {
+  display: grid;
+  width: 146px;
+  height: 146px;
+  margin: 22px 0 10px;
+  place-items: center;
+  background:
+    radial-gradient(var(--surface) 61%, transparent 62%),
+    conic-gradient(var(--purple-600, #7145ed) 0%, var(--purple-100) 0%);
+  border-radius: 50%;
+}
+
+/* This styles the ring percentage. */
+.progress-ring strong {
+  color: var(--purple-950);
+  font-size: 31px;
+}
+
+/* This styles the completed daily text. */
+.today-completed {
+  color: var(--purple-950);
+  font-size: 16px;
+}
+
+/* This styles the daily goal area. */
+.today-goal {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+/* This styles the daily goal text. */
+.today-goal span,
+.today-goal strong {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* This styles the daily goal number. */
+.today-goal strong {
+  color: var(--purple-950);
+}
+
+/* This styles the encouragement text. */
+.encouragement {
+  width: 100%;
+  margin: auto 0 0;
+  padding: 11px;
+  background: var(--purple-50);
+  border-radius: 11px;
+  color: var(--purple-700);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* This styles card headings. */
+.card-heading {
+  display: flex;
+  align-items: start;
   justify-content: space-between;
   gap: 14px;
 }
 
-/* This styles help text. */
-.lesson-help,
-.weekly-text,
-.speaking-section p,
-.page-help {
-  margin: 5px 0 0;
+/* This styles card heading help text. */
+.card-heading p:not(.card-label) {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* This styles card heading side text. */
+.card-heading > span {
+  color: var(--purple-700);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+/* This styles weekly bars. */
+.week-bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 16px;
+  align-items: end;
+  height: 108px;
+  margin: 20px 0 8px;
+}
+
+/* This styles one weekly bar item. */
+.week-bars div {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
+/* This styles one weekly bar. */
+.week-bar {
+  display: block;
+  width: 100%;
+  height: 68px;
+  background: var(--purple-100);
+  border-radius: 12px;
+}
+
+/* This styles weekly day text. */
+.week-bars p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* This styles the weekly message. */
+.weekly-text {
+  margin: 14px 0 0;
   color: var(--muted);
   font-size: 14px;
 }
 
-/* This styles the lesson level. */
-.level-tag {
-  padding: 6px 10px;
-  background: var(--lime);
-  border-radius: 999px;
-  color: var(--purple-dark);
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* This styles study navigation. */
-.study-nav {
-  display: flex;
-  gap: 5px;
-  margin: 16px 0;
-  padding: 5px;
-  overflow-x: auto;
-  background: var(--background);
-  border-radius: 10px;
-}
-
-/* This styles study buttons. */
-.study-button {
-  padding: 7px 10px;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 7px;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-/* This styles the active study button. */
-.study-button.active-study-button {
-  background: var(--surface);
-  border-color: #d9c7ff;
-  color: var(--purple);
-}
-
-/* This styles lesson progress. */
-.lesson-progress {
-  margin: 12px 0;
-}
-
-/* This styles progress text. */
-.progress-text {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 6px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-/* This styles the progress background. */
-.progress-track {
-  height: 7px;
-  overflow: hidden;
-  background: var(--purple-soft);
-  border-radius: 999px;
-}
-
-/* This styles the progress value. */
-.progress-value {
-  width: 25%;
-  height: 100%;
-  background: var(--lime);
-  border-radius: 999px;
-}
-
-/* This styles a lesson language card. */
-.language-card {
-  margin: 10px 0;
-  padding: 16px;
+/* This styles the stats grid. */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 18px;
   border: 1px solid var(--line);
   border-radius: 14px;
+  overflow: hidden;
 }
 
-/* This styles the English card. */
-.english-card {
-  background: #f7fff0;
+/* This styles one stat item. */
+.stats-grid div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 9px;
+  align-items: center;
+  min-height: 88px;
+  padding: 14px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
-/* This styles the German card. */
-.german-card {
-  background: var(--purple-soft);
+/* This removes extra stat borders. */
+.stats-grid div:nth-child(2n) {
+  border-right: 0;
 }
 
-/* This styles card numbers. */
-.card-number {
-  margin: 0;
-  color: var(--purple);
-  font-size: 11px;
-  font-weight: bold;
+/* This removes bottom stat borders. */
+.stats-grid div:nth-last-child(-n + 2) {
+  border-bottom: 0;
 }
 
-/* This styles the main lesson phrase. */
-.main-phrase {
-  margin: 15px 0 10px;
-  color: var(--text);
-  font-size: clamp(19px, 2.4vw, 25px);
-  font-weight: bold;
-  line-height: 1.3;
+/* This styles stat icons. */
+.stats-grid span {
+  grid-row: span 2;
+  font-size: 28px;
 }
 
-/* This styles the meaning area. */
-.meaning-box {
-  padding-top: 10px;
-  border-top: 1px solid rgba(53, 19, 95, 0.12);
+/* This styles stat numbers. */
+.stats-grid strong {
+  color: var(--purple-950);
+  font-size: 27px;
+  line-height: 1;
 }
 
-/* This styles meaning text. */
-.meaning-box p {
-  margin: 0;
-}
-
-/* This styles meaning labels. */
-.meaning-box p:first-child {
-  margin-bottom: 2px;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: bold;
-}
-
-/* This styles small buttons. */
-.soft-button,
-.show-language-button,
-.next-button {
-  padding: 8px 11px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-/* This styles the comparison button. */
-.show-language-button {
-  width: 100%;
-  margin: 4px 0;
-  background: var(--surface-soft);
-}
-
-/* This styles study sections. */
-.vocabulary-section,
-.practice-section,
-.speaking-section {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-
-/* This styles section extra text. */
-.section-title > span {
+/* This styles stat names. */
+.stats-grid p {
+  margin: 2px 0 0;
   color: var(--muted);
   font-size: 12px;
-}
-
-/* This shows vocabulary cards. */
-.word-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-top: 10px;
-}
-
-/* This styles vocabulary cards. */
-.word-card {
-  padding: 11px;
-  background: var(--surface-soft);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-}
-
-/* This styles the studied word. */
-.word-card strong {
-  display: block;
-  color: var(--purple);
-}
-
-/* This styles the word meaning. */
-.word-card span {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* This styles empty cards. */
-.empty-card {
-  padding: 16px;
-  background: var(--surface-soft);
-  border: 1px dashed #cfc2e6;
-  border-radius: 12px;
-}
-
-/* This styles empty card text. */
-.empty-card p {
-  margin: 5px 0 0;
-  color: var(--muted);
-}
-
-/* This styles the writing label. */
-.practice-section label {
-  display: block;
-  margin: 12px 0 6px;
-  color: var(--text);
-  font-size: 13px;
-  font-weight: bold;
-}
-
-/* This styles the writing box. */
-textarea {
-  width: 100%;
-  min-height: 82px;
-  margin-bottom: 8px;
-  padding: 10px;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  color: var(--text);
-  resize: vertical;
-}
-
-/* This styles speaking buttons. */
-.speaking-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-
-/* This styles the record button. */
-.record-button {
-  padding: 8px 11px;
-  background: var(--danger-soft);
-  border: 1px solid #f2c5be;
-  border-radius: 8px;
-  color: var(--danger);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-/* This styles lesson actions. */
-.lesson-actions {
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
-}
-
-/* This styles the main action button. */
-.main-button {
-  padding: 10px 14px;
-  background: var(--lime);
-  border: 1px solid var(--lime);
-  border-radius: 8px;
-  color: var(--purple-dark);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-/* This styles the weekly chart. */
-.week-bars {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 7px;
-  align-items: end;
-  height: 78px;
-  margin: 14px 0 5px;
-}
-
-/* This styles one week day. */
-.week-bars div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: end;
-  height: 100%;
-  gap: 5px;
-}
-
-/* This styles one day bar. */
-.bar {
-  width: 100%;
-  height: 10px;
-  background: var(--purple-soft);
-  border-radius: 999px;
-}
-
-/* This styles week day text. */
-.week-bars p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-}
-
-/* This hides elements. */
-[hidden] {
-  display: none !important;
 }
 
 /* This styles the login card. */
 .auth-card {
   display: grid;
-  gap: 14px;
-  margin-bottom: 12px;
-  padding: 18px;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: end;
+  margin-top: 18px;
+  padding: 22px 24px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
 }
 
-/* This styles the signed in header area. */
-.account-strip {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-width: 270px;
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 12px;
-}
-
-/* This groups account text. */
-.account-details {
-  display: grid;
-  gap: 2px;
-  flex: 1;
-  min-width: 0;
-}
-
-/* This styles the small account label. */
-.account-label {
-  color: var(--lime);
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 0.8px;
-}
-
-/* This styles the signed in email. */
-.account-details strong {
-  overflow: hidden;
-  color: var(--surface);
-  font-size: 13px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* This styles the session clock. */
-.session-time {
-  color: #eee5ff;
-  font-family: "Courier New", monospace;
-  font-size: 11px;
-}
-
-/* This styles the logout button. */
-.logout-button {
-  padding: 8px 10px;
-  background: rgba(180, 35, 24, 0.2);
-  border: 1px solid rgba(255, 210, 205, 0.45);
-  border-radius: 8px;
-  color: #fff3f1;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* This puts the password controls together. */
-.password-field {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* This lets the password input use free space. */
-.password-field input {
-  flex: 1;
-}
-
-/* This styles the password eye button. */
-.password-toggle {
-  min-width: 40px;
-  padding: 8px;
-  background: var(--surface-soft);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  cursor: pointer;
+/* This styles help text. */
+.page-help,
+.lesson-help {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 /* This styles the login form. */
 .auth-form {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: 210px 210px auto;
   gap: 10px;
   align-items: end;
 }
@@ -711,81 +701,382 @@ textarea {
   gap: 5px;
   color: var(--text);
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 800;
 }
 
 /* This styles login inputs. */
 .auth-form input {
   width: 100%;
-  padding: 9px;
+  padding: 10px;
+  background: var(--purple-50);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--text);
 }
 
-/* This changes the form on small screens. */
-@media (max-width: 540px) {
-  .auth-form {
+/* This puts password controls together. */
+.password-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* This lets the password input grow. */
+.password-field input {
+  flex: 1;
+}
+
+/* This styles the password eye. */
+.password-toggle {
+  width: 42px;
+  height: 42px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* This styles main action buttons. */
+.main-button,
+.next-button,
+.soft-button,
+.show-language-button {
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--purple-950);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* This styles the main green button. */
+.main-button {
+  background: var(--lime);
+  border-color: var(--lime);
+}
+
+/* This styles the study page. */
+.lesson-panel {
+  margin-top: 24px;
+  padding: 26px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+/* This styles page layouts. */
+.review-page,
+.progress-page {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* This styles lesson headers. */
+.lesson-header,
+.section-title,
+.card-top,
+.lesson-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* This styles the lesson level. */
+.level-tag {
+  padding: 7px 12px;
+  background: var(--lime);
+  border-radius: 999px;
+  color: var(--purple-950);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* This styles study navigation. */
+.study-nav {
+  display: flex;
+  gap: 6px;
+  margin: 18px 0;
+  padding: 6px;
+  overflow-x: auto;
+  background: var(--purple-50);
+  border-radius: 12px;
+}
+
+/* This styles study buttons. */
+.study-button {
+  padding: 8px 11px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+/* This styles the active study button. */
+.study-button.active-study-button {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--purple-700);
+}
+
+/* This styles lesson progress. */
+.lesson-progress {
+  margin: 14px 0;
+}
+
+/* This styles progress text. */
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* This styles progress tracks. */
+.progress-track {
+  height: 8px;
+  overflow: hidden;
+  background: var(--purple-100);
+  border-radius: 999px;
+}
+
+/* This styles progress values. */
+.progress-value {
+  width: 25%;
+  height: 100%;
+  background: var(--lime);
+  border-radius: inherit;
+}
+
+/* This styles language cards. */
+.language-card {
+  margin: 12px 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+/* This styles English cards. */
+.english-card {
+  background: #f9fff1;
+}
+
+/* This styles German cards. */
+.german-card {
+  background: var(--purple-50);
+}
+
+/* This styles card numbers. */
+.card-number {
+  margin: 0;
+  color: var(--purple-700);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* This styles the main lesson phrase. */
+.main-phrase {
+  margin: 16px 0 10px;
+  color: var(--purple-950);
+  font-size: clamp(20px, 2.3vw, 27px);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+/* This styles meanings. */
+.meaning-box {
+  padding-top: 10px;
+  border-top: 1px solid rgba(62, 26, 143, 0.12);
+}
+
+/* This styles meaning text. */
+.meaning-box p {
+  margin: 0;
+}
+
+/* This styles meaning labels. */
+.meaning-box p:first-child {
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* This styles the comparison button. */
+.show-language-button {
+  width: 100%;
+  background: var(--purple-50);
+}
+
+/* This styles vocabulary cards. */
+.word-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* This styles one word card. */
+.word-card {
+  padding: 12px;
+  background: var(--purple-50);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+/* This styles word text. */
+.word-card strong {
+  display: block;
+  color: var(--purple-700);
+}
+
+/* This styles word meaning. */
+.word-card span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* This styles writing areas. */
+.practice-section {
+  margin-top: 16px;
+}
+
+/* This styles text areas. */
+textarea {
+  width: 100%;
+  min-height: 90px;
+  margin: 10px 0;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+/* This styles lesson actions. */
+.lesson-actions {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+/* This styles empty cards. */
+.empty-card {
+  margin-top: 16px;
+  padding: 18px;
+  background: var(--purple-50);
+  border: 1px dashed #c8b9ee;
+}
+
+/* This hides hidden elements. */
+[hidden] {
+  display: none !important;
+}
+
+/* This changes the app on medium screens. */
+@media (max-width: 1050px) {
+  .app-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .main-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .continue-card,
+  .weekly-progress-card {
+    grid-column: span 2;
+  }
+
+  .auth-card {
     grid-template-columns: 1fr;
   }
-
-  /* This styles only the login button. */
-  .auth-form > .main-button {
-    width: 100%;
-}
-/* This stacks the header on phones. */
-.topbar {
-  align-items: flex-start;
-  flex-direction: column;
 }
 
-/* This makes the account area full width. */
-.account-strip {
-  width: 100%;
-}
-}
-
-/* This changes the page for tablets. */
+/* This changes the app on tablets. */
 @media (max-width: 760px) {
-  .topbar {
-    padding-right: 145px;
-  }
-
-  .word-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* This shows two progress cards on tablets. */
-  .quick-progress {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .speaking-section {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
-
-/* This changes the page for phones. */
-@media (max-width: 540px) {
   .app {
-    width: min(100% - 24px, 1120px);
+    width: min(100% - 24px, 1400px);
     padding-top: 12px;
   }
 
-  .topbar {
-    min-height: auto;
-    padding: 20px;
+  .app-header {
+    display: flex;
+    flex-wrap: wrap;
   }
 
-  .topbar .daily-goal {
-    position: static;
+  .main-nav {
+    order: 3;
     width: 100%;
-    margin-top: 14px;
+    overflow-x: auto;
+  }
+
+  .account-strip {
+    min-width: 0;
+    margin-left: auto;
+  }
+
+  .home-welcome {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .continue-card,
+  .weekly-progress-card {
+    grid-column: auto;
+  }
+
+  .auth-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .auth-form .main-button {
+    grid-column: span 2;
+  }
+}
+
+/* This changes the app on phones. */
+@media (max-width: 540px) {
+  .app-header {
+    padding: 15px;
+  }
+
+  .brand-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .account-strip {
+    width: 100%;
+    margin: 0;
+    padding: 10px 0 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .logout-button {
+    margin-left: auto;
   }
 
   .language-picker {
-    align-items: flex-start;
+    align-items: start;
     flex-direction: column;
   }
 
@@ -795,23 +1086,57 @@ textarea {
 
   .language-button {
     flex: 1;
+    padding: 10px 8px;
   }
 
-  .quick-progress {
+  .continue-card,
+  .today-card,
+  .weekly-progress-card,
+  .stats-card,
+  .lesson-panel,
+  .review-page,
+  .progress-page {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .continue-card::after {
+    top: 58px;
+    right: 20px;
+    font-size: 64px;
+  }
+
+  .lesson-meta {
+    max-width: 230px;
+  }
+
+  .week-bars {
+    gap: 8px;
+  }
+
+  .week-bar {
+    height: 48px;
+  }
+
+  .auth-form {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-form .main-button {
+    grid-column: auto;
+  }
+
+  .word-list {
     grid-template-columns: 1fr;
   }
 
   .lesson-header,
   .lesson-actions {
-    align-items: flex-start;
+    align-items: start;
     flex-direction: column;
   }
 
   .lesson-actions button {
     width: 100%;
-  }
-
-  .word-list {
-    grid-template-columns: 1fr;
   }
 }
