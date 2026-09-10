@@ -709,3 +709,9 @@ O terminal também confirma tudo:
 POST /api/auth/login ... 200 OK
 GET /api/dashboard ... 200 OK
 __________________________________
+
+bridgeday.db → seu banco SQLite; não apagar.
+lessons-pt.json → conteúdo antigo em português; preservar.
+lessons-translated.json → rascunho antigo; preservar como referência.
+lessons-reviewed.json → o novo arquivo oficial, atualmente vazio. É o único que vamos preencher.
+__________________
