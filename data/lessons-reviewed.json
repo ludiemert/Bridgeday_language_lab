@@ -1,0 +1,336 @@
+{
+  "project": "BridgeDay",
+  "content_status": "reviewed",
+  "lessons": [
+    {
+      "lesson_code": "en-a2-work-meeting-002",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "Work meeting",
+      "category": "daily_life",
+      "title": "A morning meeting",
+      "text": "I have a short meeting at ten o'clock. Before the meeting, I read my notes and prepare two questions. After the meeting, I write a simple list of next steps.",
+      "grammar_note": "Use have for plans and activities: I have a meeting. Use before and after to show time order.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "pt",
+          "title": "Uma reunião pela manhã",
+          "text": "Eu tenho uma reunião curta às dez horas. Antes da reunião, eu leio minhas anotações e preparo duas perguntas. Depois da reunião, eu escrevo uma lista simples dos próximos passos.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "de",
+          "title": "Ein Meeting am Morgen",
+          "text": "Ich habe um zehn Uhr ein kurzes Meeting. Vor dem Meeting lese ich meine Notizen und bereite zwei Fragen vor. Nach dem Meeting schreibe ich eine einfache Liste mit den nächsten Schritten.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "meeting",
+          "meaning_pt": "reunião",
+          "example_text": "I have a meeting at ten o'clock.",
+          "position": 1
+        },
+        {
+          "target_word": "notes",
+          "meaning_pt": "anotações",
+          "example_text": "I read my notes before the meeting.",
+          "position": 2
+        },
+        {
+          "target_word": "next steps",
+          "meaning_pt": "próximos passos",
+          "example_text": "We discuss the next steps.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I have a short m _ _ _ _ _ _ at ten o'clock.",
+          "answer_text": "meeting",
+          "hint_text": "It is a planned conversation with other people.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-commute-train-003",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "Going to work",
+      "category": "daily_life",
+      "title": "My train journey",
+      "text": "I usually take the train to work. The station is close to my home, so I walk there in ten minutes. On the train, I listen to a podcast or read a short article.",
+      "grammar_note": "Use usually for a regular habit: I usually take the train. Use so to show a result.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "pt",
+          "title": "Minha viagem de trem",
+          "text": "Eu geralmente pego o trem para ir ao trabalho. A estação fica perto da minha casa, então eu caminho até lá em dez minutos. No trem, eu escuto um podcast ou leio um artigo curto.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "de",
+          "title": "Meine Zugfahrt",
+          "text": "Ich fahre normalerweise mit dem Zug zur Arbeit. Der Bahnhof ist nah bei meiner Wohnung, deshalb gehe ich in zehn Minuten zu Fuß dorthin. Im Zug höre ich einen Podcast oder lese einen kurzen Artikel.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "train",
+          "meaning_pt": "trem",
+          "example_text": "The train arrives at eight o'clock.",
+          "position": 1
+        },
+        {
+          "target_word": "station",
+          "meaning_pt": "estação",
+          "example_text": "The station is close to my home.",
+          "position": 2
+        },
+        {
+          "target_word": "article",
+          "meaning_pt": "artigo",
+          "example_text": "I read a short article on the train.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I usually take the t _ _ _ to work.",
+          "answer_text": "train",
+          "hint_text": "It runs on railway tracks.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-plan-tasks-004",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "Planning tasks",
+      "category": "daily_life",
+      "title": "Plan one task at a time",
+      "text": "At the start of the day, I choose three important tasks. I begin with the most difficult task when I have more energy. Then I check my list again and update it when necessary.",
+      "grammar_note": "Use the present simple for routines: I choose, I begin, I check. Use when for the time of an action.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "pt",
+          "title": "Planeje uma tarefa de cada vez",
+          "text": "No início do dia, eu escolho três tarefas importantes. Eu começo pela tarefa mais difícil quando tenho mais energia. Depois, verifico minha lista novamente e a atualizo quando necessário.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "de",
+          "title": "Eine Aufgabe nach der anderen planen",
+          "text": "Am Anfang des Tages wähle ich drei wichtige Aufgaben. Ich beginne mit der schwierigsten Aufgabe, wenn ich mehr Energie habe. Dann prüfe ich meine Liste noch einmal und aktualisiere sie, wenn es nötig ist.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "task",
+          "meaning_pt": "tarefa",
+          "example_text": "This task is important.",
+          "position": 1
+        },
+        {
+          "target_word": "difficult",
+          "meaning_pt": "difícil",
+          "example_text": "The difficult task needs more time.",
+          "position": 2
+        },
+        {
+          "target_word": "update",
+          "meaning_pt": "atualizar",
+          "example_text": "I update my list in the afternoon.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I choose three important t _ _ _ _.",
+          "answer_text": "tasks",
+          "hint_text": "They are things you need to do.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-python-automation-005",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "Python automation",
+      "category": "tech",
+      "title": "A small Python script",
+      "text": "I use a small Python script to organise simple files. The script reads a folder and moves files to the correct place. It saves time and helps me avoid repetitive work.",
+      "grammar_note": "Use to plus a verb to show purpose: I use Python to organise files. Use helps me plus a verb for assistance.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "pt",
+          "title": "Um pequeno script em Python",
+          "text": "Eu uso um pequeno script em Python para organizar arquivos simples. O script lê uma pasta e move os arquivos para o lugar correto. Ele economiza tempo e me ajuda a evitar trabalho repetitivo.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "de",
+          "title": "Ein kleines Python-Skript",
+          "text": "Ich benutze ein kleines Python-Skript, um einfache Dateien zu organisieren. Das Skript liest einen Ordner und verschiebt Dateien an den richtigen Ort. Es spart Zeit und hilft mir, wiederholte Arbeit zu vermeiden.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "script",
+          "meaning_pt": "script",
+          "example_text": "The script runs every morning.",
+          "position": 1
+        },
+        {
+          "target_word": "folder",
+          "meaning_pt": "pasta",
+          "example_text": "This folder has many files.",
+          "position": 2
+        },
+        {
+          "target_word": "repetitive",
+          "meaning_pt": "repetitivo",
+          "example_text": "Automation can reduce repetitive work.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: The script reads a f _ _ _ _.",
+          "answer_text": "folder",
+          "hint_text": "It stores files on a computer.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-dashboard-data-006",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "Reading dashboard data",
+      "category": "tech",
+      "title": "Check the dashboard",
+      "text": "Our dashboard shows the main numbers for the team. I check the data before I make a decision. When a number changes, I ask a question and look for the reason.",
+      "grammar_note": "Use before to show order: I check the data before I decide. Use when for a situation that happens.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "pt",
+          "title": "Verifique o dashboard",
+          "text": "Nosso dashboard mostra os números principais para a equipe. Eu verifico os dados antes de tomar uma decisão. Quando um número muda, eu faço uma pergunta e procuro o motivo.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "de",
+          "title": "Das Dashboard prüfen",
+          "text": "Unser Dashboard zeigt die wichtigsten Zahlen für das Team. Ich prüfe die Daten, bevor ich eine Entscheidung treffe. Wenn sich eine Zahl ändert, stelle ich eine Frage und suche nach dem Grund.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "dashboard",
+          "meaning_pt": "painel de dados",
+          "example_text": "The dashboard shows the main numbers.",
+          "position": 1
+        },
+        {
+          "target_word": "decision",
+          "meaning_pt": "decisão",
+          "example_text": "Data helps us make a decision.",
+          "position": 2
+        },
+        {
+          "target_word": "reason",
+          "meaning_pt": "motivo",
+          "example_text": "We need to find the reason for the change.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I check the data before I make a d _ _ _ _ _ _ _.",
+          "answer_text": "decision",
+          "hint_text": "It is a choice after thinking.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-ask-for-help-007",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "Asking for help",
+      "category": "daily_life",
+      "title": "Ask for help at work",
+      "text": "I do not understand this report yet. Can you show me how to use the system? I can take notes while you explain the steps. Thank you for your help.",
+      "grammar_note": "Use Can you plus a base verb for a polite request: Can you show me? Use while for two actions happening together.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "pt",
+          "title": "Peça ajuda no trabalho",
+          "text": "Eu ainda não entendo este relatório. Você pode me mostrar como usar o sistema? Eu posso fazer anotações enquanto você explica os passos. Obrigada pela sua ajuda.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "de",
+          "title": "Bei der Arbeit um Hilfe bitten",
+          "text": "Ich verstehe diesen Bericht noch nicht. Können Sie mir zeigen, wie ich das System benutze? Ich kann Notizen machen, während Sie die Schritte erklären. Danke für Ihre Hilfe.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "report",
+          "meaning_pt": "relatório",
+          "example_text": "I read the report before the meeting.",
+          "position": 1
+        },
+        {
+          "target_word": "explain",
+          "meaning_pt": "explicar",
+          "example_text": "Please explain the next step.",
+          "position": 2
+        },
+        {
+          "target_word": "steps",
+          "meaning_pt": "passos",
+          "example_text": "The steps are easy to follow.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the request: Can you s _ _ _ me how to use the system?",
+          "answer_text": "show",
+          "hint_text": "It means demonstrate something.",
+          "position": 1
+        }
+      ]
+    }
+  ]
+}
