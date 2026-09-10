@@ -500,7 +500,10 @@ h3 {
   place-items: center;
   background:
     radial-gradient(var(--surface) 61%, transparent 62%),
-    conic-gradient(var(--purple-600, #7145ed) 0%, var(--purple-100) 0%);
+    conic-gradient(
+      var(--purple-600, #7145ed) var(--daily-percent, 0%),
+      var(--purple-100) 0
+    );
   border-radius: 50%;
 }
 
@@ -582,6 +585,20 @@ h3 {
   align-items: end;
   height: 108px;
   margin: 20px 0 8px;
+}
+
+/* This marks the current day. */
+.week-bar.today-bar {
+  background: #ded2ff;
+}
+
+/* This marks a completed study day. */
+.week-bar.completed-bar {
+  background: linear-gradient(
+    180deg,
+    var(--purple-500),
+    var(--purple-700)
+  );
 }
 
 /* This styles one weekly bar item. */

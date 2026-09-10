@@ -83,6 +83,23 @@ const progressReview = document.getElementById("progress-review");
 const reviewTitle = document.getElementById("review-title");
 const reviewText = document.getElementById("review-text");
 
+// Find Home dashboard elements.
+const greetingTitle = document.getElementById("greeting-title");
+const greetingQuestion = document.getElementById("greeting-question");
+const homeLessonTitle = document.getElementById("home-lesson-title");
+const homeLessonDescription = document.getElementById(
+  "home-lesson-description",
+);
+const homeLessonLanguage = document.getElementById("home-lesson-language");
+const homeLessonLevel = document.getElementById("home-lesson-level");
+const homeGoalText = document.getElementById("home-goal-text");
+const homeGoalFill = document.getElementById("home-goal-fill");
+const continueButton = document.getElementById("continue-button");
+const dailyProgressRing = document.getElementById("daily-progress-ring");
+const dailyProgressPercent = document.getElementById("daily-progress-percent");
+const dailyProgressCount = document.getElementById("daily-progress-count");
+const weekBars = document.querySelectorAll(".week-bar");
+
 // Set the lesson API address.
 const LESSON_API_URL =
   "http://127.0.0.1:8000/api/lessons/en-a2-work-routine-001";
@@ -344,6 +361,9 @@ function renderLesson() {
 
   listeningText.textContent =
     "Listen to the sentence in " + mainSettings.label + ".";
+
+  // Update the Home lesson card.
+  renderHomeLesson();
 }
 
 // Change API data to front data.
@@ -429,36 +449,136 @@ function updateFinishButton() {
   finishLessonButton.disabled = isCompleted;
 }
 
+// Show a greeting for the current time.
+function renderGreeting() {
+  // Read the current hour.
+  const hour = new Date().getHours();
+
+  // Choose the greeting text.
+  if (hour < 12) {
+    greetingTitle.textContent = "Good morning ☀️";
+  } else if (hour < 18) {
+    greetingTitle.textContent = "Good afternoon 👋";
+  } else {
+    greetingTitle.textContent = "Good evening 🌙";
+  }
+
+  // Read the selected language.
+  const languageName = languageSettings[selectedLanguage].label;
+
+  // Show the study question.
+  greetingQuestion.textContent =
+    "Ready for your next " + languageName + " lesson?";
+}
+
+// Show the main learning card.
+function renderHomeLesson() {
+  // Stop when lesson data is missing.
+  if (!currentLesson) {
+    return;
+  }
+
+  // Read selected language data.
+  const settings = languageSettings[selectedLanguage];
+
+  // Check if the lesson is complete.
+  const isCompleted =
+    currentDashboard?.completed_lesson_codes.includes(
+      currentLesson.lessonCode,
+    ) || false;
+
+  // Show the correct lesson title.
+  homeLessonTitle.textContent = isCompleted
+    ? "Review your " + settings.label + " lesson"
+    : "Your next " + settings.label + " lesson";
+
+  // Show the correct lesson message.
+  homeLessonDescription.textContent = isCompleted
+    ? "Review the lesson and keep your language active."
+    : "Keep your streak going with a short daily session.";
+
+  // Show lesson information.
+  homeLessonLanguage.textContent = "▣ " + settings.label;
+  homeLessonLevel.textContent = currentLesson[settings.levelName] || "A1";
+}
+
+// Show the weekly bars.
+function renderWeekBars() {
+  // Read today in JavaScript format.
+  const todayIndex = (new Date().getDay() + 6) % 7;
+
+  // Read completed lessons today.
+  const completedToday = currentDashboard?.completed_today || 0;
+
+  // Update every bar.
+  weekBars.forEach(function (bar, index) {
+    // Remove old bar styles.
+    bar.classList.remove("today-bar", "completed-bar");
+
+    // Mark the current day.
+    if (index === todayIndex) {
+      bar.classList.add("today-bar");
+    }
+
+    // Mark a completed lesson today.
+    if (index === todayIndex && completedToday > 0) {
+      bar.classList.add("completed-bar");
+    }
+  });
+}
+
 // Show dashboard data on the page.
 function renderDashboard() {
   // Show empty values without login.
   if (!currentDashboard) {
-    streakCount.textContent = "0 days";
-    weekCount.textContent = "0 lessons";
-    todayCount.textContent = "0 lessons";
-    totalCount.textContent = "0 lessons";
-    weeklyMinutes.textContent = "0 min total";
+    streakCount.textContent = "0";
+    weekCount.textContent = "0";
+    todayCount.textContent = "0";
+    totalCount.textContent = "0";
+    weeklyMinutes.textContent = "0 min saved";
     weeklyText.textContent = "Sign in to see your saved progress.";
     progressTitle.textContent = "Start your first lesson";
     progressSummary.textContent = "Sign in to save study data.";
     progressReview.textContent = "No review data is available.";
     reviewTitle.textContent = "Next review";
     reviewText.textContent = "Sign in to see your review status.";
+    homeGoalText.textContent = "0 / 1 lesson";
+    homeGoalFill.style.width = "0%";
+    dailyProgressPercent.textContent = "0%";
+    dailyProgressCount.textContent = "0 lessons completed";
+    dailyProgressRing.style.setProperty("--daily-percent", "0%");
+    renderGreeting();
+    renderHomeLesson();
+    renderWeekBars();
     return;
   }
 
   // Change seconds to full minutes.
   const totalMinutes = Math.floor(currentDashboard.study_seconds_total / 60);
 
-  // Show Home numbers.
-  streakCount.textContent = currentDashboard.current_streak_days + " days";
-  weekCount.textContent = currentDashboard.completed_this_week + " lessons";
-  todayCount.textContent = currentDashboard.completed_today + " lessons";
-  totalCount.textContent =
-    currentDashboard.total_completed_lessons + " lessons";
-  weeklyMinutes.textContent = totalMinutes + " min total";
+  // Read daily completion.
+  const completedToday = currentDashboard.completed_today;
 
-  // Show a helpful weekly message.
+  // Set daily progress to zero or one hundred.
+  const dailyPercent = completedToday > 0 ? 100 : 0;
+
+  // Show real stats.
+  streakCount.textContent = currentDashboard.current_streak_days;
+  weekCount.textContent = currentDashboard.completed_this_week;
+  todayCount.textContent = completedToday;
+  totalCount.textContent = currentDashboard.total_completed_lessons;
+
+  // Show saved total time.
+  weeklyMinutes.textContent = totalMinutes + " min saved";
+
+  // Show daily goal data.
+  homeGoalText.textContent = Math.min(completedToday, 1) + " / 1 lesson";
+  homeGoalFill.style.width = dailyPercent + "%";
+  dailyProgressPercent.textContent = dailyPercent + "%";
+  dailyProgressCount.textContent = completedToday + " lessons completed";
+  dailyProgressRing.style.setProperty("--daily-percent", dailyPercent + "%");
+
+  // Show the weekly message.
   if (currentDashboard.completed_this_week > 0) {
     weeklyText.textContent =
       "You completed " +
@@ -473,7 +593,7 @@ function renderDashboard() {
     weeklyText.textContent = "Complete your first lesson to see your progress.";
   }
 
-  // Show Progress information.
+  // Show Progress page data.
   progressTitle.textContent =
     currentDashboard.total_completed_lessons + " completed lesson(s)";
   progressSummary.textContent =
@@ -481,7 +601,7 @@ function renderDashboard() {
   progressReview.textContent =
     "Reviews ready now: " + currentDashboard.reviews_due + ".";
 
-  // Show Review information.
+  // Show Review page data.
   reviewTitle.textContent =
     currentDashboard.reviews_due > 0 ? "Review ready" : "No review today";
 
@@ -489,6 +609,11 @@ function renderDashboard() {
     currentDashboard.reviews_due > 0
       ? "Open a lesson review when you are ready."
       : "Your next review will appear here.";
+
+  // Update the Home dashboard.
+  renderGreeting();
+  renderHomeLesson();
+  renderWeekBars();
 }
 
 // Load real dashboard data from the API.
@@ -924,6 +1049,18 @@ passwordToggle.addEventListener("click", togglePasswordVisibility);
 
 // Add finish lesson action.
 finishLessonButton.addEventListener("click", finishCurrentLesson);
+
+// Open Study from the Home card.
+continueButton.addEventListener("click", function () {
+  // Show the Study page.
+  showPage("study");
+
+  // Start the study timer.
+  startLessonTimer();
+});
+
+// Show the first login state.
+updateAuthArea();
 
 // Show the first login state.
 updateAuthArea();
