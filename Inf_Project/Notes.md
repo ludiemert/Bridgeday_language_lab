@@ -736,3 +736,13 @@ _______________________________________________
 
 backend\app\api\lessons.py → contém as rotas de lições;
 backend\app\schemas\lesson.py → define o formato das respostas da API.
+
+_______________________________________
+backend\app\api\lessons.py
+
+O que essa rota fará:
+- exige login;
+- encontra as lições que você já concluiu em lesson_progress;
+- exclui essas lições;
+- devolve a primeira disponível em ordem;
+- no seu caso, como 001 está concluída, ela deverá devolver en-a2-work-meeting-002.
