@@ -715,3 +715,21 @@ lessons-pt.json → conteúdo antigo em português; preservar.
 lessons-translated.json → rascunho antigo; preservar como referência.
 lessons-reviewed.json → o novo arquivo oficial, atualmente vazio. É o único que vamos preencher.
 __________________
+
+O comando:
+# Import reviewed lessons into the SQLite database.
+.\.venv\Scripts\python.exe scripts\import_lessons.py
+significa:
+- .\.venv\Scripts\python.exe → executa o Python instalado no ambiente virtual do BridgeDay;
+- scripts\import_lessons.py → executa o arquivo que criamos dentro da pasta scripts;
+- esse arquivo lê data\lessons-reviewed.json;
+- ele cria no SQLite cada lição, suas traduções, vocabulário e exercício;
+- antes de criar, compara o lesson_code com o banco.
+O que foi criado:
+- 6 novas lições;
+- 12 traduções (português e alemão);
+- vocabulário de cada lição;
+- 1 exercício por lição.
+Ele não criou novas tabelas nem precisou de migration porque as tabelas já existiam. Ele adicionou registros às tabelas existentes: lessons, lesson_translations, vocabulary_items e exercises.
+
+_______________________________________________
