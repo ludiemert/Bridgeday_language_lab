@@ -1,15 +1,24 @@
+# This file provides BridgeDay lesson API routes.
+# It lists lessons, reads one lesson, and finds the next lesson.
+
 # Import API route tools.
 from fastapi import APIRouter, Depends, HTTPException, status
+
+# Import login token tools.
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
 # Import database search tools.
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+# Import the token reader.
+from ..core.security import read_access_token
+
 # Import the database session.
 from ..database import get_db
 
-# Import the lesson table.
-from ..models import Lesson
+# Import lesson and progress tables.
+from ..models import Lesson, LessonProgress
 
 # Import lesson response models.
 from ..schemas.lesson import (
@@ -25,6 +34,9 @@ router = APIRouter(
     prefix="/api/lessons",
     tags=["Lessons"],
 )
+
+# Read the optional login token.
+bearer_scheme = HTTPBearer(auto_error=False)
 
 
 def build_lesson_detail(lesson: Lesson) -> LessonDetailResponse:
@@ -122,6 +134,65 @@ def list_lessons(
 
 
 @router.get(
+    "/next",
+    response_model=LessonDetailResponse,
+)
+def read_next_lesson(
+    credentials: HTTPAuthorizationCredentials | None = Depends(
+        bearer_scheme,
+    ),
+    database: Session = Depends(get_db),
+) -> LessonDetailResponse:
+    # Stop when the user is not signed in.
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Login is required.",
+        )
+
+    # Read the user ID from the login token.
+    user_id = read_access_token(credentials.credentials)
+
+    # Stop when the token is invalid.
+    if user_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token.",
+        )
+
+    # Find lesson IDs already completed by this user.
+    completed_lesson_ids = select(LessonProgress.lesson_id).where(
+        LessonProgress.user_id == user_id,
+        LessonProgress.status == "completed",
+    )
+
+    # Find the first published lesson not yet completed.
+    lesson = database.scalars(
+        select(Lesson)
+        .options(
+            selectinload(Lesson.translations),
+            selectinload(Lesson.vocabulary_items),
+            selectinload(Lesson.exercises),
+        )
+        .where(
+            Lesson.status == "published",
+            Lesson.id.not_in(completed_lesson_ids),
+        )
+        .order_by(Lesson.lesson_code),
+    ).first()
+
+    # Stop when every lesson is complete.
+    if not lesson:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="No new lesson is available.",
+        )
+
+    # Send the next full lesson.
+    return build_lesson_detail(lesson)
+
+
+@router.get(
     "/{lesson_code}",
     response_model=LessonDetailResponse,
 )
@@ -150,4 +221,5 @@ def read_lesson(
             detail="Lesson was not found.",
         )
 
+    # Send the full lesson.
     return build_lesson_detail(lesson)

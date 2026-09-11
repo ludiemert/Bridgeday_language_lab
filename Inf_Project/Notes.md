@@ -733,3 +733,6 @@ O que foi criado:
 Ele não criou novas tabelas nem precisou de migration porque as tabelas já existiam. Ele adicionou registros às tabelas existentes: lessons, lesson_translations, vocabulary_items e exercises.
 
 _______________________________________________
+
+backend\app\api\lessons.py → contém as rotas de lições;
+backend\app\schemas\lesson.py → define o formato das respostas da API.
