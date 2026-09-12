@@ -178,7 +178,7 @@ def read_next_lesson(
             Lesson.status == "published",
             Lesson.id.not_in(completed_lesson_ids),
         )
-        .order_by(Lesson.lesson_code),
+        .order_by(Lesson.id),
     ).first()
 
     # Stop when every lesson is complete.
