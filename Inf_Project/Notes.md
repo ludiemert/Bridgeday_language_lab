@@ -746,3 +746,12 @@ O que essa rota fará:
 - exclui essas lições;
 - devolve a primeira disponível em ordem;
 - no seu caso, como 001 está concluída, ela deverá devolver en-a2-work-meeting-002.
+
+________________________________________
+# Show the current front JavaScript file.
+Get-Content front\app.js
+
+# Show the current front page structure.
+Get-Content front\index.html
+
+________________________________
