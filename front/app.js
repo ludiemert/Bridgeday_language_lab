@@ -113,6 +113,9 @@ const API_BASE_URL = "http://127.0.0.1:8000";
 // Set the dashboard API address.
 const DASHBOARD_API_URL = API_BASE_URL + "/api/dashboard";
 
+// Set the next lesson API address.
+const NEXT_LESSON_API_URL = API_BASE_URL + "/api/lessons/next";
+
 // Read saved local login data.
 let accessToken = localStorage.getItem("bridgeday_access_token");
 
@@ -923,6 +926,80 @@ async function finishCurrentLesson() {
   } catch (error) {
     // Show a safe completion error.
     alert(error.message);
+  }
+}
+
+// Load the next lesson for the signed in user.
+async function loadNextLesson() {
+  // Stop when the user is not signed in.
+  if (!accessToken || !currentUser) {
+    authStatus.textContent = "Please sign in to open the next lesson.";
+
+    // Return to the login area.
+    showPage("home");
+    return;
+  }
+
+  try {
+    // Disable the button during the API request.
+    nextLessonButton.disabled = true;
+
+    // Ask the API for the next incomplete lesson.
+    const response = await fetch(NEXT_LESSON_API_URL, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    });
+
+    // Read the API response.
+    const lessonData = await response.json();
+
+    // Stop when there are no new lessons.
+    if (response.status === 404) {
+      alert("You completed every available lesson.");
+      return;
+    }
+
+    // Stop when the API has another error.
+    if (!response.ok) {
+      throw new Error(lessonData.detail || "Next lesson was not found.");
+    }
+
+    // Stop when the current lesson is not finished yet.
+    if (lessonData.lesson_code === currentLesson?.lessonCode) {
+      alert("Finish the current lesson before opening the next one.");
+      return;
+    }
+
+    // Save the next lesson in the front.
+    currentLesson = mapLessonFromApi(lessonData);
+
+    // Start a new study timer.
+    lessonStartedAt = Date.now();
+
+    // Show the new lesson.
+    renderLesson();
+
+    // Update the Finish lesson button.
+    updateFinishButton();
+
+    // Keep the user on the Study page.
+    showPage("study");
+
+    // Return to the top of the new lesson.
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } catch (error) {
+    // Show a safe error message.
+    alert(error.message);
+
+    // Show the error for development.
+    console.error(error);
+  } finally {
+    // Enable the button after the request.
+    nextLessonButton.disabled = false;
   }
 }
 
