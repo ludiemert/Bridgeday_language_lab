@@ -1130,6 +1130,9 @@ passwordToggle.addEventListener("click", togglePasswordVisibility);
 // Add finish lesson action.
 finishLessonButton.addEventListener("click", finishCurrentLesson);
 
+// Add next lesson action.
+nextLessonButton.addEventListener("click", loadNextLesson);
+
 // Open Study from the Home card.
 continueButton.addEventListener("click", function () {
   // Show the Study page.
