@@ -61,6 +61,9 @@ const logoutButton = document.getElementById("logout-button");
 // Find the finish lesson button.
 const finishLessonButton = document.getElementById("finish-lesson-button");
 
+// Find the next lesson button.
+const nextLessonButton = document.getElementById("next-lesson-button");
+
 // Find account elements.
 const authCard = document.getElementById("auth-card");
 const accountStrip = document.getElementById("account-strip");
