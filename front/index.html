@@ -106,15 +106,57 @@
         </button>
       </section>
 
-      <!-- This opens login for signed out users. -->
-      <button
-        class="header-login-button"
-        id="header-login-button"
-        type="button"
-        hidden
-      >
-        Sign in
-      </button>
+      <!-- This shows the login form in the header. -->
+      <section class="header-login-panel" id="auth-card">
+        <!-- This sends login data to the API. -->
+        <form class="auth-form header-auth-form" id="login-form">
+          <label>
+            <span class="screen-reader-text">Email</span>
+            <input
+              id="login-email"
+              type="email"
+              required
+              placeholder="Email"
+            >
+          </label>
+
+          <label>
+            <span class="screen-reader-text">Password</span>
+
+            <!-- This groups password input and eye button. -->
+            <span class="password-field">
+              <input
+                id="login-password"
+                type="password"
+                required
+                minlength="8"
+                placeholder="Password"
+              >
+
+              <!-- This shows or hides the password. -->
+              <button
+                class="password-toggle"
+                id="password-toggle"
+                type="button"
+                aria-label="Show password"
+                title="Show password"
+              >
+                👁
+              </button>
+            </span>
+          </label>
+
+          <!-- This signs in the user. -->
+          <button class="main-button" type="submit">
+            Sign in
+          </button>
+        </form>
+
+        <!-- This shows safe login messages. -->
+        <p class="header-auth-status" id="auth-status">
+          Sign in to save your learning.
+        </p>
+      </section>
     </header>
 
     <!-- This is the Home dashboard. -->

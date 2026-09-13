@@ -749,6 +749,40 @@ h3 {
   color: var(--text);
 }
 
+/* This styles the compact header login area. */
+.header-login-panel {
+  display: grid;
+  min-width: 390px;
+  gap: 5px;
+}
+
+/* This styles the login fields inside the header. */
+.header-auth-form {
+  display: grid;
+  grid-template-columns: 130px 185px auto;
+  gap: 8px;
+  align-items: end;
+}
+
+/* This keeps header labels invisible but accessible. */
+.screen-reader-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* This styles login feedback in the header. */
+.header-auth-status {
+  min-height: 16px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: right;
+}
+
 /* This puts password controls together. */
 .password-field {
   display: flex;
@@ -1048,6 +1082,18 @@ textarea {
     padding-top: 12px;
   }
 
+  /* This puts the login form on its own header row. */
+  .header-login-panel {
+    width: 100%;
+    min-width: 0;
+    order: 2;
+  }
+
+  /* This keeps the login form usable on tablets. */
+  .header-auth-form {
+    grid-template-columns: 1fr 1fr auto;
+  }
+
   .app-header {
     display: flex;
     flex-wrap: wrap;
@@ -1091,6 +1137,21 @@ textarea {
 @media (max-width: 540px) {
   .app-header {
     padding: 15px;
+  }
+
+  /* This stacks the login controls on small phones. */
+  .header-auth-form {
+    grid-template-columns: 1fr;
+  }
+
+  /* This makes the phone login button easy to tap. */
+  .header-auth-form .main-button {
+    width: 100%;
+  }
+
+  /* This aligns feedback on small phones. */
+  .header-auth-status {
+    text-align: left;
   }
 
   .brand-icon {
