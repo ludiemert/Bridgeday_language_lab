@@ -248,6 +248,24 @@ h3 {
   background: #ffe9e6;
 }
 
+/* This styles the header sign in button. */
+.header-login-button {
+  padding: 11px 17px;
+  background: var(--lime);
+  border: 1px solid var(--lime);
+  border-radius: 11px;
+  color: var(--purple-950);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+/* This styles header sign in hover. */
+.header-login-button:hover {
+  background: var(--lime-dark);
+  transform: translateY(-1px);
+}
+
 /* This adds space below the header. */
 .home-dashboard {
   margin-top: 28px;

@@ -58,6 +58,9 @@ const authStatus = document.getElementById("auth-status");
 // Find the logout button.
 const logoutButton = document.getElementById("logout-button");
 
+// Find the header sign in button.
+const headerLoginButton = document.getElementById("header-login-button");
+
 // Find the finish lesson button.
 const finishLessonButton = document.getElementById("finish-lesson-button");
 
@@ -743,6 +746,9 @@ function updateAuthArea() {
     // Show the top account area.
     accountStrip.hidden = false;
 
+    // Hide header sign in for signed in users.
+    headerLoginButton.hidden = true;
+
     // Start the session clock.
     startSessionTimer();
     return;
@@ -756,6 +762,9 @@ function updateAuthArea() {
 
   // Hide the top account area.
   accountStrip.hidden = true;
+
+  // Show header sign in for signed out users.
+  headerLoginButton.hidden = false;
 
   // Stop the session clock.
   stopSessionTimer();
@@ -1140,6 +1149,21 @@ continueButton.addEventListener("click", function () {
 
   // Start the study timer.
   startLessonTimer();
+});
+
+// Open the login form from the header.
+headerLoginButton.addEventListener("click", function () {
+  // Show the Home page.
+  showPage("home");
+
+  // Move to the login card.
+  authCard.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
+
+  // Put the cursor in the email field.
+  loginEmail.focus();
 });
 
 // Show the first login state.
