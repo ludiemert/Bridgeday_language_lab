@@ -1142,9 +1142,6 @@ continueButton.addEventListener("click", function () {
 // Show the first login state.
 updateAuthArea();
 
-// Show the first login state.
-updateAuthArea();
-
 // This loads the lesson file.
 loadLesson();
 

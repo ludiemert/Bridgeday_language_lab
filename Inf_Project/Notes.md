@@ -755,3 +755,16 @@ Get-Content front\app.js
 Get-Content front\index.html
 
 ________________________________
+
+Vamos confirmar quais partes entraram no arquivo. Execute este comando no terminal do projeto e cole a resposta:
+# Check the Next lesson code in the front files.
+Select-String `
+  -Path front\app.js, front\index.html `
+  -Pattern `
+    "next-lesson-button",
+    "nextLessonButton",
+    "NEXT_LESSON_API_URL",
+    "loadNextLesson",
+    "nextLessonButton.addEventListener"
+
+    ____________________
