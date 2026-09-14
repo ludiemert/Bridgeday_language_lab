@@ -768,3 +768,7 @@ Select-String `
     "nextLessonButton.addEventListener"
 
     ____________________
+
+tornar o estudo guiado dentro da lição:
+Text → Listening → Grammar → Vocabulary → Speak & Write → Finish lesson
+________________________________
