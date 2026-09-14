@@ -892,9 +892,14 @@ h3 {
 
 /* This styles the active study button. */
 .study-button.active-study-button {
-  background: var(--surface);
-  border-color: var(--line);
-  color: var(--purple-700);
+  background: linear-gradient(
+    135deg,
+    var(--purple-700),
+    var(--purple-500)
+  );
+  border-color: var(--purple-500);
+  box-shadow: 0 7px 16px rgba(96, 52, 215, 0.22);
+  color: var(--surface);
 }
 
 /* This styles lesson progress. */
