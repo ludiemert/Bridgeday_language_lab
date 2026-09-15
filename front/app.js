@@ -67,6 +67,17 @@ const finishLessonButton = document.getElementById("finish-lesson-button");
 // Find the next lesson button.
 const nextLessonButton = document.getElementById("next-lesson-button");
 
+// Find lesson study flow buttons.
+const previousStepButton = document.getElementById("previous-step-button");
+const continueStepButton = document.getElementById("continue-step-button");
+
+// Find lesson study progress elements.
+const studyStepLabel = document.getElementById("study-step-label");
+const studyProgressValue = document.getElementById("study-progress-value");
+
+// Find the listening audio button.
+const listeningAudioButton = document.getElementById("listening-audio-button");
+
 // Find account elements.
 const authCard = document.getElementById("auth-card");
 const accountStrip = document.getElementById("account-strip");
@@ -155,6 +166,33 @@ let currentLesson = null;
 
 // Store the saved dashboard data.
 let currentDashboard = null;
+
+// Define the study step order.
+const studySteps = [
+  {
+    name: "text",
+    nextLabel: "Continue to Listening →",
+  },
+  {
+    name: "listening",
+    nextLabel: "Continue to Grammar →",
+  },
+  {
+    name: "grammar",
+    nextLabel: "Continue to Vocabulary →",
+  },
+  {
+    name: "vocabulary",
+    nextLabel: "Continue to Speak & Write →",
+  },
+  {
+    name: "speaking",
+    nextLabel: "",
+  },
+];
+
+// Start with the text step.
+let currentStudyStepIndex = 0;
 
 // Read the saved session start time.
 let sessionStartedAt =
@@ -248,6 +286,91 @@ function showStudyArea(studyName) {
 
     // This updates the active style.
     button.classList.toggle("active-study-button", isThisButton);
+  });
+}
+
+// Check if the current lesson is complete.
+function isCurrentLessonCompleted() {
+  return (
+    currentDashboard?.completed_lesson_codes?.includes(
+      currentLesson?.lessonCode,
+    ) || false
+  );
+}
+
+// Update the lesson step buttons and progress bar.
+function renderStudyFlow() {
+  // Stop when lesson data is missing.
+  if (!currentLesson) {
+    return;
+  }
+
+  // Read the total step amount.
+  const totalSteps = studySteps.length;
+
+  // Read the current step number for people.
+  const visibleStep = currentStudyStepIndex + 1;
+
+  // Calculate progress percent.
+  const progressPercent = (visibleStep / totalSteps) * 100;
+
+  // Show the current step text.
+  studyStepLabel.textContent = "Step " + visibleStep + " of " + totalSteps;
+
+  // Update the progress bar width.
+  studyProgressValue.style.width = progressPercent + "%";
+
+  // Check saved lesson completion.
+  const isCompleted = isCurrentLessonCompleted();
+
+  // Show the next lesson only after completion.
+  if (isCompleted) {
+    previousStepButton.hidden = true;
+    continueStepButton.hidden = true;
+    finishLessonButton.hidden = true;
+    nextLessonButton.hidden = false;
+    return;
+  }
+
+  // Show Previous step after the first step.
+  previousStepButton.hidden = currentStudyStepIndex === 0;
+
+  // Show Continue before the last step.
+  continueStepButton.hidden = currentStudyStepIndex === totalSteps - 1;
+
+  // Show Finish only on the last step.
+  finishLessonButton.hidden = currentStudyStepIndex !== totalSteps - 1;
+
+  // Hide Next lesson before completion.
+  nextLessonButton.hidden = true;
+
+  // Update the Continue button label.
+  continueStepButton.textContent = studySteps[currentStudyStepIndex].nextLabel;
+}
+
+// Show one study step by its position.
+function showStudyStep(stepIndex) {
+  // Stop when the position is outside the step list.
+  if (stepIndex < 0 || stepIndex >= studySteps.length) {
+    return;
+  }
+
+  // Save the new step position.
+  currentStudyStepIndex = stepIndex;
+
+  // Read the current step name.
+  const stepName = studySteps[currentStudyStepIndex].name;
+
+  // Show the correct study content.
+  showStudyArea(stepName);
+
+  // Update buttons and progress.
+  renderStudyFlow();
+
+  // Return to the top of the lesson.
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
   });
 }
 
@@ -357,6 +480,12 @@ function renderLesson() {
   audioButtons[0].dataset.language = mainSettings.locale;
   audioButtons[1].dataset.language = comparisonSettings.locale;
 
+  // Set the Listening tab audio language.
+  listeningAudioButton.dataset.language = mainSettings.locale;
+
+  // Show the current language on the Listening button.
+  listeningAudioButton.textContent = "Listen to " + mainSettings.label;
+
   // This creates vocabulary cards.
   renderVocabulary(mainLesson);
 
@@ -373,6 +502,9 @@ function renderLesson() {
 
   // Update the Home lesson card.
   renderHomeLesson();
+
+  // Update the lesson study flow.
+  renderStudyFlow();
 }
 
 // Change API data to front data.
@@ -918,6 +1050,9 @@ async function finishCurrentLesson() {
     // Load new dashboard data.
     await loadDashboard();
 
+    // Show Next lesson after saving completion.
+    renderStudyFlow();
+
     // Stop the lesson timer.
     lessonStartedAt = null;
 
@@ -976,6 +1111,9 @@ async function loadNextLesson() {
 
     // Save the next lesson in the front.
     currentLesson = mapLessonFromApi(lessonData);
+
+    // Start the new lesson at the Text step.
+    currentStudyStepIndex = 0;
 
     // Start a new study timer.
     lessonStartedAt = Date.now();
@@ -1123,7 +1261,13 @@ navButtons.forEach(function (button) {
 // This adds study tab clicks.
 studyButtons.forEach(function (button) {
   button.addEventListener("click", function () {
-    showStudyArea(button.dataset.study);
+    // Find the clicked step position.
+    const stepIndex = studySteps.findIndex(function (step) {
+      return step.name === button.dataset.study;
+    });
+
+    // Show the clicked study step.
+    showStudyStep(stepIndex);
   });
 });
 
@@ -1188,6 +1332,18 @@ finishLessonButton.addEventListener("click", finishCurrentLesson);
 
 // Add next lesson action.
 nextLessonButton.addEventListener("click", loadNextLesson);
+
+// Return to the previous study step.
+previousStepButton.addEventListener("click", function () {
+  // Open the step before the current one.
+  showStudyStep(currentStudyStepIndex - 1);
+});
+
+// Continue to the next study step.
+continueStepButton.addEventListener("click", function () {
+  // Open the step after the current one.
+  showStudyStep(currentStudyStepIndex + 1);
+});
 
 // Open Study from the Home card.
 continueButton.addEventListener("click", function () {

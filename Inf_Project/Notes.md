@@ -772,3 +772,15 @@ Select-String `
 tornar o estudo guiado dentro da lição:
 Text → Listening → Grammar → Vocabulary → Speak & Write → Finish lesson
 ________________________________
+
+new process
+
+Text:             Step 1 of 5
+Continue →        Listening: Step 2 of 5
+Previous step →   Text
+Continue →        Grammar
+Continue →        Vocabulary
+Continue →        Speak & Write: Step 5 of 5
+Finish lesson →   Next lesson aparece
+
+________________________________
