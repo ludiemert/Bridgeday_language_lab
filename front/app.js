@@ -42,6 +42,9 @@ const wordCount = document.getElementById("word-count");
 // This gets audio buttons.
 const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 
+// Store the button that is speaking now.
+let activeAudioButton = null;
+
 // This finds the typing text area.
 const typingText = document.getElementById("typing-text");
 
@@ -1033,21 +1036,74 @@ async function loadLesson() {
   }
 }
 
-// This speaks a text.
+// Reset every audio button to its first state.
+function resetAudioButtons() {
+  // Check every audio button.
+  audioButtons.forEach(function (audioButton) {
+    // Show the first button label.
+    audioButton.textContent = "Listen";
+
+    // Remove the playing style.
+    audioButton.classList.remove("audio-playing");
+  });
+
+  // Clear the active button.
+  activeAudioButton = null;
+}
+
+// Speak text or stop the current speech.
 function speakText(button, text) {
-  // This stops old audio.
+  // Stop when this same button is already speaking.
+  if (activeAudioButton === button) {
+    // Stop browser speech now.
+    window.speechSynthesis.cancel();
+
+    // Reset all audio buttons.
+    resetAudioButtons();
+    return;
+  }
+
+  // Stop old speech from another language card.
   window.speechSynthesis.cancel();
 
-  // This creates new audio.
+  // Reset old button styles.
+  resetAudioButtons();
+
+  // Create new browser speech.
   const speech = new SpeechSynthesisUtterance(text);
 
-  // This sets the voice language.
+  // Set the voice language.
   speech.lang = button.dataset.language;
 
-  // This makes the voice slower.
+  // Make the voice slower for learning.
   speech.rate = 0.85;
 
-  // This plays the audio.
+  // Save the active button.
+  activeAudioButton = button;
+
+  // Show the stop action.
+  button.textContent = "Stop";
+
+  // Add the playing style.
+  button.classList.add("audio-playing");
+
+  // Reset after the speech ends.
+  speech.onend = function () {
+    // Reset only when this is still the active speech.
+    if (activeAudioButton === button) {
+      resetAudioButtons();
+    }
+  };
+
+  // Reset after a browser speech error.
+  speech.onerror = function () {
+    // Reset only when this is still the active speech.
+    if (activeAudioButton === button) {
+      resetAudioButtons();
+    }
+  };
+
+  // Start browser speech.
   window.speechSynthesis.speak(speech);
 }
 

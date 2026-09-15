@@ -820,6 +820,13 @@ h3 {
   font-weight: 800;
 }
 
+/* This styles an audio button while speech is playing. */
+.soft-button.audio-playing {
+  background: #fff1f0;
+  border-color: #f2b8b4;
+  color: var(--red);
+}
+
 /* This styles the main green button. */
 .main-button {
   background: var(--lime);
