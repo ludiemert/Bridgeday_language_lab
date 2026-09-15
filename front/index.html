@@ -372,11 +372,16 @@
         <div class="lesson-progress">
           <div class="progress-text">
             <span>Lesson progress</span>
-            <span>Step 1 of 4</span>
+            <!-- This shows the current study step. -->
+            <span id="study-step-label">Step 1 of 5</span>
           </div>
 
           <div class="progress-track">
-            <div class="progress-value"></div>
+            <!-- This shows the current study progress. -->
+            <div
+              class="progress-value"
+              id="study-progress-value"
+            ></div>
           </div>
         </div>
 
@@ -443,7 +448,20 @@
       <section class="study-content listening-content" hidden>
         <p class="small-title">LISTENING</p>
         <h3>Listen and understand</h3>
-        <p class="page-help">Listen to the sentence and repeat it.</p>
+
+        <!-- This text changes for each lesson. -->
+        <p class="page-help">
+          Listen to the sentence and repeat it.
+        </p>
+
+        <!-- This plays or stops the current lesson audio. -->
+        <button
+          class="soft-button"
+          id="listening-audio-button"
+          type="button"
+        >
+          Listen
+        </button>
       </section>
 
       <!-- This is the grammar area. -->
@@ -489,21 +507,43 @@
         </button>
       </section>
 
-      <!-- These are the lesson actions. -->
+      <!-- These control the lesson study flow. -->
       <footer class="lesson-actions">
+        <!-- This returns to the previous study step. -->
+        <button
+          class="next-button"
+          id="previous-step-button"
+          type="button"
+          hidden
+        >
+          ← Previous step
+        </button>
+
+        <!-- This opens the next study step. -->
+        <button
+          class="main-button"
+          id="continue-step-button"
+          type="button"
+        >
+          Continue to Listening →
+        </button>
+
+        <!-- This saves a lesson after every step is complete. -->
         <button
           class="main-button"
           id="finish-lesson-button"
           type="button"
+          hidden
         >
           Finish lesson
         </button>
 
-        <!-- This opens the next available lesson. -->
+        <!-- This opens the next lesson after completion. -->
         <button
           class="next-button"
           id="next-lesson-button"
           type="button"
+          hidden
         >
           Next lesson →
         </button>
