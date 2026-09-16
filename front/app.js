@@ -42,6 +42,9 @@ const wordCount = document.getElementById("word-count");
 // This gets audio buttons.
 const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 
+// Get the Listening tab audio button.
+const listeningAudioButton = document.getElementById("listening-audio-button");
+
 // Store the button that is speaking now.
 let activeAudioButton = null;
 
@@ -1177,7 +1180,11 @@ async function loadLesson() {
 // Reset every audio button to its first state.
 function resetAudioButtons() {
   // Check every audio button.
-  audioButtons.forEach(function (audioButton) {
+  // Join text card buttons and Listening tab button.
+  const allAudioButtons = [...audioButtons, listeningAudioButton];
+
+  // Check every audio button.
+  allAudioButtons.forEach(function (audioButton) {
     // Show the first button label.
     audioButton.textContent = "Listen";
 
