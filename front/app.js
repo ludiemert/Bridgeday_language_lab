@@ -78,9 +78,6 @@ const continueStepButton = document.getElementById("continue-step-button");
 const studyStepLabel = document.getElementById("study-step-label");
 const studyProgressValue = document.getElementById("study-progress-value");
 
-// Find the listening audio button.
-const listeningAudioButton = document.getElementById("listening-audio-button");
-
 // Find account elements.
 const authCard = document.getElementById("auth-card");
 const accountStrip = document.getElementById("account-strip");
@@ -1314,6 +1311,12 @@ audioButtons.forEach(function (button, index) {
     // This speaks the chosen text.
     speakText(button, text);
   });
+});
+
+// Add audio action for the Listening tab.
+listeningAudioButton.addEventListener("click", function () {
+  // Speak the current main lesson text.
+  speakText(listeningAudioButton, primaryText.textContent.trim());
 });
 
 // This starts the typing effect.
