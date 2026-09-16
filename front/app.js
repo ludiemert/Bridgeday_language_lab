@@ -1262,15 +1262,15 @@ navButtons.forEach(function (button) {
   });
 });
 
-// This adds study tab clicks.
+// Open the correct step when a study tab is clicked.
 studyButtons.forEach(function (button) {
   button.addEventListener("click", function () {
-    // Find the clicked step position.
+    // Find the clicked tab inside the step list.
     const stepIndex = studySteps.findIndex(function (step) {
       return step.name === button.dataset.study;
     });
 
-    // Show the clicked study step.
+    // Show that study step and update the flow buttons.
     showStudyStep(stepIndex);
   });
 });
@@ -1325,8 +1325,8 @@ writeTypingText();
 // This opens Home first.
 showPage("home");
 
-// This opens Text first.
-showStudyArea("text");
+// Open the first guided study step.
+showStudyStep(0);
 
 // Add login form action.
 loginForm.addEventListener("submit", signInUser);
