@@ -1,6 +1,11 @@
 // This file controls the lesson audio.
 // It starts and stops browser speech for BridgeDay lessons.
 
+// Share the lesson audio controller with app.js.
+export function createLessonAudio(options) {
+  // Audio code stays here.
+}
+
 // Create the lesson audio controller.
 function createLessonAudio(options) {
   // Read the buttons received from app.js.

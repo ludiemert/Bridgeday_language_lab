@@ -1,6 +1,9 @@
 // This file runs the BridgeDay front page.
 // It loads lessons, login, and dashboard data.
 
+// Import lesson audio tools.
+import { createLessonAudio } from "./audio.js";
+
 // This finds all menu buttons.
 const navButtons = document.querySelectorAll(".nav-button");
 

@@ -822,3 +822,10 @@ front/
 - Test Listen and Stop before separating Study flow.
 
 ______________________________________________
+index.html
+   ↓ starts only one file
+js/app.js
+   ↓ imports what it needs
+audio.js, study.js, auth.js, api.js...
+
+_______________________________________
