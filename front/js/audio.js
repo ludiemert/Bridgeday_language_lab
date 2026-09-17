@@ -3,11 +3,6 @@
 
 // Share the lesson audio controller with app.js.
 export function createLessonAudio(options) {
-  // Audio code stays here.
-}
-
-// Create the lesson audio controller.
-function createLessonAudio(options) {
   // Read the buttons received from app.js.
   const textAudioButtons = options.textAudioButtons;
   const listeningAudioButton = options.listeningAudioButton;

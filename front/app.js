@@ -1,9 +1,6 @@
 // This file runs the BridgeDay front page.
 // It loads lessons, login, and dashboard data.
 
-// Import lesson audio tools.
-import { createLessonAudio } from "./audio.js";
-
 // This finds all menu buttons.
 const navButtons = document.querySelectorAll(".nav-button");
 
@@ -47,12 +44,6 @@ const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 
 // Get the Listening tab audio button.
 const listeningAudioButton = document.getElementById("listening-audio-button");
-
-// Create the lesson audio controller.
-const lessonAudio = createLessonAudio({
-  textAudioButtons: audioButtons,
-  listeningAudioButton,
-});
 
 // Store the button that is speaking now.
 let activeAudioButton = null;

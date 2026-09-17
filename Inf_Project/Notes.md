@@ -829,3 +829,11 @@ js/app.js
 audio.js, study.js, auth.js, api.js...
 
 _______________________________________
+type="module" informa ao navegador:
+“Este arquivo JavaScript usa import e export.”
+
+Ele permite que um arquivo JavaScript use outro arquivo JavaScript de forma organizada.
+_________________________
+export significa: “esta função pode ser usada por outro arquivo”.
+import significa: “quero usar a função que outro arquivo disponibilizou”.
+_________________________________
