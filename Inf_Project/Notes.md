@@ -784,3 +784,19 @@ Continue →        Speak & Write: Step 5 of 5
 Finish lesson →   Next lesson aparece
 
 ________________________________
+estrutura do projeto
+front/
+├── index.html
+├── styles.css
+└── js/
+    ├── config.js       # API URLs and fixed settings.
+    ├── state.js        # Current user, lesson, dashboard, step.
+    ├── api.js          # Login, dashboard, lessons API requests.
+    ├── audio.js        # Listen / Stop browser speech.
+    ├── navigation.js   # Home, Study, Review, Progress navigation.
+    ├── study.js        # Text, Listening, Grammar, Vocabulary, Writing flow.
+    ├── dashboard.js    # Home and Progress cards.
+    ├── auth.js         # Sign in, sign out, session timer.
+    └── app.js          # Starts the application only.
+
+    ___________________________________________
