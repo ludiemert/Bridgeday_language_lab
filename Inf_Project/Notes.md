@@ -800,3 +800,25 @@ front/
     └── app.js          # Starts the application only.
 
     ___________________________________________
+
+    # Prototype stabilization
+
+## Done
+
+- FastAPI backend is working.
+- Login is working.
+- Dashboard is working.
+- Next lesson is working.
+- Text lesson audio is working.
+
+## In test
+
+- Guided lesson flow: Text, Listening, Grammar, Vocabulary, Speak & Write.
+- Listening audio controls.
+
+## Next
+
+- Separate front audio code into front/js/audio.js.
+- Test Listen and Stop before separating Study flow.
+
+______________________________________________
