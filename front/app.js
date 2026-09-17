@@ -45,6 +45,12 @@ const audioButtons = document.querySelectorAll(".soft-button[data-language]");
 // Get the Listening tab audio button.
 const listeningAudioButton = document.getElementById("listening-audio-button");
 
+// Create the lesson audio controller.
+const lessonAudio = createLessonAudio({
+  textAudioButtons: audioButtons,
+  listeningAudioButton,
+});
+
 // Store the button that is speaking now.
 let activeAudioButton = null;
 
