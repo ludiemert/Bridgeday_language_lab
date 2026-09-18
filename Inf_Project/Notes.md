@@ -837,3 +837,10 @@ _________________________
 export significa: “esta função pode ser usada por outro arquivo”.
 import significa: “quero usar a função que outro arquivo disponibilizou”.
 _________________________________
+O fluxo guiado está estável:
+- Listening → Previous step + Continue to Grammar
+- Grammar → Continue to Vocabulary
+- Vocabulary → palavras reais da API + Continue to Speak & Write
+- Speak & Write → Previous step + Finish lesson
+- A aba ativa fica destacada corretamente.
+______________________________________________
