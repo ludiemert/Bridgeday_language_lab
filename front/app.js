@@ -764,6 +764,8 @@ async function loadDashboard() {
     currentDashboard = null;
     renderDashboard();
     updateFinishButton();
+    // Update the guided study flow with saved progress.
+    renderStudyFlow();
     return;
   }
 
@@ -786,11 +788,16 @@ async function loadDashboard() {
     // Update the page.
     renderDashboard();
     updateFinishButton();
+
+    // Update the guided study flow with saved progress.
+    renderStudyFlow();
   } catch (error) {
     // Show empty data when the API has an error.
     currentDashboard = null;
     renderDashboard();
     updateFinishButton();
+    // Update the guided study flow with saved progress.
+    renderStudyFlow();
 
     // Show the error for development.
     console.error(error);
@@ -1123,6 +1130,8 @@ async function loadNextLesson() {
 
     // Update the Finish lesson button.
     updateFinishButton();
+    // Update the guided study flow with saved progress.
+    renderStudyFlow();
 
     // Keep the user on the Study page.
     showPage("study");
@@ -1165,6 +1174,8 @@ async function loadLesson() {
     renderLesson();
     // Update the button after lesson loading.
     updateFinishButton();
+    // Update the guided study flow with saved progress.
+    renderStudyFlow();
   } catch (error) {
     // Show a safe error message.
     lessonTitle.textContent = "Lesson data was not found.";
