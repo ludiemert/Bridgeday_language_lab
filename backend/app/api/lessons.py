@@ -133,15 +133,20 @@ def list_lessons(
     ]
 
 
+# Read the next incomplete lesson for one optional language track.
 @router.get(
     "/next",
     response_model=LessonDetailResponse,
 )
+# Send the next lesson to the signed in user.
 def read_next_lesson(
+    # Optionally choose the real lesson language.
     language_code: str | None = None,
+    # Read the login token from the request.
     credentials: HTTPAuthorizationCredentials | None = Depends(
         bearer_scheme,
     ),
+    # Open the database session.
     database: Session = Depends(get_db),
 ) -> LessonDetailResponse:
     # Stop when the user is not signed in.
@@ -154,7 +159,7 @@ def read_next_lesson(
     # Read the user ID from the login token.
     user_id = read_access_token(credentials.credentials)
 
-    # Stop when the token is invalid.
+    # Stop when the login token is invalid.
     if user_id is None:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -162,44 +167,51 @@ def read_next_lesson(
         )
 
     # Find lesson IDs already completed by this user.
-    completed_lesson_ids = select(LessonProgress.lesson_id).where(
+    completed_lesson_ids = select(
+        LessonProgress.lesson_id,
+    ).where(
         LessonProgress.user_id == user_id,
         LessonProgress.status == "completed",
     )
 
-    # Start the next lesson search.
+    # Start the search for published incomplete lessons.
     lesson_query = (
         select(Lesson)
         .options(
+            # Load translated lesson text.
             selectinload(Lesson.translations),
+            # Load lesson vocabulary.
             selectinload(Lesson.vocabulary_items),
+            # Load lesson exercises.
             selectinload(Lesson.exercises),
         )
         .where(
+            # Use published lessons only.
             Lesson.status == "published",
+            # Ignore lessons already completed by this user.
             Lesson.id.not_in(completed_lesson_ids),
         )
     )
 
-    # Filter the next lesson by its real base language.
+    # Filter by the real base language when requested.
     if language_code:
         lesson_query = lesson_query.where(
             Lesson.language_code == language_code,
         )
 
-    # Read the first incomplete published lesson.
+    # Read the first available lesson in database order.
     lesson = database.scalars(
         lesson_query.order_by(Lesson.id),
     ).first()
 
-    # Stop when every lesson in this language is complete.
+    # Stop when this language has no incomplete lesson.
     if not lesson:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail="No new lesson is available for this language.",
         )
 
-    # Send the next full lesson.
+    # Send the full lesson data to the front.
     return build_lesson_detail(lesson)
 
 
