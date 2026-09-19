@@ -69,6 +69,7 @@ def calculate_streak(
     response_model=DashboardResponse,
 )
 def read_dashboard(
+    language_code: str | None = None,
     credentials: HTTPAuthorizationCredentials | None = Depends(
         bearer_scheme,
     ),
@@ -91,8 +92,8 @@ def read_dashboard(
             detail="Invalid token.",
         )
 
-    # Find completed lessons for this user.
-    progress_rows = database.execute(
+    # Start the completed lesson search.
+    progress_query = (
         select(
             LessonProgress,
             Lesson.lesson_code,
@@ -104,7 +105,18 @@ def read_dashboard(
         .where(
             LessonProgress.user_id == user_id,
             LessonProgress.status == "completed",
-        ),
+        )
+    )
+
+    # Filter dashboard progress by the real lesson language.
+    if language_code:
+        progress_query = progress_query.where(
+            Lesson.language_code == language_code,
+        )
+
+    # Read completed lessons for this user and language.
+    progress_rows = database.execute(
+        progress_query,
     ).all()
 
     # Set the current UTC time.

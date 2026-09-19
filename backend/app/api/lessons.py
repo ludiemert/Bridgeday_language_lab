@@ -138,6 +138,7 @@ def list_lessons(
     response_model=LessonDetailResponse,
 )
 def read_next_lesson(
+    language_code: str | None = None,
     credentials: HTTPAuthorizationCredentials | None = Depends(
         bearer_scheme,
     ),
@@ -166,8 +167,8 @@ def read_next_lesson(
         LessonProgress.status == "completed",
     )
 
-    # Find the first published lesson not yet completed.
-    lesson = database.scalars(
+    # Start the next lesson search.
+    lesson_query = (
         select(Lesson)
         .options(
             selectinload(Lesson.translations),
@@ -178,14 +179,24 @@ def read_next_lesson(
             Lesson.status == "published",
             Lesson.id.not_in(completed_lesson_ids),
         )
-        .order_by(Lesson.id),
+    )
+
+    # Filter the next lesson by its real base language.
+    if language_code:
+        lesson_query = lesson_query.where(
+            Lesson.language_code == language_code,
+        )
+
+    # Read the first incomplete published lesson.
+    lesson = database.scalars(
+        lesson_query.order_by(Lesson.id),
     ).first()
 
-    # Stop when every lesson is complete.
+    # Stop when every lesson in this language is complete.
     if not lesson:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="No new lesson is available.",
+            detail="No new lesson is available for this language.",
         )
 
     # Send the next full lesson.

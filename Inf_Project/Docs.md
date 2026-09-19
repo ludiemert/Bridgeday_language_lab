@@ -1,3 +1,11 @@
+# Start the API server.
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+
+- http://127.0.0.1:8000/api/health
+- http://127.0.0.1:8000/docs
+
+
+
 O /docs é o Swagger UI gerado automaticamente pelo FastAPI. Ele não é banco de dados e não substitui o Beekeeper. Ele é uma página profissional para:
 - ver todas as rotas disponíveis;
 - entender que dados cada rota recebe e devolve;
