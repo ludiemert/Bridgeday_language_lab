@@ -604,12 +604,8 @@ function renderGreeting() {
     greetingTitle.textContent = "Good evening 🌙";
   }
 
-  // Read the selected language.
-  const languageName = languageSettings[selectedLanguage].label;
-
-  // Show the study question.
-  greetingQuestion.textContent =
-    "Ready for your next " + languageName + " lesson?";
+  // Current content is an English lesson with translations.
+  greetingQuestion.textContent = "Ready for your next English lesson?";
 }
 
 // Show the main learning card.
@@ -619,8 +615,8 @@ function renderHomeLesson() {
     return;
   }
 
-  // Read selected language data.
-  const settings = languageSettings[selectedLanguage];
+  // Current imported lessons are English lessons.
+  const lessonSettings = languageSettings.english;
 
   // Check if the lesson is complete.
   const isCompleted =
@@ -628,19 +624,20 @@ function renderHomeLesson() {
       currentLesson.lessonCode,
     ) || false;
 
-  // Show the correct lesson title.
+  // Show the real lesson language.
   homeLessonTitle.textContent = isCompleted
-    ? "Review your " + settings.label + " lesson"
-    : "Your next " + settings.label + " lesson";
+    ? "Review your English lesson"
+    : "Your next English lesson";
 
   // Show the correct lesson message.
   homeLessonDescription.textContent = isCompleted
-    ? "Review the lesson and keep your language active."
-    : "Keep your streak going with a short daily session.";
+    ? "Review the lesson and keep your English active."
+    : "Keep your English streak going with a short daily session.";
 
-  // Show lesson information.
-  homeLessonLanguage.textContent = "▣ " + settings.label;
-  homeLessonLevel.textContent = currentLesson[settings.levelName] || "A1";
+  // Show the real lesson information.
+  homeLessonLanguage.textContent = "▣ English";
+  homeLessonLevel.textContent =
+    currentLesson.englishLevel || lessonSettings.levelName;
 }
 
 // Show the weekly bars.
