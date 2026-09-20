@@ -849,3 +849,16 @@ seed_first_lesson.py → referência histórica da primeira lição;
 translate_lessons.py → tradução automática, ainda precisa revisão;
 import_lessons.py → importador profissional para lotes revisados.
 ____________________________________________________
+
+3. salve e execute, na pasta principal do projeto:
+.\.venv\Scripts\python.exe scripts\add_german_a1_batch.py
+Resultado esperado:
+Added German A1 lessons: 6
+Backup created: ...lessons-reviewed.before-german-a1.json
+4. Agora importe o lote inteiro para o banco:
+.\.venv\Scripts\python.exe scripts\import_lessons.py
+Resultado esperado:
+Created lessons: 6
+Skipped lessons: 6
+
+_______________________________________
