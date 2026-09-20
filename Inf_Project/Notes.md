@@ -844,3 +844,8 @@ O fluxo guiado está estável:
 - Speak & Write → Previous step + Finish lesson
 - A aba ativa fica destacada corretamente.
 ______________________________________________
+PARTE DE SCRIPTS DAS LICOES
+seed_first_lesson.py → referência histórica da primeira lição;
+translate_lessons.py → tradução automática, ainda precisa revisão;
+import_lessons.py → importador profissional para lotes revisados.
+____________________________________________________
