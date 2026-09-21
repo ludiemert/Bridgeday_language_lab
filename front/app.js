@@ -628,29 +628,33 @@ function renderHomeLesson() {
     return;
   }
 
-  // Current imported lessons are English lessons.
-  const lessonSettings = languageSettings.english;
+  // Read settings for the selected learning track.
+  const lessonSettings = languageSettings[selectedLanguage];
 
-  // Check if the lesson is complete.
+  // Read the selected language label.
+  const languageLabel = lessonSettings.label;
+
+  // Check if this lesson is complete in this language track.
   const isCompleted =
     currentDashboard?.completed_lesson_codes.includes(
       currentLesson.lessonCode,
     ) || false;
 
-  // Show the real lesson language.
+  // Show the selected real lesson language.
   homeLessonTitle.textContent = isCompleted
-    ? "Review your English lesson"
-    : "Your next English lesson";
+    ? "Review your " + languageLabel + " lesson"
+    : "Your next " + languageLabel + " lesson";
 
-  // Show the correct lesson message.
+  // Show the selected real lesson message.
   homeLessonDescription.textContent = isCompleted
-    ? "Review the lesson and keep your English active."
-    : "Keep your English streak going with a short daily session.";
+    ? "Review the lesson and keep your " + languageLabel + " active."
+    : "Keep your " +
+      languageLabel +
+      " streak going with a short daily session.";
 
-  // Show the real lesson information.
-  homeLessonLanguage.textContent = "▣ English";
-  homeLessonLevel.textContent =
-    currentLesson.englishLevel || lessonSettings.levelName;
+  // Show the selected track information.
+  homeLessonLanguage.textContent = "▣ " + languageLabel;
+  homeLessonLevel.textContent = currentLesson[lessonSettings.levelName] || "";
 }
 
 // Show the weekly bars.
@@ -780,8 +784,15 @@ async function loadDashboard() {
   }
 
   try {
-    // Ask the API for saved progress.
-    const response = await fetch(DASHBOARD_API_URL, {
+    // Read the selected track code for the dashboard.
+    const languageCode = getSelectedLanguageCode();
+
+    // Create the filtered dashboard address.
+    const dashboardUrl =
+      DASHBOARD_API_URL + "?language_code=" + encodeURIComponent(languageCode);
+
+    // Ask the API for saved progress in this track.
+    const response = await fetch(dashboardUrl, {
       headers: {
         Authorization: "Bearer " + accessToken,
       },
