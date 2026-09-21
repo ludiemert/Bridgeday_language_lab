@@ -1316,21 +1316,88 @@ studyButtons.forEach(function (button) {
   });
 });
 
-// This adds language clicks.
+// Load the first incomplete lesson from the selected track.
+async function loadSelectedTrackLesson() {
+  // Stop when the user is signed out.
+  if (!accessToken || !currentUser) {
+    // Keep the public English preview available.
+    renderLesson();
+    return;
+  }
+
+  try {
+    // Read the selected track code.
+    const languageCode = getSelectedLanguageCode();
+
+    // Create the filtered next lesson address.
+    const nextLessonUrl =
+      NEXT_LESSON_API_URL +
+      "?language_code=" +
+      encodeURIComponent(languageCode);
+
+    // Ask the API for the selected track lesson.
+    const response = await fetch(nextLessonUrl, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    });
+
+    // Read the API response.
+    const lessonData = await response.json();
+
+    // Explain when this track has no unfinished lesson.
+    if (response.status === 404) {
+      alert("You completed every available " + languageCode + " lesson.");
+      return;
+    }
+
+    // Stop when another API error happens.
+    if (!response.ok) {
+      throw new Error(lessonData.detail || "Lesson was not found.");
+    }
+
+    // Save the selected real lesson.
+    currentLesson = mapLessonFromApi(lessonData);
+
+    // Return the new lesson to its first step.
+    currentStudyStepIndex = 0;
+
+    // Reset the lesson study timer.
+    lessonStartedAt = Date.now();
+
+    // Render the selected lesson.
+    renderLesson();
+
+    // Update completion controls.
+    updateFinishButton();
+    renderStudyFlow();
+  } catch (error) {
+    // Show the error for development.
+    console.error(error);
+
+    // Show a safe message for the learner.
+    alert(error.message);
+  }
+}
+
+// Add real learning track clicks.
 languageButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    // This saves the selected language.
+  button.addEventListener("click", async function () {
+    // Save the selected learning track.
     selectedLanguage = button.dataset.language;
 
-    // This updates language buttons.
+    // Update the active button style.
     languageButtons.forEach(function (languageButton) {
       const isSelected = languageButton === button;
 
       languageButton.classList.toggle("active-language", isSelected);
     });
 
-    // This shows the new language lesson.
-    renderLesson();
+    // Load progress only for the selected track.
+    await loadDashboard();
+
+    // Load the real lesson for the selected track.
+    await loadSelectedTrackLesson();
   });
 });
 
