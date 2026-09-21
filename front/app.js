@@ -613,8 +613,12 @@ function renderGreeting() {
     greetingTitle.textContent = "Good evening 🌙";
   }
 
-  // Current content is an English lesson with translations.
-  greetingQuestion.textContent = "Ready for your next English lesson?";
+  // Read settings for the selected learning track.
+  const selectedSettings = languageSettings[selectedLanguage];
+
+  // Show the real selected learning track.
+  greetingQuestion.textContent =
+    "Ready for your next " + selectedSettings.label + " lesson?";
 }
 
 // Show the main learning card.
