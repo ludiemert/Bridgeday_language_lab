@@ -161,6 +161,15 @@ const languageSettings = {
 // This starts with English.
 let selectedLanguage = "english";
 
+// Read the API language code for the selected learning track.
+function getSelectedLanguageCode() {
+  // Read settings for the selected track.
+  const selectedSettings = languageSettings[selectedLanguage];
+
+  // Send the API language code.
+  return selectedSettings.code;
+}
+
 // This stores the daily lesson.
 let currentLesson = null;
 
