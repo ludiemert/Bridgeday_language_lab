@@ -1110,8 +1110,17 @@ async function loadNextLesson() {
     // Disable the button during the API request.
     nextLessonButton.disabled = true;
 
-    // Ask the API for the next incomplete lesson.
-    const response = await fetch(NEXT_LESSON_API_URL, {
+    // Read the selected track code.
+    const languageCode = getSelectedLanguageCode();
+
+    // Create the filtered next lesson address.
+    const nextLessonUrl =
+      NEXT_LESSON_API_URL +
+      "?language_code=" +
+      encodeURIComponent(languageCode);
+
+    // Ask the API for the next incomplete lesson in this track.
+    const response = await fetch(nextLessonUrl, {
       headers: {
         Authorization: "Bearer " + accessToken,
       },
