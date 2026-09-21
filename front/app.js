@@ -995,8 +995,11 @@ async function signInUser(event) {
 
     // Update the login area.
     updateAuthArea();
-    // Load saved dashboard data.
+    // Load saved progress for the selected track.
     await loadDashboard();
+
+    // Load the real next lesson for the selected track.
+    await loadSelectedTrackLesson();
   } catch (error) {
     // Show a safe login error.
     authStatus.textContent = error.message;
