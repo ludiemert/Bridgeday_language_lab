@@ -492,12 +492,16 @@
       <!-- This is the writing area. -->
       <section class="practice-section study-content speaking-content" hidden>
         <p class="small-title">YOUR PRACTICE</p>
-        <h3>My daily sentence</h3>
 
-        <label for="my-sentence">
+        <!-- This title changes for the selected learning track. -->
+        <h3 id="writing-title">My daily sentence</h3>
+
+        <!-- This instruction changes for the selected learning track. -->
+        <label id="writing-instruction" for="my-sentence">
           Write one sentence in English.
         </label>
 
+        <!-- This placeholder changes for the selected learning track. -->
         <textarea
           id="my-sentence"
           placeholder="I study English every day."
