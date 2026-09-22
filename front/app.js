@@ -51,6 +51,11 @@ let activeAudioButton = null;
 // This finds the typing text area.
 const typingText = document.getElementById("typing-text");
 
+// Find writing practice elements.
+const writingTitle = document.getElementById("writing-title");
+const writingInstruction = document.getElementById("writing-instruction");
+const writingSentence = document.getElementById("my-sentence");
+
 // Find the login form.
 const loginForm = document.getElementById("login-form");
 
