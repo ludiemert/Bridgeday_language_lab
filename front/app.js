@@ -153,6 +153,9 @@ const languageSettings = {
     comparisonLabel: "Deutsch",
     locale: "en-GB",
     levelName: "englishLevel",
+    writingTitle: "My daily sentence",
+    writingInstruction: "Write one sentence in English.",
+    writingPlaceholder: "I study English every day.",
   },
   german: {
     code: "de",
@@ -160,6 +163,9 @@ const languageSettings = {
     comparisonLabel: "English",
     locale: "de-DE",
     levelName: "germanLevel",
+    writingTitle: "Mein Satz für heute",
+    writingInstruction: "Schreibe einen Satz auf Deutsch.",
+    writingPlaceholder: "Ich lerne jeden Tag Deutsch.",
   },
 };
 
