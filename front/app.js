@@ -527,6 +527,9 @@ function renderLesson() {
   // This creates vocabulary cards.
   renderVocabulary(mainLesson);
 
+  // Update writing practice for the selected track.
+  renderWritingPractice();
+
   // This shows grammar text.
   const grammarText = document.querySelector(".grammar-content .page-help");
 
