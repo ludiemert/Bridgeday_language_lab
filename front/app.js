@@ -442,6 +442,24 @@ function renderVocabulary(languageLesson) {
   });
 }
 
+// Show writing practice for the selected learning track.
+function renderWritingPractice() {
+  // Read settings for the selected track.
+  const selectedSettings = languageSettings[selectedLanguage];
+
+  // Show the correct practice title.
+  writingTitle.textContent = selectedSettings.writingTitle;
+
+  // Show the correct practice instruction.
+  writingInstruction.textContent = selectedSettings.writingInstruction;
+
+  // Show a helpful sentence example.
+  writingSentence.placeholder = selectedSettings.writingPlaceholder;
+
+  // Clear a sentence from the previous language track.
+  writingSentence.value = "";
+}
+
 // This shows the current lesson.
 function renderLesson() {
   // This stops when the lesson is missing.
