@@ -862,3 +862,25 @@ Created lessons: 6
 Skipped lessons: 6
 
 _______________________________________
+
+A rota fará duas ações reais:
+POST /api/writing
+GET  /api/writing/{lesson_code}
+- POST salva ou atualiza a frase do usuário.
+- GET devolve a frase salva quando a lição for aberta novamente.
+_______________________________
+
+preciso confirmar somente uma coisa importante: como o banco criou a tabela writing_entries.
+No terminal, na pasta principal do projeto, execute:
+Get-ChildItem .\backend\migrations\
+__________________________________
+Agora precisamos ver os arquivos que realmente criam ou alteram tabelas — eles ficam dentro de versions.
+Execute:
+Get-ChildItem .\backend\migrations\versions\
+___________________________________
+Agora temos a migration certa para verificar:
+3b775a3d3c07_create_study_progress_tables.py
+Execute este comando e cole o conteúdo:
+Get-Content -Raw .\backend\migrations\versions\3b775a3d3c07_create_study_progress_tables.py
+
+____________________________
