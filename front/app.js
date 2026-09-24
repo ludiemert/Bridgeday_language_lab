@@ -56,6 +56,9 @@ const writingTitle = document.getElementById("writing-title");
 const writingInstruction = document.getElementById("writing-instruction");
 const writingSentence = document.getElementById("my-sentence");
 
+// Find the writing save button.
+const saveSentenceButton = document.getElementById("save-sentence-button");
+
 // Find the login form.
 const loginForm = document.getElementById("login-form");
 
