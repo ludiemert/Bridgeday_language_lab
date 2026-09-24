@@ -159,6 +159,8 @@ const languageSettings = {
     writingTitle: "My daily sentence",
     writingInstruction: "Write one sentence in English.",
     writingPlaceholder: "I study English every day.",
+    saveLabel: "Save my sentence",
+    savedLabel: "Sentence saved ✓",
   },
   german: {
     code: "de",
@@ -169,6 +171,8 @@ const languageSettings = {
     writingTitle: "Mein Satz für heute",
     writingInstruction: "Schreibe einen Satz auf Deutsch.",
     writingPlaceholder: "Ich lerne jeden Tag Deutsch.",
+    saveLabel: "Satz speichern",
+    savedLabel: "Satz gespeichert ✓",
   },
 };
 
