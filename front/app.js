@@ -465,6 +465,12 @@ function renderWritingPractice() {
 
   // Clear a sentence from the previous language track.
   writingSentence.value = "";
+
+  // Restore the normal save button label.
+  saveSentenceButton.textContent = selectedSettings.saveLabel;
+
+  // Enable the save button for the new lesson.
+  saveSentenceButton.disabled = false;
 }
 
 // This shows the current lesson.
