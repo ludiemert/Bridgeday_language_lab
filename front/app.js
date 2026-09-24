@@ -473,6 +473,123 @@ function renderWritingPractice() {
   saveSentenceButton.disabled = false;
 }
 
+// Load a previously saved learner sentence.
+async function loadSavedWriting() {
+  // Stop when the learner is signed out.
+  if (!accessToken || !currentUser || !currentLesson?.lessonCode) {
+    return;
+  }
+
+  // Save the current lesson code during the request.
+  const lessonCode = currentLesson.lessonCode;
+
+  try {
+    // Ask the API for saved writing from this lesson.
+    const response = await fetch(
+      API_BASE_URL + "/api/writing/" + encodeURIComponent(lessonCode),
+      {
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      },
+    );
+
+    // A missing sentence is normal for a new lesson.
+    if (response.status === 404) {
+      return;
+    }
+
+    // Read the API response.
+    const data = await response.json();
+
+    // Stop when another API error happens.
+    if (!response.ok) {
+      throw new Error(data.detail || "Saved writing was not found.");
+    }
+
+    // Stop when the learner opened another lesson first.
+    if (currentLesson?.lessonCode !== lessonCode) {
+      return;
+    }
+
+    // Show the saved learner sentence.
+    writingSentence.value = data.text;
+
+    // Show that this sentence was saved.
+    saveSentenceButton.textContent =
+      languageSettings[selectedLanguage].savedLabel;
+  } catch (error) {
+    // Show the error only for development.
+    console.error(error);
+  }
+}
+
+// Save the current learner sentence.
+async function saveCurrentWriting() {
+  // Stop when the learner is signed out.
+  if (!accessToken || !currentUser) {
+    alert("Please sign in before saving your sentence.");
+    return;
+  }
+
+  // Stop when lesson data is missing.
+  if (!currentLesson?.lessonCode) {
+    return;
+  }
+
+  // Remove extra spaces from the learner sentence.
+  const cleanText = writingSentence.value.trim();
+
+  // Ask for a real sentence.
+  if (!cleanText) {
+    alert("Write a sentence before saving.");
+    writingSentence.focus();
+    return;
+  }
+
+  // Disable repeated clicks while saving.
+  saveSentenceButton.disabled = true;
+
+  try {
+    // Send the learner sentence to the API.
+    const response = await fetch(API_BASE_URL + "/api/writing", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + accessToken,
+      },
+      body: JSON.stringify({
+        lesson_code: currentLesson.lessonCode,
+        text: cleanText,
+      }),
+    });
+
+    // Read the API response.
+    const data = await response.json();
+
+    // Stop when the API reports an error.
+    if (!response.ok) {
+      throw new Error(data.detail || "Sentence was not saved.");
+    }
+
+    // Show the clean saved sentence.
+    writingSentence.value = data.text;
+
+    // Confirm the save action.
+    saveSentenceButton.textContent =
+      languageSettings[selectedLanguage].savedLabel;
+  } catch (error) {
+    // Show a safe error for the learner.
+    alert(error.message);
+
+    // Show details for development.
+    console.error(error);
+  } finally {
+    // Allow another save.
+    saveSentenceButton.disabled = false;
+  }
+}
+
 // This shows the current lesson.
 function renderLesson() {
   // This stops when the lesson is missing.
