@@ -660,6 +660,9 @@ function renderLesson() {
   // Update writing practice for the selected track.
   renderWritingPractice();
 
+  // Load any sentence saved for this lesson.
+  loadSavedWriting();
+
   // This shows grammar text.
   const grammarText = document.querySelector(".grammar-content .page-help");
 
