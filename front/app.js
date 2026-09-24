@@ -1619,6 +1619,18 @@ finishLessonButton.addEventListener("click", finishCurrentLesson);
 // Add next lesson action.
 nextLessonButton.addEventListener("click", loadNextLesson);
 
+// Save the learner sentence.
+saveSentenceButton.addEventListener("click", saveCurrentWriting);
+
+// Restore the normal label when the learner changes the sentence.
+writingSentence.addEventListener("input", function () {
+  // Read settings for the selected track.
+  const selectedSettings = languageSettings[selectedLanguage];
+
+  // Show the normal save action.
+  saveSentenceButton.textContent = selectedSettings.saveLabel;
+});
+
 // Return to the previous study step.
 previousStepButton.addEventListener("click", function () {
   // Open the step before the current one.
