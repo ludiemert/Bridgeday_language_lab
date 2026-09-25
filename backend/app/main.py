@@ -18,6 +18,9 @@ from .api.dashboard import router as dashboard_router
 # Import the writing routes.
 from .api.writing import router as writing_router
 
+# Import the review routes.
+from .api.review import router as review_router
+
 # Create the API app.
 app = FastAPI(
     title="BridgeDay API",
@@ -50,6 +53,9 @@ app.include_router(dashboard_router)
 
 # Add the writing routes.
 app.include_router(writing_router)
+
+# Add the review routes.
+app.include_router(review_router)
 
 
 # Check the API and database.
