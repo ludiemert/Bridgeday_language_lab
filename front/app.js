@@ -1326,6 +1326,9 @@ async function loadNextLesson() {
     // Show the new lesson.
     renderLesson();
 
+    // Show the first visible study step for the new lesson.
+    showStudyStep(0);
+
     // Update the Finish lesson button.
     updateFinishButton();
     // Update the guided study flow with saved progress.
@@ -1535,6 +1538,9 @@ async function loadSelectedTrackLesson() {
 
     // Render the selected lesson.
     renderLesson();
+
+    // Show the first visible study step for the selected lesson.
+    showStudyStep(0);
 
     // Update completion controls.
     updateFinishButton();
