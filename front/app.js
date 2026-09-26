@@ -1803,6 +1803,9 @@ languageButtons.forEach(function (button) {
     // Load progress only for the selected track.
     await loadDashboard();
 
+    // Load reviews only for the selected track.
+    await loadReviewQueue();
+
     // Load the real lesson for the selected track.
     await loadSelectedTrackLesson();
   });
