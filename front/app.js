@@ -1695,6 +1695,11 @@ navButtons.forEach(function (button) {
     // Show the selected page.
     showPage(button.dataset.page);
 
+    // Load real reviews when Review opens.
+    if (button.dataset.page === "review") {
+      loadReviewQueue();
+    }
+
     // Start the timer on the study page.
     if (button.dataset.page === "study") {
       startLessonTimer();
