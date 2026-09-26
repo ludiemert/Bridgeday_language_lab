@@ -107,6 +107,8 @@ const progressSummary = document.getElementById("progress-summary");
 const progressReview = document.getElementById("progress-review");
 const reviewTitle = document.getElementById("review-title");
 const reviewText = document.getElementById("review-text");
+// Find the review card list.
+const reviewList = document.getElementById("review-list");
 
 // Find Home dashboard elements.
 const greetingTitle = document.getElementById("greeting-title");
@@ -137,6 +139,9 @@ const DASHBOARD_API_URL = API_BASE_URL + "/api/dashboard";
 
 // Set the next lesson API address.
 const NEXT_LESSON_API_URL = API_BASE_URL + "/api/lessons/next";
+
+// Set the review queue API address.
+const REVIEW_API_URL = API_BASE_URL + "/api/reviews";
 
 // Read saved local login data.
 let accessToken = localStorage.getItem("bridgeday_access_token");
@@ -934,6 +939,229 @@ function renderDashboard() {
   renderGreeting();
   renderHomeLesson();
   renderWeekBars();
+}
+
+// Show review cards from the selected learning track.
+function renderReviewQueue(reviews) {
+  // Remove old review cards.
+  reviewList.innerHTML = "";
+
+  // Explain the review page without login.
+  if (!accessToken || !currentUser) {
+    reviewTitle.textContent = "Next review";
+    reviewText.textContent = "Sign in to see your review status.";
+    return;
+  }
+
+  // Explain when no completed lesson has a review date.
+  if (reviews.length === 0) {
+    reviewTitle.textContent = "No scheduled reviews";
+    reviewText.textContent =
+      "Finish a lesson to create your first review schedule.";
+    return;
+  }
+
+  // Count lessons ready to review now.
+  const dueReviews = reviews.filter(function (review) {
+    return review.is_due;
+  });
+
+  // Show the correct review summary.
+  reviewTitle.textContent =
+    dueReviews.length > 0 ? "Review ready" : "Upcoming reviews";
+
+  reviewText.textContent =
+    dueReviews.length > 0
+      ? dueReviews.length + " lesson(s) are ready now."
+      : "Your completed lessons will be ready on their review dates.";
+
+  // Create one card for every review lesson.
+  reviews.forEach(function (review) {
+    // Create one review card.
+    const reviewCard = document.createElement("article");
+    reviewCard.className = "empty-card";
+
+    // Create the lesson title.
+    const reviewName = document.createElement("h3");
+    reviewName.textContent = review.title;
+
+    // Create lesson information.
+    const reviewInfo = document.createElement("p");
+    reviewInfo.textContent =
+      review.language_code.toUpperCase() + " · " + review.level_code;
+
+    // Create review date information.
+    const reviewDate = document.createElement("p");
+
+    // Format the review date for the browser language.
+    const formattedDate = new Date(review.next_review_at).toLocaleDateString();
+
+    // Show due or upcoming status.
+    reviewDate.textContent = review.is_due
+      ? "Ready to review now."
+      : "Available on " + formattedDate + ".";
+
+    // Create a button to open the lesson.
+    const openButton = document.createElement("button");
+    openButton.className = "next-button";
+    openButton.type = "button";
+    openButton.textContent = "Open lesson →";
+
+    // Open this lesson in Study.
+    openButton.addEventListener("click", function () {
+      openReviewLesson(review.lesson_code);
+    });
+
+    // Put basic content inside the card.
+    reviewCard.append(reviewName, reviewInfo, reviewDate, openButton);
+
+    // Add a completion button only for due reviews.
+    if (review.is_due) {
+      // Create the review completion button.
+      const completeButton = document.createElement("button");
+      completeButton.className = "main-button";
+      completeButton.type = "button";
+      completeButton.textContent = "Complete review";
+
+      // Complete this due review.
+      completeButton.addEventListener("click", function () {
+        completeReview(review.lesson_code);
+      });
+
+      // Add the completion action to the card.
+      reviewCard.append(completeButton);
+    }
+
+    // Put this review card on the page.
+    reviewList.append(reviewCard);
+  });
+}
+
+// Load scheduled reviews for the selected learning track.
+async function loadReviewQueue() {
+  // Clear the review page without login.
+  if (!accessToken || !currentUser) {
+    renderReviewQueue([]);
+    return;
+  }
+
+  try {
+    // Read the selected real language track.
+    const languageCode = getSelectedLanguageCode();
+
+    // Create the filtered review address.
+    const reviewUrl =
+      REVIEW_API_URL + "?language_code=" + encodeURIComponent(languageCode);
+
+    // Ask the API for scheduled reviews.
+    const response = await fetch(reviewUrl, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    });
+
+    // Read the API response.
+    const data = await response.json();
+
+    // Stop when the API has an error.
+    if (!response.ok) {
+      throw new Error(data.detail || "Review data was not found.");
+    }
+
+    // Show the real review cards.
+    renderReviewQueue(data.reviews);
+  } catch (error) {
+    // Clear old cards after an API error.
+    reviewList.innerHTML = "";
+
+    // Show a safe message.
+    reviewTitle.textContent = "Review data was not found.";
+    reviewText.textContent = "Please try again after checking the API.";
+
+    // Show details for development.
+    console.error(error);
+  }
+}
+
+// Open one review lesson in Study.
+async function openReviewLesson(lessonCode) {
+  try {
+    // Ask the API for the selected lesson.
+    const response = await fetch(
+      API_BASE_URL + "/api/lessons/" + encodeURIComponent(lessonCode),
+    );
+
+    // Read the API response.
+    const lessonData = await response.json();
+
+    // Stop when the API has an error.
+    if (!response.ok) {
+      throw new Error(lessonData.detail || "Lesson was not found.");
+    }
+
+    // Save the review lesson in the front.
+    currentLesson = mapLessonFromApi(lessonData);
+
+    // Start review at the Text step.
+    currentStudyStepIndex = 0;
+
+    // Render the selected lesson.
+    renderLesson();
+
+    // Show the first study step.
+    showStudyStep(0);
+
+    // Open Study.
+    showPage("study");
+  } catch (error) {
+    // Show a safe message.
+    alert(error.message);
+
+    // Show details for development.
+    console.error(error);
+  }
+}
+
+// Complete one due review.
+async function completeReview(lessonCode) {
+  try {
+    // Send the review completion to the API.
+    const response = await fetch(
+      REVIEW_API_URL + "/" + encodeURIComponent(lessonCode) + "/complete",
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      },
+    );
+
+    // Read the API response.
+    const data = await response.json();
+
+    // Stop when the API has an error.
+    if (!response.ok) {
+      throw new Error(data.detail || "Review was not completed.");
+    }
+
+    // Refresh dashboard review information.
+    await loadDashboard();
+
+    // Refresh the review queue.
+    await loadReviewQueue();
+
+    // Confirm the new review schedule.
+    alert(
+      "Review completed. Next review: " +
+        new Date(data.next_review_at).toLocaleDateString(),
+    );
+  } catch (error) {
+    // Show a safe message.
+    alert(error.message);
+
+    // Show details for development.
+    console.error(error);
+  }
 }
 
 // Load real dashboard data from the API.
