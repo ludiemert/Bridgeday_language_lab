@@ -17,12 +17,14 @@ from ..core.security import read_access_token
 from ..database import get_db
 
 # Import database tables.
-from ..models import Lesson, LessonProgress
+from ..models import Lesson, LessonProgress, WritingEntry
 
 # Import progress data models.
 from ..schemas.progress import (
     CompleteLessonRequest,
     LessonProgressResponse,
+    ProgressHistoryItemResponse,
+    ProgressHistoryResponse,
 )
 
 # Create the progress routes.
@@ -116,4 +118,100 @@ def complete_lesson(
         study_seconds=progress.study_seconds,
         completed_at=progress.completed_at,
         next_review_at=progress.next_review_at,
+    )
+
+
+@router.get(
+    "/history",
+    response_model=ProgressHistoryResponse,
+)
+def read_progress_history(
+    language_code: str,
+    credentials: HTTPAuthorizationCredentials | None = Depends(
+        bearer_scheme,
+    ),
+    database: Session = Depends(get_db),
+) -> ProgressHistoryResponse:
+    # Check if the token exists.
+    if credentials is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Login is required.",
+        )
+
+    # Read the user ID from the token.
+    user_id = read_access_token(credentials.credentials)
+
+    # Check if the token is valid.
+    if user_id is None:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token.",
+        )
+
+    # Find completed lessons from only the selected learning track.
+    history_rows = database.execute(
+        select(
+            LessonProgress,
+            Lesson,
+        )
+        .join(
+            Lesson,
+            Lesson.id == LessonProgress.lesson_id,
+        )
+        .where(
+            LessonProgress.user_id == user_id,
+            LessonProgress.status == "completed",
+            Lesson.language_code == language_code,
+        )
+        .order_by(
+            LessonProgress.completed_at.desc(),
+        ),
+    ).all()
+
+    # Start the response list.
+    history: list[ProgressHistoryItemResponse] = []
+
+    # Start the total study-time counter.
+    study_seconds_total = 0
+
+    # Build one history item for every completed lesson.
+    for progress, lesson in history_rows:
+        # Find the newest saved sentence for this same lesson.
+        writing_text = database.scalar(
+            select(WritingEntry.text)
+            .where(
+                WritingEntry.user_id == user_id,
+                WritingEntry.lesson_id == lesson.id,
+                WritingEntry.language_code == language_code,
+            )
+            .order_by(
+                WritingEntry.created_at.desc(),
+            )
+            .limit(1),
+        )
+
+        # Add this lesson's study time to the track total.
+        study_seconds_total += progress.study_seconds
+
+        # Add the completed lesson to the history response.
+        history.append(
+            ProgressHistoryItemResponse(
+                lesson_code=lesson.lesson_code,
+                language_code=lesson.language_code,
+                level_code=lesson.level_code,
+                title=lesson.title,
+                study_seconds=progress.study_seconds,
+                completed_at=progress.completed_at,
+                next_review_at=progress.next_review_at,
+                writing_text=writing_text,
+            ),
+        )
+
+    # Send the selected track summary and its lesson history.
+    return ProgressHistoryResponse(
+        language_code=language_code,
+        completed_lessons=len(history),
+        study_seconds_total=study_seconds_total,
+        history=history,
     )
