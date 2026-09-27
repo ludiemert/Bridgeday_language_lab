@@ -884,3 +884,16 @@ Execute este comando e cole o conteúdo:
 Get-Content -Raw .\backend\migrations\versions\3b775a3d3c07_create_study_progress_tables.py
 
 ____________________________
+histórico com esta estrutura:
+Progress
+├─ resumo da trilha selecionada
+│  ├─ lições concluídas
+│  ├─ minutos estudados
+│  └─ revisões futuras
+└─ histórico de lições
+   ├─ título, idioma e nível
+   ├─ data de conclusão
+   ├─ tempo estudado
+   ├─ próxima revisão
+   └─ frase salva, quando existir
+   ______________________________
