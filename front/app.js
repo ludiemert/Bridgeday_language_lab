@@ -181,8 +181,11 @@ const languageSettings = {
   },
 };
 
-// This starts with English.
-let selectedLanguage = "english";
+// Read the language track saved in this browser.
+const savedLanguage = localStorage.getItem("bridgeday_selected_language");
+
+// Start with the saved German or English track.
+let selectedLanguage = savedLanguage === "german" ? "german" : "english";
 
 // Read the API language code for the selected learning track.
 function getSelectedLanguageCode() {
@@ -191,6 +194,18 @@ function getSelectedLanguageCode() {
 
   // Send the API language code.
   return selectedSettings.code;
+}
+
+// Update the active learning track button style.
+function updateLanguageButtons() {
+  // Check every language track button.
+  languageButtons.forEach(function (languageButton) {
+    // Check if this button matches the selected track.
+    const isSelected = languageButton.dataset.language === selectedLanguage;
+
+    // Show the active track style.
+    languageButton.classList.toggle("active-language", isSelected);
+  });
 }
 
 // This stores the daily lesson.
@@ -1793,12 +1808,11 @@ languageButtons.forEach(function (button) {
     // Save the selected learning track.
     selectedLanguage = button.dataset.language;
 
-    // Update the active button style.
-    languageButtons.forEach(function (languageButton) {
-      const isSelected = languageButton === button;
+    // Save the selected track for the next browser refresh.
+    localStorage.setItem("bridgeday_selected_language", selectedLanguage);
 
-      languageButton.classList.toggle("active-language", isSelected);
-    });
+    // Update the active learning track button.
+    updateLanguageButtons();
 
     // Load progress only for the selected track.
     await loadDashboard();
@@ -1894,11 +1908,30 @@ continueButton.addEventListener("click", function () {
   startLessonTimer();
 });
 
-// Show the first login state.
-updateAuthArea();
+// Start BridgeDay with the saved learning track.
+async function startBridgeDay() {
+  // Show login or account information.
+  updateAuthArea();
 
-// This loads the lesson file.
-loadLesson();
+  // Show the active saved track button.
+  updateLanguageButtons();
 
-// Load saved dashboard data.
-loadDashboard();
+  // Load the real selected track after login.
+  if (accessToken && currentUser) {
+    // Load dashboard data for the selected track.
+    await loadDashboard();
+
+    // Load the real next lesson for the selected track.
+    await loadSelectedTrackLesson();
+    return;
+  }
+
+  // Load the public English preview before login.
+  await loadLesson();
+
+  // Show the signed out dashboard state.
+  await loadDashboard();
+}
+
+// Start the BridgeDay application.
+startBridgeDay();
