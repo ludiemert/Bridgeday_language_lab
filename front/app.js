@@ -105,6 +105,8 @@ const weeklyText = document.getElementById("weekly-text");
 const progressTitle = document.getElementById("progress-title");
 const progressSummary = document.getElementById("progress-summary");
 const progressReview = document.getElementById("progress-review");
+// Read the area that will show completed lesson cards.
+const progressHistoryList = document.getElementById("progress-history-list");
 const reviewTitle = document.getElementById("review-title");
 const reviewText = document.getElementById("review-text");
 // Find the review card list.
