@@ -222,6 +222,9 @@ let currentLesson = null;
 // Store the saved dashboard data.
 let currentDashboard = null;
 
+// Keep the loaded history for the selected learning track.
+let currentProgressHistory = null;
+
 // Define the study step order.
 const studySteps = [
   {
