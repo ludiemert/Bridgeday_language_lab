@@ -1199,6 +1199,9 @@ async function loadDashboard() {
     updateFinishButton();
     // Update the guided study flow with saved progress.
     renderStudyFlow();
+
+    // Load the completed lesson history for this track.
+    await loadProgressHistory();
     return;
   }
 
