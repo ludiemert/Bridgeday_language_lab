@@ -897,3 +897,12 @@ Progress
    ├─ próxima revisão
    └─ frase salva, quando existir
    ______________________________
+
+O teste no Docs confirma que o backend funciona: ele busca os dados verdadeiros no banco e devolve JSON. No seu print, deu 200 OK, está filtrando de e encontrou a lição alemã concluída. Isso está perfeito.
+A diferença é:
+- Docs: ferramenta de desenvolvimento; mostra os dados brutos e testa a API.
+- Web: a tela que o aluno usa; o app.js buscará essa mesma rota e apresentará os dados em cards bonitos na página Progress.
+Ou seja: o Docs é o “motor testado”; agora vamos conectar esse motor ao painel do carro.
+QUE EH O FRONT!!!!
+
+_____________________________________
