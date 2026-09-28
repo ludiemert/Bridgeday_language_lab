@@ -137,6 +137,12 @@ const API_BASE_URL = "http://127.0.0.1:8000";
 // Set the dashboard API address.
 const DASHBOARD_API_URL = API_BASE_URL + "/api/dashboard";
 
+// Build the progress-history address from the existing API address.
+const PROGRESS_HISTORY_API_URL = new URL(
+  "/api/progress/history",
+  DASHBOARD_API_URL,
+).toString();
+
 // Set the next lesson API address.
 const NEXT_LESSON_API_URL = API_BASE_URL + "/api/lessons/next";
 
