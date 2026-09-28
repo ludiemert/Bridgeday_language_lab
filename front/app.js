@@ -1946,3 +1946,144 @@ async function startBridgeDay() {
 
 // Start the BridgeDay application.
 startBridgeDay();
+
+// Format an API date for the progress cards.
+function formatProgressHistoryDate(value) {
+  // Show a clear fallback when a date does not exist.
+  if (!value) {
+    return "Not scheduled.";
+  }
+
+  // Format the date for the learner.
+  return new Date(value).toLocaleDateString("en-GB");
+}
+
+// Show completed lessons for the selected learning track.
+function renderProgressHistory() {
+  // Stop safely if the page element is not available.
+  if (!progressHistoryList) {
+    return;
+  }
+
+  // Clear old cards before showing the current track.
+  progressHistoryList.replaceChildren();
+
+  // Explain why no history is available when signed out.
+  if (!accessToken || !currentUser) {
+    progressHistoryList.textContent =
+      "Sign in to see your completed lesson history.";
+    return;
+  }
+
+  // Show a short loading message while the API request runs.
+  if (currentProgressHistory === null) {
+    progressHistoryList.textContent = "Loading lesson history...";
+    return;
+  }
+
+  // Show a helpful empty state for a new track.
+  if (currentProgressHistory.history.length === 0) {
+    progressHistoryList.textContent =
+      "No completed lessons in this learning track yet.";
+    return;
+  }
+
+  // Create the history section title.
+  const heading = document.createElement("h3");
+  heading.textContent = "Completed lessons";
+  progressHistoryList.append(heading);
+
+  // Create one card for every completed lesson.
+  currentProgressHistory.history.forEach((item) => {
+    // Create a card that uses the existing page style.
+    const card = document.createElement("article");
+    card.className = "empty-card progress-history-card";
+
+    // Show the lesson title.
+    const title = document.createElement("h3");
+    title.textContent = item.title;
+    card.append(title);
+
+    // Show the real language and level.
+    const language = document.createElement("p");
+    language.textContent =
+      item.language_code.toUpperCase() + " · " + item.level_code;
+    card.append(language);
+
+    // Show the completion date.
+    const completed = document.createElement("p");
+    completed.textContent =
+      "Completed: " + formatProgressHistoryDate(item.completed_at);
+    card.append(completed);
+
+    // Show saved study time.
+    const minutes = Math.round(item.study_seconds / 60);
+    const studyTime = document.createElement("p");
+    studyTime.textContent = "Study time: " + minutes + " minutes";
+    card.append(studyTime);
+
+    // Show the next review date.
+    const review = document.createElement("p");
+    review.textContent =
+      "Next review: " + formatProgressHistoryDate(item.next_review_at);
+    card.append(review);
+
+    // Show the saved sentence only when this lesson has one.
+    if (item.writing_text) {
+      const writing = document.createElement("p");
+      writing.textContent = "Saved sentence: " + item.writing_text;
+      card.append(writing);
+    }
+
+    // Add the completed card to the page.
+    progressHistoryList.append(card);
+  });
+}
+
+// Load completed lesson history from the API.
+async function loadProgressHistory() {
+  // Clear history when the user is signed out.
+  if (!accessToken || !currentUser) {
+    currentProgressHistory = null;
+    renderProgressHistory();
+    return;
+  }
+
+  try {
+    // Read the active English or German track.
+    const languageCode = getSelectedLanguageCode();
+
+    // Create the filtered history address.
+    const historyUrl =
+      PROGRESS_HISTORY_API_URL +
+      "?language_code=" +
+      encodeURIComponent(languageCode);
+
+    // Ask the API for saved lesson history.
+    const response = await fetch(historyUrl, {
+      headers: {
+        Authorization: "Bearer " + accessToken,
+      },
+    });
+
+    // Stop when the API cannot return history.
+    if (!response.ok) {
+      throw new Error("Progress history was not found.");
+    }
+
+    // Save the real history response.
+    currentProgressHistory = await response.json();
+
+    // Update the Progress page.
+    renderProgressHistory();
+  } catch (error) {
+    // Clear old information after an API error.
+    currentProgressHistory = null;
+
+    // Update the Progress page with the safe state.
+    renderProgressHistory();
+
+    // Show the technical error for development.
+    console.error(error);
+  }
+}
