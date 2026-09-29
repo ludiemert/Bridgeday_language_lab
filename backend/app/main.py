@@ -21,6 +21,9 @@ from .api.writing import router as writing_router
 # Import the review routes.
 from .api.review import router as review_router
 
+# Import the exercise routes.
+from .api.exercises import router as exercise_router
+
 # Create the API app.
 app = FastAPI(
     title="BridgeDay API",
