@@ -1234,6 +1234,9 @@ async function loadDashboard() {
 
     // Update the guided study flow with saved progress.
     renderStudyFlow();
+
+    // Load completed lesson history for the selected track.
+    await loadProgressHistory();
   } catch (error) {
     // Show empty data when the API has an error.
     currentDashboard = null;
@@ -1241,6 +1244,9 @@ async function loadDashboard() {
     updateFinishButton();
     // Update the guided study flow with saved progress.
     renderStudyFlow();
+
+    // Load completed lesson history for the selected track.
+    await loadProgressHistory();
 
     // Show the error for development.
     console.error(error);
