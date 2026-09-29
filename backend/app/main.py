@@ -60,6 +60,9 @@ app.include_router(writing_router)
 # Add the review routes.
 app.include_router(review_router)
 
+# Add the exercise routes.
+app.include_router(exercise_router)
+
 
 # Check the API and database.
 @app.get("/api/health")
