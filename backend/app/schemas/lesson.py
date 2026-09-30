@@ -30,6 +30,9 @@ class VocabularyResponse(BaseModel):
 
 
 class ExerciseResponse(BaseModel):
+    # Send the unique exercise ID for answer attempts.
+    id: int
+
     # Send one lesson exercise.
     exercise_type: str
     question_text: str
