@@ -906,3 +906,27 @@ Ou seja: o Docs é o “motor testado”; agora vamos conectar esse motor ao pai
 QUE EH O FRONT!!!!
 
 _____________________________________
+
+
+VER COMMITS NO GIT HUB
+
+PS C:\Users\user\Downloads\Bridgeday_language_lab> git log -10 --pretty=format:"%h | %an | %ae | %ad" --date=local
+e99605a | ludiemert | lucianadiemert@gmail.com | Wed Sep 30 19:25:54 2026
+56a7dc1 | ludiemert | lucianadiemert@gmail.com | Tue Sep 29 20:19:42 2026
+df4df93 | ludiemert | lucianadiemert@gmail.com | Tue Sep 29 20:02:45 2026
+816d1b2 | ludiemert | lucianadiemert@gmail.com | Tue Sep 29 20:01:35 2026
+3e70e8c | ludiemert | lucianadiemert@gmail.com | Tue Sep 29 20:00:05 2026
+35e8069 | ludiemert | lucianadiemert@gmail.com | Tue Sep 29 19:58:31 2026
+7f18e68 | ludiemert | lucianadiemert@gmail.com | Tue Sep 29 18:43:05 2026
+a267c9c | ludiemert | lucianadiemert@gmail.com | Tue Sep 29 18:17:20 2026
+0bb225c | ludiemert | lucianadiemert@gmail.com | Mon Sep 28 19:56:45 2026
+b00126c | ludiemert | lucianadiemert@gmail.com | Mon Sep 28 19:48:12 2026
+PS C:\Users\user\Downloads\Bridgeday_language_lab> git branch --show-current
+main
+PS C:\Users\user\Downloads\Bridgeday_language_lab>
+PS C:\Users\user\Downloads\Bridgeday_language_lab> git config user.email
+lucianadiemert@gmail.com
+PS C:\Users\user\Downloads\Bridgeday_language_lab> git status
+>> git log origin/main -3 --oneline
+On branch main
+___________________________________________

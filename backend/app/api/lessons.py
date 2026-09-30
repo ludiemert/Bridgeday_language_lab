@@ -74,6 +74,8 @@ def build_lesson_detail(lesson: Lesson) -> LessonDetailResponse:
         ],
         exercises=[
             ExerciseResponse(
+                # Send the exercise ID used to save attempts.
+                id=item.id,
                 exercise_type=item.exercise_type,
                 question_text=item.question_text,
                 hint_text=item.hint_text,
