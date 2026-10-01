@@ -1145,6 +1145,39 @@ textarea {
   }
 }
 
+/* Style the reusable exercise card in the Grammar tab. */
+.exercise-practice-card {
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #ded3ff;
+  border-radius: 12px;
+  background: #faf8ff;
+}
+
+/* Space the exercise text inside its card. */
+.exercise-practice-card p {
+  margin: 8px 0;
+}
+
+/* Highlight the optional exercise hint. */
+.exercise-hint {
+  color: #6653a6;
+}
+
+/* Keep the answer field readable and full width. */
+.exercise-practice-card input {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+}
+
+/* Leave space before the correction feedback. */
+.exercise-feedback {
+  font-weight: 700;
+}
+
+
 /* This changes the app on phones. */
 @media (max-width: 540px) {
   .app-header {
