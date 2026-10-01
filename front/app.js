@@ -699,6 +699,15 @@ function renderLesson() {
 
   grammarText.textContent = mainLesson.grammar || "Grammar will appear here.";
 
+  // Show the current lesson exercise in the Grammar tab.
+  if (window.BridgeDayExercises) {
+    window.BridgeDayExercises.render({
+      exercises: mainLesson.exercises || [],
+      accessToken: accessToken,
+      dashboardApiUrl: DASHBOARD_API_URL,
+    });
+  }
+
   // This shows listening text.
   const listeningText = document.querySelector(".listening-content .page-help");
 
@@ -726,6 +735,8 @@ function mapLessonFromApi(apiLesson) {
     title: apiLesson.title,
     text: apiLesson.text,
     grammar: apiLesson.grammar_note || "",
+    // Keep API exercises for the Grammar practice area.
+    exercises: apiLesson.exercises || [],
     keywords: apiLesson.vocabulary_items.map(function (item) {
       return item.target_word;
     }),
