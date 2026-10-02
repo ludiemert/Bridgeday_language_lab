@@ -930,3 +930,15 @@ PS C:\Users\user\Downloads\Bridgeday_language_lab> git status
 >> git log origin/main -3 --oneline
 On branch main
 ___________________________________________
+Crie a migration para adicionar essa coluna ao banco, sem aplicar ainda.
+No terminal aberto na pasta do projeto, execute:
+.\.venv\Scripts\python.exe -m alembic revision --autogenerate -m "add review count to lesson progress"
+O resultado esperado é criar um novo arquivo em:
+backend/migrations/versions
+
+O arquivo criado é:
+=> backend/migrations/versions/b883e40f21a4_add_review_count_to_lesson_progress.py
+______________________________________________________
+
+
+___________________________
