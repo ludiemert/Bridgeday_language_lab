@@ -16,6 +16,9 @@ from ..core.security import read_access_token
 # Import the database session.
 from ..database import get_db
 
+# Import the shared spaced-review schedule.
+from ..services.review_schedule import get_next_review_days
+
 # Import database tables.
 from ..models import Lesson, LessonProgress, WritingEntry
 
@@ -91,10 +94,23 @@ def complete_lesson(
 
     if progress:
         # Update old lesson progress.
+        # Mark the lesson as completed again.
         progress.status = "completed"
+
+        # Add the new study time.
         progress.study_seconds += data.study_seconds
+
+        # Save the latest completion time.
         progress.completed_at = now
-        progress.next_review_at = now + timedelta(days=5)
+
+        # Restart the review sequence after studying the lesson again.
+        progress.review_count = 0
+
+        # Schedule the first spaced review after one day.
+        progress.next_review_at = now + timedelta(
+            days=get_next_review_days(progress.review_count),
+        )
+
     else:
         # Create new lesson progress.
         progress = LessonProgress(
@@ -104,7 +120,13 @@ def complete_lesson(
             study_seconds=data.study_seconds,
             started_at=now,
             completed_at=now,
-            next_review_at=now + timedelta(days=5),
+            # Start with no completed reviews.
+            review_count=0,
+            # Schedule the first spaced review after one day.
+            next_review_at=now
+            + timedelta(
+                days=get_next_review_days(0),
+            ),
         )
         database.add(progress)
 
