@@ -81,6 +81,13 @@ class LessonProgress(Base):
         nullable=True,
     )
 
+    # Count completed reviews for spaced scheduling.
+    review_count: Mapped[int] = mapped_column(
+        Integer,
+        default=0,
+        nullable=False,
+    )
+
 
 class ExerciseAttempt(Base):
     # Set the database table name.
