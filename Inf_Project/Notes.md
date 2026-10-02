@@ -938,6 +938,22 @@ backend/migrations/versions
 
 O arquivo criado é:
 => backend/migrations/versions/b883e40f21a4_add_review_count_to_lesson_progress.py
+
+
+change migration => Depois execute: Esse comando aplica a migration ao banco SQLite. apos alteracoes
+.\.venv\Scripts\python.exe -m alembic upgrade head
+
+Significa:
+- .\.venv\Scripts\python.exe usa o Python do seu projeto;
+- -m alembic executa a ferramenta de migrations;
+- upgrade atualiza a estrutura do banco;
+- head aplica até a migration mais recente, que acabou de criar.
+Neste caso, ele só adicionará esta coluna à tabela de progresso:
+
+______________________________________
+
+
+
 ______________________________________________________
 
 
