@@ -2,7 +2,7 @@
 # It lists scheduled reviews and completes a due review.
 
 # Import date and time tools.
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 # Import API route tools.
 from fastapi import APIRouter, Depends, HTTPException, status
