@@ -2,7 +2,7 @@
 # It lists scheduled reviews and completes a due review.
 
 # Import date and time tools.
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 # Import API route tools.
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -19,6 +19,9 @@ from ..core.security import read_access_token
 
 # Import the database session.
 from ..database import get_db
+
+# Import the shared spaced-review schedule.
+from ..services.review_schedule import get_next_review_days
 
 # Import database tables.
 from ..models import Lesson, LessonProgress
