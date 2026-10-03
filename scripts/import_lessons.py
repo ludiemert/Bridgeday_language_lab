@@ -10,6 +10,9 @@ import sys
 # Import safe file path tools.
 from pathlib import Path
 
+# Import command-line argument tools for choosing a lesson batch.
+import argparse
+
 # Find the main project folder.
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -30,8 +33,8 @@ from backend.app.models import (
 # Import the database search tool.
 from sqlalchemy import select
 
-# Set the reviewed lesson file address.
-DATA_FILE = PROJECT_ROOT / "data" / "lessons-reviewed.json"
+# Set the default lesson file for backward compatibility.
+DEFAULT_DATA_FILE = PROJECT_ROOT / "data" / "lessons-reviewed.json"
 
 
 def create_lesson(lesson_data: dict) -> Lesson:
@@ -78,14 +81,15 @@ def create_lesson(lesson_data: dict) -> Lesson:
     )
 
 
-def import_reviewed_lessons() -> None:
-    # Stop when the JSON file does not exist.
-    if not DATA_FILE.exists():
-        print("The reviewed lesson file was not found.")
+# Import lessons from one selected JSON batch file.
+def import_reviewed_lessons(data_file: Path) -> None:
+    # Stop when the selected JSON file does not exist.
+    if not data_file.exists():
+        print(f"The lesson file was not found: {data_file}")
         return
 
     # Open the JSON file with UTF-8 text.
-    with DATA_FILE.open(encoding="utf-8") as source_file:
+    with data_file.open(encoding="utf-8") as source_file:
         source_data = json.load(source_file)
 
     # Read the lesson list.
@@ -99,12 +103,12 @@ def import_reviewed_lessons() -> None:
     skipped_count = 0
 
     try:
-        # Check every reviewed lesson.
+        # Check every lesson in the selected batch.
         for lesson_data in lessons:
             # Read its unique code.
             lesson_code = lesson_data["lesson_code"]
 
-            # Check if this lesson is already in SQLite.
+            # Check if this lesson already exists in SQLite.
             lesson_exists = database.scalar(
                 select(Lesson).where(
                     Lesson.lesson_code == lesson_code,
@@ -129,7 +133,8 @@ def import_reviewed_lessons() -> None:
         # Save all new lessons together.
         database.commit()
 
-        # Show a clear result.
+        # Show a clear import result.
+        print(f"Imported file: {data_file.name}")
         print(f"Created lessons: {created_count}")
         print(f"Skipped lessons: {skipped_count}")
 
@@ -145,6 +150,36 @@ def import_reviewed_lessons() -> None:
         database.close()
 
 
+# Read the selected batch file from the terminal command.
+def get_data_file_from_arguments() -> Path:
+    # Create the command-line parser.
+    parser = argparse.ArgumentParser(
+        description="Import one reviewed BridgeDay lesson batch.",
+    )
+
+    # Accept an optional JSON file path.
+    parser.add_argument(
+        "--file",
+        type=Path,
+        default=DEFAULT_DATA_FILE,
+        help="Path to a reviewed lesson JSON file.",
+    )
+
+    # Read the command-line arguments.
+    arguments = parser.parse_args()
+
+    # Keep absolute paths unchanged.
+    if arguments.file.is_absolute():
+        return arguments.file
+
+    # Resolve relative paths from the project root.
+    return PROJECT_ROOT / arguments.file
+
+
+# Start the import when this file runs directly.
 if __name__ == "__main__":
-    # Start the import when this file runs directly.
-    import_reviewed_lessons()
+    # Read the requested batch file.
+    selected_data_file = get_data_file_from_arguments()
+
+    # Import only the selected batch.
+    import_reviewed_lessons(selected_data_file)

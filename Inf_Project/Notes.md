@@ -952,7 +952,20 @@ Neste caso, ele só adicionará esta coluna à tabela de progresso:
 
 ______________________________________
 
+Para não errar traduções nem perder tempo:
+- Escrevemos primeiro a lição no idioma estudado, nunca traduzindo uma lição portuguesa “ao pé da letra”.
+- Usamos CEFR para limitar o que cabe em A1, A2 etc. Referência CEFR
+- Para alemão, usamos a lista oficial A1 do Goethe como referência de vocabulário e temas, sem copiar textos de terceiros. Goethe A1 e lista de vocabulário
+- Tradução automática pode ajudar como rascunho, mas só marcamos "is_reviewed": true depois de revisar sentido, tom, gramática e contexto.
+- Cada lote passa por validação antes de entrar no banco; códigos repetidos são ignorados pelo importador.
 
+A melhor organização será:
+data/
+└─ batches/
+   ├─ de-a1-batch-02.json
+   ├─ de-a1-batch-03.json
+   ├─ en-a2-batch-02.json
+   └─ en-a2-batch-03.json
 
 ______________________________________________________
 
