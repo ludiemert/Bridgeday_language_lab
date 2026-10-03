@@ -219,8 +219,13 @@ def complete_review(
             detail="This lesson is not ready for review yet.",
         )
 
-    # Schedule the next review five days from now.
-    progress.next_review_at = now + timedelta(days=5)
+    # Count this completed review.
+    progress.review_count += 1
+
+    # Schedule the next review with the shared spaced interval.
+    progress.next_review_at = now + timedelta(
+        days=get_next_review_days(progress.review_count),
+    )
 
     # Save the new review date.
     database.commit()
