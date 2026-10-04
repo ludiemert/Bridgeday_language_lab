@@ -1,0 +1,554 @@
+{
+  "lessons": [
+    {
+      "lesson_code": "de-a1-family-007",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "family",
+      "category": "daily_life",
+      "title": "Meine Familie",
+      "text": "Ich heiße Lara und ich habe eine kleine Familie. Meine Mutter heißt Sabine und mein Vater heißt Thomas. Ich habe einen Bruder. Er heißt Jonas und ist zehn Jahre alt. Wir wohnen zusammen in einer Wohnung in Berlin. Am Sonntag besuchen wir oft meine Großmutter.",
+      "grammar_note": "Use mein for masculine and neuter nouns, and meine for feminine nouns and plural nouns.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "My family",
+          "text": "My name is Lara and I have a small family. My mother is called Sabine and my father is called Thomas. I have a brother. His name is Jonas and he is ten years old. We live together in an apartment in Berlin. On Sundays, we often visit my grandmother.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Minha família",
+          "text": "Meu nome é Lara e eu tenho uma família pequena. Minha mãe se chama Sabine e meu pai se chama Thomas. Eu tenho um irmão. O nome dele é Jonas e ele tem dez anos. Nós moramos juntos em um apartamento em Berlim. Aos domingos, frequentemente visitamos minha avó.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "die Mutter",
+          "meaning_pt": "a mãe",
+          "example_text": "Meine Mutter heißt Sabine.",
+          "position": 1
+        },
+        {
+          "target_word": "der Bruder",
+          "meaning_pt": "o irmão",
+          "example_text": "Ich habe einen Bruder.",
+          "position": 2
+        },
+        {
+          "target_word": "wohnen",
+          "meaning_pt": "morar",
+          "example_text": "Wir wohnen in Berlin.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Ich habe einen ___.",
+          "answer_text": "Bruder",
+          "hint_text": "It means brother.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-morning-routine-008",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "daily routine",
+      "category": "daily_life",
+      "title": "Mein Morgen",
+      "text": "Ich stehe jeden Tag um sieben Uhr auf. Zuerst dusche ich und dann ziehe ich mich an. Danach frühstücke ich in der Küche. Ich trinke Tee und esse Brot mit Käse. Um acht Uhr verlasse ich das Haus und gehe zur Arbeit.",
+      "grammar_note": "Many German separable verbs place their prefix at the end of a main clause: Ich stehe um sieben Uhr auf.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "My morning",
+          "text": "I get up at seven o'clock every day. First, I take a shower and then I get dressed. Afterwards, I have breakfast in the kitchen. I drink tea and eat bread with cheese. At eight o'clock, I leave the house and go to work.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Minha manhã",
+          "text": "Eu acordo às sete horas todos os dias. Primeiro, tomo banho e depois me visto. Depois disso, tomo café da manhã na cozinha. Bebo chá e como pão com queijo. Às oito horas, saio de casa e vou para o trabalho.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "aufstehen",
+          "meaning_pt": "acordar / levantar-se",
+          "example_text": "Ich stehe um sieben Uhr auf.",
+          "position": 1
+        },
+        {
+          "target_word": "frühstücken",
+          "meaning_pt": "tomar café da manhã",
+          "example_text": "Ich frühstücke in der Küche.",
+          "position": 2
+        },
+        {
+          "target_word": "verlassen",
+          "meaning_pt": "sair de / deixar",
+          "example_text": "Ich verlasse das Haus.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Ich ___ jeden Tag um sieben Uhr auf.",
+          "answer_text": "stehe",
+          "hint_text": "Use the verb aufstehen.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-week-days-009",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "days of the week",
+      "category": "daily_life",
+      "title": "Meine Woche",
+      "text": "Montag ist mein erster Arbeitstag. Von Montag bis Freitag arbeite ich im Büro. Am Mittwoch habe ich einen Deutschkurs. Am Freitagabend treffe ich Freunde. Am Samstag kaufe ich ein und am Sonntag bleibe ich zu Hause.",
+      "grammar_note": "Use am with days of the week: am Montag, am Freitag and am Sonntag.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "My week",
+          "text": "Monday is my first workday. From Monday to Friday, I work in the office. On Wednesday, I have a German course. On Friday evening, I meet friends. On Saturday, I go shopping and on Sunday, I stay at home.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Minha semana",
+          "text": "Segunda-feira é meu primeiro dia de trabalho. De segunda a sexta, trabalho no escritório. Na quarta-feira, tenho um curso de alemão. Na noite de sexta, encontro amigos. No sábado, faço compras e no domingo fico em casa.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "der Mittwoch",
+          "meaning_pt": "a quarta-feira",
+          "example_text": "Am Mittwoch habe ich einen Kurs.",
+          "position": 1
+        },
+        {
+          "target_word": "treffen",
+          "meaning_pt": "encontrar",
+          "example_text": "Ich treffe Freunde.",
+          "position": 2
+        },
+        {
+          "target_word": "zu Hause",
+          "meaning_pt": "em casa",
+          "example_text": "Am Sonntag bleibe ich zu Hause.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Am Mittwoch habe ich einen Deutsch___.",
+          "answer_text": "kurs",
+          "hint_text": "It is a class or course.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-weather-clothes-010",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "weather and clothes",
+      "category": "daily_life",
+      "title": "Das Wetter heute",
+      "text": "Heute ist das Wetter kalt und windig. Es regnet am Morgen. Ich trage eine warme Jacke, eine Mütze und Stiefel. Mein Bruder trägt keinen Mantel, aber er hat einen Regenschirm. Am Nachmittag scheint die Sonne.",
+      "grammar_note": "Use es for weather expressions: Es regnet, es ist kalt, es ist windig.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "The weather today",
+          "text": "Today, the weather is cold and windy. It is raining in the morning. I am wearing a warm jacket, a hat and boots. My brother is not wearing a coat, but he has an umbrella. In the afternoon, the sun is shining.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "O tempo hoje",
+          "text": "Hoje o tempo está frio e ventando. Chove pela manhã. Estou usando uma jaqueta quente, um gorro e botas. Meu irmão não está usando casaco, mas ele tem um guarda-chuva. À tarde, o sol aparece.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "regnen",
+          "meaning_pt": "chover",
+          "example_text": "Es regnet am Morgen.",
+          "position": 1
+        },
+        {
+          "target_word": "die Jacke",
+          "meaning_pt": "a jaqueta",
+          "example_text": "Ich trage eine warme Jacke.",
+          "position": 2
+        },
+        {
+          "target_word": "der Regenschirm",
+          "meaning_pt": "o guarda-chuva",
+          "example_text": "Er hat einen Regenschirm.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Es ___ am Morgen.",
+          "answer_text": "regnet",
+          "hint_text": "Use the weather verb for rain.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-at-home-011",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "home",
+      "category": "daily_life",
+      "title": "Meine Wohnung",
+      "text": "Meine Wohnung ist klein, aber schön. Sie hat ein Schlafzimmer, ein Wohnzimmer, eine Küche und ein Bad. Im Wohnzimmer stehen ein Sofa und ein Tisch. In der Küche koche ich oft Pasta. Mein Lieblingsplatz ist der Balkon.",
+      "grammar_note": "German nouns have grammatical gender. Learn each noun with its article: das Schlafzimmer, die Küche, der Balkon.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "My apartment",
+          "text": "My apartment is small but nice. It has a bedroom, a living room, a kitchen and a bathroom. There is a sofa and a table in the living room. I often cook pasta in the kitchen. My favourite place is the balcony.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Meu apartamento",
+          "text": "Meu apartamento é pequeno, mas bonito. Ele tem um quarto, uma sala, uma cozinha e um banheiro. Na sala há um sofá e uma mesa. Frequentemente cozinho massa na cozinha. Meu lugar favorito é a varanda.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "das Wohnzimmer",
+          "meaning_pt": "a sala de estar",
+          "example_text": "Im Wohnzimmer steht ein Sofa.",
+          "position": 1
+        },
+        {
+          "target_word": "die Küche",
+          "meaning_pt": "a cozinha",
+          "example_text": "In der Küche koche ich Pasta.",
+          "position": 2
+        },
+        {
+          "target_word": "der Balkon",
+          "meaning_pt": "a varanda",
+          "example_text": "Der Balkon ist mein Lieblingsplatz.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: In der Küche ___ ich oft Pasta.",
+          "answer_text": "koche",
+          "hint_text": "Use the verb kochen.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-bus-and-train-012",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "public transport",
+      "category": "daily_life",
+      "title": "Mit dem Bus",
+      "text": "Jeden Morgen fahre ich mit dem Bus zur Arbeit. Die Bushaltestelle ist neben meinem Haus. Der Bus kommt um Viertel nach acht. Manchmal ist der Bus voll, aber meistens finde ich einen Sitzplatz. Die Fahrt dauert zwanzig Minuten.",
+      "grammar_note": "Use mit plus the dative case for transport: mit dem Bus, mit der Bahn and mit dem Fahrrad.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "By bus",
+          "text": "Every morning, I go to work by bus. The bus stop is next to my house. The bus arrives at quarter past eight. Sometimes the bus is full, but I usually find a seat. The journey takes twenty minutes.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "De ônibus",
+          "text": "Todas as manhãs, vou ao trabalho de ônibus. O ponto de ônibus fica ao lado da minha casa. O ônibus chega às oito e quinze. Às vezes o ônibus está cheio, mas geralmente encontro um lugar para sentar. A viagem dura vinte minutos.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "der Bus",
+          "meaning_pt": "o ônibus",
+          "example_text": "Ich fahre mit dem Bus.",
+          "position": 1
+        },
+        {
+          "target_word": "die Bushaltestelle",
+          "meaning_pt": "o ponto de ônibus",
+          "example_text": "Die Bushaltestelle ist neben meinem Haus.",
+          "position": 2
+        },
+        {
+          "target_word": "der Sitzplatz",
+          "meaning_pt": "o assento / lugar para sentar",
+          "example_text": "Ich finde einen Sitzplatz.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Ich fahre mit dem ___ zur Arbeit.",
+          "answer_text": "Bus",
+          "hint_text": "It is public road transport.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-doctor-013",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "health",
+      "category": "daily_life",
+      "title": "Beim Arzt",
+      "text": "Heute gehe ich zum Arzt, weil ich Kopfschmerzen habe. Die Ärztin fragt: Was fehlt Ihnen? Ich sage: Mein Kopf tut weh und ich bin müde. Sie untersucht mich und sagt: Sie sollen viel Wasser trinken und zu Hause bleiben.",
+      "grammar_note": "Use haben for symptoms: Ich habe Kopfschmerzen. Use tun weh for pain: Mein Kopf tut weh.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "At the doctor",
+          "text": "Today, I am going to the doctor because I have a headache. The doctor asks: What is wrong with you? I say: My head hurts and I am tired. She examines me and says: You should drink plenty of water and stay at home.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "No médico",
+          "text": "Hoje vou ao médico porque estou com dor de cabeça. A médica pergunta: O que você tem? Eu digo: Minha cabeça dói e estou cansada. Ela me examina e diz: Você deve beber bastante água e ficar em casa.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "die Kopfschmerzen",
+          "meaning_pt": "a dor de cabeça",
+          "example_text": "Ich habe Kopfschmerzen.",
+          "position": 1
+        },
+        {
+          "target_word": "müde",
+          "meaning_pt": "cansado / cansada",
+          "example_text": "Ich bin müde.",
+          "position": 2
+        },
+        {
+          "target_word": "trinken",
+          "meaning_pt": "beber",
+          "example_text": "Sie sollen viel Wasser trinken.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Ich habe Kopf___.",
+          "answer_text": "schmerzen",
+          "hint_text": "It completes the German word for headaches.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-free-time-014",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "free time",
+      "category": "daily_life",
+      "title": "Meine Freizeit",
+      "text": "In meiner Freizeit lese ich gern Bücher und höre Musik. Am Dienstag spiele ich Fußball mit Kollegen. Wenn das Wetter schön ist, gehe ich im Park spazieren. Am Abend sehe ich manchmal einen Film. Ich mag Komödien besonders gern.",
+      "grammar_note": "Use gern after a verb to say that you like doing something: Ich lese gern. Ich höre gern Musik.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "My free time",
+          "text": "In my free time, I like reading books and listening to music. On Tuesday, I play football with colleagues. When the weather is nice, I go for a walk in the park. In the evening, I sometimes watch a film. I especially like comedies.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Meu tempo livre",
+          "text": "No meu tempo livre, gosto de ler livros e ouvir música. Na terça-feira, jogo futebol com colegas. Quando o tempo está bom, caminho no parque. À noite, às vezes assisto a um filme. Gosto especialmente de comédias.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "die Freizeit",
+          "meaning_pt": "o tempo livre",
+          "example_text": "In meiner Freizeit lese ich.",
+          "position": 1
+        },
+        {
+          "target_word": "spazieren gehen",
+          "meaning_pt": "caminhar / passear",
+          "example_text": "Ich gehe im Park spazieren.",
+          "position": 2
+        },
+        {
+          "target_word": "der Film",
+          "meaning_pt": "o filme",
+          "example_text": "Am Abend sehe ich einen Film.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Ich lese ___ Bücher.",
+          "answer_text": "gern",
+          "hint_text": "Use this word to say you like the activity.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-shopping-list-015",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "shopping",
+      "category": "daily_life",
+      "title": "Meine Einkaufsliste",
+      "text": "Nach der Arbeit gehe ich in den Supermarkt. Ich brauche Milch, Brot, Eier, Tomaten und Reis. Die Milch kostet einen Euro fünfzig. An der Kasse bezahle ich mit Karte. Zu Hause koche ich Reis mit Gemüse für das Abendessen.",
+      "grammar_note": "Use ich brauche to say what you need. In shops, mit Karte means by card.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "My shopping list",
+          "text": "After work, I go to the supermarket. I need milk, bread, eggs, tomatoes and rice. The milk costs one euro fifty. At the checkout, I pay by card. At home, I cook rice with vegetables for dinner.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Minha lista de compras",
+          "text": "Depois do trabalho, vou ao supermercado. Preciso de leite, pão, ovos, tomates e arroz. O leite custa um euro e cinquenta. No caixa, pago com cartão. Em casa, cozinho arroz com legumes para o jantar.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "brauchen",
+          "meaning_pt": "precisar",
+          "example_text": "Ich brauche Milch und Brot.",
+          "position": 1
+        },
+        {
+          "target_word": "die Kasse",
+          "meaning_pt": "o caixa",
+          "example_text": "An der Kasse bezahle ich.",
+          "position": 2
+        },
+        {
+          "target_word": "bezahlen",
+          "meaning_pt": "pagar",
+          "example_text": "Ich bezahle mit Karte.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Ich ___ Milch und Brot.",
+          "answer_text": "brauche",
+          "hint_text": "Use the verb brauchen.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "de-a1-weekend-plans-016",
+      "language_code": "de",
+      "level_code": "A1",
+      "topic": "weekend plans",
+      "category": "daily_life",
+      "title": "Pläne für das Wochenende",
+      "text": "Dieses Wochenende habe ich viele Pläne. Am Samstag möchte ich meine Freundin Anna besuchen. Wir wollen zusammen im Café frühstücken. Am Nachmittag gehen wir ins Museum. Am Sonntag räume ich meine Wohnung auf und telefoniere mit meiner Familie.",
+      "grammar_note": "Use möchte for polite wishes and wollen for plans with other people.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "en",
+          "title": "Plans for the weekend",
+          "text": "This weekend, I have many plans. On Saturday, I would like to visit my friend Anna. We want to have breakfast together at the café. In the afternoon, we are going to the museum. On Sunday, I tidy up my apartment and talk to my family on the phone.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Planos para o fim de semana",
+          "text": "Neste fim de semana, tenho muitos planos. No sábado, gostaria de visitar minha amiga Anna. Queremos tomar café da manhã juntas no café. À tarde, vamos ao museu. No domingo, arrumo meu apartamento e telefono para minha família.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "möchte",
+          "meaning_pt": "gostaria",
+          "example_text": "Ich möchte Anna besuchen.",
+          "position": 1
+        },
+        {
+          "target_word": "das Museum",
+          "meaning_pt": "o museu",
+          "example_text": "Wir gehen ins Museum.",
+          "position": 2
+        },
+        {
+          "target_word": "aufräumen",
+          "meaning_pt": "arrumar / organizar",
+          "example_text": "Ich räume meine Wohnung auf.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Ergänze den Satz: Am Samstag ___ ich Anna besuchen.",
+          "answer_text": "möchte",
+          "hint_text": "Use the polite form for a wish.",
+          "position": 1
+        }
+      ]
+    }
+  ]
+}
