@@ -984,4 +984,41 @@ data/batches/README.md
 ___________________________________
 
 
+C:\Users\user\Downloads\Bridgeday_language_lab> # Validate the lesson batch JSON without importing any lesson.
+>> .\.venv\Scripts\python.exe -m json.tool data\batches\de-a1-batch-02.json | Out-Null
+>>
+>> # Show a success message only when the JSON is valid.
+>> if ($LASTEXITCODE -eq 0) {
+>>     Write-Host "JSON valid."
+>> }
+JSON valid.
+PS C:\Users\user\Downloads\Bridgeday_language_lab>
+
+Esse comando só confere se o arquivo está escrito como JSON válido. Ele não importa lições e não altera o banco.
+# Use Python from your project virtual environment.
+.\.venv\Scripts\python.exe
+
+# Run Python's built-in JSON validator.
+-m json.tool
+
+# Select the lesson batch file to validate.
+data\batches\de-a1-batch-02.json
+
+Esta parte:
+# Hide the large formatted JSON output when validation succeeds.
+| Out-Null
+esconde o conteúdo completo do JSON para o terminal não ficar enorme.
+E esta parte:
+# Show success only when the previous command ended without an error.
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "JSON valid."
+}
+verifica se o Python terminou corretamente:
+- 0 = JSON válido → mostra JSON valid.
+- qualquer outro número = existe erro no arquivo → o PowerShell não mostra essa mensagem.
+Importante: o começo correto é .\.venv, com barra após o ponto.
+
+___________________________________________
+
+
 ___________________________
