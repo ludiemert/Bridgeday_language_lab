@@ -969,5 +969,19 @@ data/
 
 ______________________________________________________
 
+data/batches/README.md
+
+# Lesson batches
+
+## de-a1-batch-02.json
+
+- Level: German A1
+- Lessons: 10
+- Codes: de-a1-family-007 to de-a1-weekend-plans-016
+- Status: reviewed and ready for JSON validation
+- Includes: English and Portuguese translations, vocabulary and fill_blank exercises
+
+___________________________________
+
 
 ___________________________
