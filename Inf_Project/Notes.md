@@ -1022,3 +1022,28 @@ ___________________________________________
 
 
 ___________________________
+(.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab> # Show the folder where the terminal is currently running.
+>> Get-Location
+>>
+>> # List every SQLite database file inside the project.
+>> Get-ChildItem -Path . -Filter *.db -Recurse |
+>>     Select-Object FullName, Length, LastWriteTime
+
+Path
+----
+C:\Users\user\Downloads\Bridgeday_language_lab
+
+FullName      : C:\Users\user\Downloads\Bridgeday_language_lab\bridgeday.db
+Length        : 94208
+LastWriteTime : 02/10/2026 19:35:31
+
+
+FullName      : C:\Users\user\Downloads\Bridgeday_language_lab\data\bridgeday.db
+Length        : 0
+LastWriteTime : 05/10/2026 21:05:55
+
+
+
+(.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab>
+
+__________________________
