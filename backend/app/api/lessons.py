@@ -89,38 +89,42 @@ def build_lesson_detail(lesson: Lesson) -> LessonDetailResponse:
     )
 
 
+# List published lessons with optional learning-track filters.
 @router.get(
     "",
     response_model=list[LessonListResponse],
 )
 def list_lessons(
-    language: str | None = None,
-    level: str | None = None,
+    # Read the selected learning track code from the URL.
+    language_code: str | None = None,
+    # Read the selected level code from the URL.
+    level_code: str | None = None,
+    # Open the database session for this request.
     database: Session = Depends(get_db),
 ) -> list[LessonListResponse]:
-    # Start the lesson search.
+    # Start the search with published lessons only.
     query = select(Lesson).where(
         Lesson.status == "published",
     )
 
-    # Filter by language when needed.
-    if language:
+    # Filter by the selected learning track when provided.
+    if language_code:
         query = query.where(
-            Lesson.language_code == language,
+            Lesson.language_code == language_code,
         )
 
-    # Filter by level when needed.
-    if level:
+    # Filter by the selected level when provided.
+    if level_code:
         query = query.where(
-            Lesson.level_code == level,
+            Lesson.level_code == level_code,
         )
 
-    # Read the published lessons.
+    # Read lessons in their stable lesson-code order.
     lessons = database.scalars(
         query.order_by(Lesson.lesson_code),
     ).all()
 
-    # Send lesson summary data.
+    # Send lesson summary data to the client.
     return [
         LessonListResponse(
             lesson_code=item.lesson_code,
