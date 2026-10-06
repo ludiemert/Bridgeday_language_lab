@@ -1,0 +1,554 @@
+{
+  "lessons": [
+    {
+      "lesson_code": "en-a2-working-from-home-008",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "working from home",
+      "category": "work",
+      "title": "A day working from home",
+      "text": "I work from home twice a week. I usually start at half past eight after having breakfast. My team has a short online meeting every morning, so we can share our plans for the day. Working from home helps me focus, but I sometimes miss talking to my colleagues in person.",
+      "grammar_note": "Use so to show a result: We have a meeting every morning, so we can share our plans.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Ein Tag im Homeoffice",
+          "text": "Ich arbeite zweimal pro Woche von zu Hause. Normalerweise fange ich um halb neun an, nachdem ich gefrühstückt habe. Mein Team hat jeden Morgen ein kurzes Online-Meeting, damit wir unsere Pläne für den Tag teilen können. Die Arbeit von zu Hause hilft mir, mich zu konzentrieren, aber manchmal vermisse ich persönliche Gespräche mit meinen Kollegen.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Um dia trabalhando em casa",
+          "text": "Eu trabalho de casa duas vezes por semana. Normalmente começo às oito e meia, depois de tomar café da manhã. Minha equipe tem uma reunião on-line curta todas as manhãs para que possamos compartilhar nossos planos do dia. Trabalhar de casa me ajuda a concentrar, mas às vezes sinto falta de conversar pessoalmente com meus colegas.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "focus",
+          "meaning_pt": "concentrar-se",
+          "example_text": "Working from home helps me focus.",
+          "position": 1
+        },
+        {
+          "target_word": "in person",
+          "meaning_pt": "pessoalmente",
+          "example_text": "I miss talking to my colleagues in person.",
+          "position": 2
+        },
+        {
+          "target_word": "share plans",
+          "meaning_pt": "compartilhar planos",
+          "example_text": "We share our plans for the day.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: Working from home helps me ___.",
+          "answer_text": "focus",
+          "hint_text": "It means to give full attention to something.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-doctor-appointment-009",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "health appointment",
+      "category": "daily_life",
+      "title": "Making a doctor's appointment",
+      "text": "Yesterday, I called the health centre because I had a sore throat. The receptionist asked me about my symptoms and offered me an appointment for Friday morning. I wrote the time in my calendar because I did not want to forget it. I hope the doctor can tell me what I need to do.",
+      "grammar_note": "Use because to give a reason: I called the health centre because I had a sore throat.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Einen Arzttermin vereinbaren",
+          "text": "Gestern habe ich das Gesundheitszentrum angerufen, weil ich Halsschmerzen hatte. Die Empfangsmitarbeiterin fragte mich nach meinen Symptomen und bot mir einen Termin für Freitagmorgen an. Ich schrieb die Uhrzeit in meinen Kalender, weil ich sie nicht vergessen wollte. Ich hoffe, dass der Arzt mir sagen kann, was ich tun muss.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Marcando uma consulta médica",
+          "text": "Ontem liguei para o centro de saúde porque estava com dor de garganta. A recepcionista perguntou sobre meus sintomas e me ofereceu um horário para sexta-feira de manhã. Escrevi o horário no meu calendário porque não queria esquecê-lo. Espero que o médico possa me dizer o que preciso fazer.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "sore throat",
+          "meaning_pt": "dor de garganta",
+          "example_text": "I had a sore throat yesterday.",
+          "position": 1
+        },
+        {
+          "target_word": "symptom",
+          "meaning_pt": "sintoma",
+          "example_text": "The receptionist asked about my symptoms.",
+          "position": 2
+        },
+        {
+          "target_word": "appointment",
+          "meaning_pt": "consulta / horário marcado",
+          "example_text": "She offered me an appointment for Friday.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I called the health centre ___ I had a sore throat.",
+          "answer_text": "because",
+          "hint_text": "Use a word that gives a reason.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-weekend-market-010",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "shopping",
+      "category": "daily_life",
+      "title": "At the weekend market",
+      "text": "On Saturday, my neighbour and I went to the local market. We bought fresh vegetables, bread and some flowers for her table. The market was busy, but the sellers were friendly. I found a stall with homemade cakes and chose a small lemon cake to take home.",
+      "grammar_note": "Use went as the past form of go: We went to the market on Saturday.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Auf dem Wochenendmarkt",
+          "text": "Am Samstag gingen meine Nachbarin und ich auf den lokalen Markt. Wir kauften frisches Gemüse, Brot und ein paar Blumen für ihren Tisch. Der Markt war voll, aber die Verkäufer waren freundlich. Ich fand einen Stand mit hausgemachten Kuchen und wählte einen kleinen Zitronenkuchen zum Mitnehmen.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "No mercado de fim de semana",
+          "text": "No sábado, minha vizinha e eu fomos ao mercado local. Compramos legumes frescos, pão e algumas flores para a mesa dela. O mercado estava cheio, mas os vendedores eram simpáticos. Encontrei uma barraca com bolos caseiros e escolhi um bolo pequeno de limão para levar para casa.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "stall",
+          "meaning_pt": "barraca / banca",
+          "example_text": "I found a stall with homemade cakes.",
+          "position": 1
+        },
+        {
+          "target_word": "seller",
+          "meaning_pt": "vendedor / vendedora",
+          "example_text": "The sellers were friendly.",
+          "position": 2
+        },
+        {
+          "target_word": "homemade",
+          "meaning_pt": "caseiro",
+          "example_text": "The cakes were homemade.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: We ___ to the local market on Saturday.",
+          "answer_text": "went",
+          "hint_text": "Use the past form of go.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-moving-home-011",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "home",
+      "category": "daily_life",
+      "title": "Moving to a new flat",
+      "text": "My friend Olivia has moved to a new flat near the city centre. Her new place is smaller than her old flat, but it has a bright kitchen and a quiet bedroom. Last weekend, I helped her carry some boxes upstairs. After we finished, we ordered pizza and talked about her new neighbourhood.",
+      "grammar_note": "Use comparative adjectives to compare two things: smaller than, brighter than and quieter than.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Umzug in eine neue Wohnung",
+          "text": "Meine Freundin Olivia ist in eine neue Wohnung nahe dem Stadtzentrum gezogen. Ihre neue Wohnung ist kleiner als ihre alte, aber sie hat eine helle Küche und ein ruhiges Schlafzimmer. Letztes Wochenende half ich ihr, einige Kisten nach oben zu tragen. Nachdem wir fertig waren, bestellten wir Pizza und sprachen über ihre neue Nachbarschaft.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Mudando para um apartamento novo",
+          "text": "Minha amiga Olivia se mudou para um apartamento novo perto do centro da cidade. O novo lugar dela é menor que o antigo, mas tem uma cozinha iluminada e um quarto silencioso. No último fim de semana, ajudei-a a carregar algumas caixas para cima. Depois de terminarmos, pedimos pizza e conversamos sobre o novo bairro dela.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "flat",
+          "meaning_pt": "apartamento",
+          "example_text": "Olivia has moved to a new flat.",
+          "position": 1
+        },
+        {
+          "target_word": "carry",
+          "meaning_pt": "carregar",
+          "example_text": "I helped her carry some boxes.",
+          "position": 2
+        },
+        {
+          "target_word": "neighbourhood",
+          "meaning_pt": "bairro",
+          "example_text": "We talked about her new neighbourhood.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: Her new flat is ___ than her old flat.",
+          "answer_text": "smaller",
+          "hint_text": "Use the comparative form of small.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-planning-a-trip-012",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "travel plans",
+      "category": "daily_life",
+      "title": "Planning a short trip",
+      "text": "My sister and I are planning a short trip to Edinburgh next month. We have already chosen a small hotel near the train station. On Saturday, we are going to visit the castle and walk around the old town. If the weather is good, we will have lunch outside near the river.",
+      "grammar_note": "Use be going to for future plans: We are going to visit the castle.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Eine kurze Reise planen",
+          "text": "Meine Schwester und ich planen für nächsten Monat eine kurze Reise nach Edinburgh. Wir haben bereits ein kleines Hotel in der Nähe des Bahnhofs ausgewählt. Am Samstag werden wir das Schloss besuchen und durch die Altstadt spazieren. Wenn das Wetter gut ist, werden wir draußen in der Nähe des Flusses zu Mittag essen.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Planejando uma viagem curta",
+          "text": "Minha irmã e eu estamos planejando uma viagem curta para Edimburgo no próximo mês. Já escolhemos um hotel pequeno perto da estação de trem. No sábado, vamos visitar o castelo e caminhar pela cidade antiga. Se o tempo estiver bom, almoçaremos ao ar livre perto do rio.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "already",
+          "meaning_pt": "já",
+          "example_text": "We have already chosen a hotel.",
+          "position": 1
+        },
+        {
+          "target_word": "castle",
+          "meaning_pt": "castelo",
+          "example_text": "We are going to visit the castle.",
+          "position": 2
+        },
+        {
+          "target_word": "old town",
+          "meaning_pt": "cidade antiga / centro histórico",
+          "example_text": "We will walk around the old town.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: We are going to ___ the castle.",
+          "answer_text": "visit",
+          "hint_text": "It means to go and see a place.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-cooking-dinner-013",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "cooking",
+      "category": "daily_life",
+      "title": "Cooking dinner together",
+      "text": "On Wednesday evening, I cooked dinner with my flatmate. We made a vegetable curry because it is easy and inexpensive. While I was cutting the vegetables, she was preparing the rice. We made too much food, so we saved the rest for lunch the next day.",
+      "grammar_note": "Use while with the past continuous for two actions happening at the same time: While I was cutting vegetables, she was preparing rice.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Zusammen Abendessen kochen",
+          "text": "Am Mittwochabend kochte ich mit meiner Mitbewohnerin Abendessen. Wir machten ein Gemüse-Curry, weil es einfach und günstig ist. Während ich das Gemüse schnitt, bereitete sie den Reis zu. Wir machten zu viel Essen, also hoben wir den Rest für das Mittagessen am nächsten Tag auf.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Cozinhando o jantar juntos",
+          "text": "Na noite de quarta-feira, cozinhei o jantar com minha colega de apartamento. Fizemos um curry de legumes porque é fácil e barato. Enquanto eu cortava os legumes, ela preparava o arroz. Fizemos comida demais, então guardamos o restante para o almoço do dia seguinte.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "flatmate",
+          "meaning_pt": "colega de apartamento",
+          "example_text": "I cooked dinner with my flatmate.",
+          "position": 1
+        },
+        {
+          "target_word": "inexpensive",
+          "meaning_pt": "barato / de baixo custo",
+          "example_text": "The meal was inexpensive.",
+          "position": 2
+        },
+        {
+          "target_word": "save the rest",
+          "meaning_pt": "guardar o restante",
+          "example_text": "We saved the rest for lunch.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: While I was cutting vegetables, she was ___ the rice.",
+          "answer_text": "preparing",
+          "hint_text": "Use the verb prepare in the -ing form.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-phone-call-014",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "phone calls",
+      "category": "daily_life",
+      "title": "Calling customer support",
+      "text": "My internet stopped working yesterday afternoon, so I called customer support. The agent asked for my account number and checked my connection. She explained that there was a problem in my area. She said a technician would fix it by the evening, and my internet started working again at seven o'clock.",
+      "grammar_note": "Use would to report future information from the past: She said a technician would fix it.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Den Kundendienst anrufen",
+          "text": "Mein Internet funktionierte gestern Nachmittag nicht mehr, also rief ich den Kundendienst an. Die Mitarbeiterin fragte nach meiner Kontonummer und überprüfte meine Verbindung. Sie erklärte, dass es in meiner Gegend ein Problem gab. Sie sagte, ein Techniker würde es bis zum Abend reparieren, und um sieben Uhr funktionierte mein Internet wieder.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Ligando para o suporte ao cliente",
+          "text": "Minha internet parou de funcionar ontem à tarde, então liguei para o suporte ao cliente. A atendente pediu meu número de conta e verificou minha conexão. Ela explicou que havia um problema na minha região. Ela disse que um técnico consertaria tudo até a noite, e minha internet voltou a funcionar às sete horas.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "customer support",
+          "meaning_pt": "suporte ao cliente",
+          "example_text": "I called customer support.",
+          "position": 1
+        },
+        {
+          "target_word": "connection",
+          "meaning_pt": "conexão",
+          "example_text": "The agent checked my connection.",
+          "position": 2
+        },
+        {
+          "target_word": "technician",
+          "meaning_pt": "técnico / técnica",
+          "example_text": "A technician would fix the problem.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I called customer support because my internet stopped ___.",
+          "answer_text": "working",
+          "hint_text": "Use the -ing form of work.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-neighbourhood-015",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "local area",
+      "category": "daily_life",
+      "title": "My neighbourhood",
+      "text": "I have lived in this neighbourhood for two years. There is a library across the street from my flat, and a small park behind the supermarket. My favourite place is the café on the corner because the staff know my name. It is a convenient area, although it can be noisy on Friday nights.",
+      "grammar_note": "Use have lived with for to describe an action that started in the past and continues now: I have lived here for two years.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Meine Nachbarschaft",
+          "text": "Ich wohne seit zwei Jahren in dieser Nachbarschaft. Gegenüber von meiner Wohnung gibt es eine Bibliothek und hinter dem Supermarkt einen kleinen Park. Mein Lieblingsort ist das Café an der Ecke, weil die Mitarbeiter meinen Namen kennen. Es ist eine praktische Gegend, obwohl es an Freitagabenden laut sein kann.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Meu bairro",
+          "text": "Moro neste bairro há dois anos. Há uma biblioteca do outro lado da rua em frente ao meu apartamento e um pequeno parque atrás do supermercado. Meu lugar favorito é o café na esquina porque os funcionários sabem meu nome. É uma área conveniente, embora possa ser barulhenta nas noites de sexta-feira.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "across the street",
+          "meaning_pt": "do outro lado da rua",
+          "example_text": "The library is across the street.",
+          "position": 1
+        },
+        {
+          "target_word": "corner",
+          "meaning_pt": "esquina",
+          "example_text": "The café is on the corner.",
+          "position": 2
+        },
+        {
+          "target_word": "convenient",
+          "meaning_pt": "conveniente / prático",
+          "example_text": "It is a convenient area.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I have lived here ___ two years.",
+          "answer_text": "for",
+          "hint_text": "Use this word for a duration of time.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-monthly-budget-016",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "money",
+      "category": "daily_life",
+      "title": "My monthly budget",
+      "text": "At the beginning of each month, I make a simple budget. First, I write down my rent, transport costs and phone bill. Then I decide how much money I can spend on food and free time. This month, I am saving for a new winter coat, so I am cooking at home more often.",
+      "grammar_note": "Use how much with uncountable nouns such as money: How much money can I spend?",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Mein Monatsbudget",
+          "text": "Am Anfang jedes Monats mache ich ein einfaches Budget. Zuerst schreibe ich meine Miete, die Transportkosten und die Telefonrechnung auf. Dann entscheide ich, wie viel Geld ich für Essen und Freizeit ausgeben kann. Diesen Monat spare ich für einen neuen Wintermantel, deshalb koche ich öfter zu Hause.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Meu orçamento mensal",
+          "text": "No início de cada mês, faço um orçamento simples. Primeiro, anoto meu aluguel, custos de transporte e conta de telefone. Depois decido quanto dinheiro posso gastar com comida e tempo livre. Neste mês, estou economizando para um novo casaco de inverno, então estou cozinhando em casa com mais frequência.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "budget",
+          "meaning_pt": "orçamento",
+          "example_text": "I make a simple budget every month.",
+          "position": 1
+        },
+        {
+          "target_word": "rent",
+          "meaning_pt": "aluguel",
+          "example_text": "My rent is my biggest cost.",
+          "position": 2
+        },
+        {
+          "target_word": "save for",
+          "meaning_pt": "economizar para",
+          "example_text": "I am saving for a new coat.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: How much money can I ___ this month?",
+          "answer_text": "spend",
+          "hint_text": "It means use money to buy something.",
+          "position": 1
+        }
+      ]
+    },
+    {
+      "lesson_code": "en-a2-learning-goals-017",
+      "language_code": "en",
+      "level_code": "A2",
+      "topic": "learning",
+      "category": "daily_life",
+      "title": "My learning goals",
+      "text": "This year, I want to improve my English for work and travel. My main goal is to speak more confidently in meetings. I have started listening to short podcasts on my way to work, and I write down new words in a notebook. If I practise a little every day, I know I will make progress.",
+      "grammar_note": "Use want to plus a verb to talk about goals: I want to improve my English.",
+      "estimated_minutes": 10,
+      "status": "published",
+      "translations": [
+        {
+          "language_code": "de",
+          "title": "Meine Lernziele",
+          "text": "Dieses Jahr möchte ich mein Englisch für die Arbeit und für Reisen verbessern. Mein wichtigstes Ziel ist es, in Meetings selbstbewusster zu sprechen. Ich habe angefangen, auf dem Weg zur Arbeit kurze Podcasts zu hören, und ich schreibe neue Wörter in ein Notizbuch. Wenn ich jeden Tag ein wenig übe, weiß ich, dass ich Fortschritte machen werde.",
+          "is_reviewed": true
+        },
+        {
+          "language_code": "pt",
+          "title": "Meus objetivos de aprendizagem",
+          "text": "Este ano, quero melhorar meu inglês para o trabalho e viagens. Meu principal objetivo é falar com mais confiança em reuniões. Comecei a ouvir podcasts curtos a caminho do trabalho e anoto palavras novas em um caderno. Se eu praticar um pouco todos os dias, sei que vou progredir.",
+          "is_reviewed": true
+        }
+      ],
+      "vocabulary_items": [
+        {
+          "target_word": "confidently",
+          "meaning_pt": "com confiança",
+          "example_text": "I want to speak confidently in meetings.",
+          "position": 1
+        },
+        {
+          "target_word": "notebook",
+          "meaning_pt": "caderno",
+          "example_text": "I write new words in a notebook.",
+          "position": 2
+        },
+        {
+          "target_word": "make progress",
+          "meaning_pt": "progredir",
+          "example_text": "I know I will make progress.",
+          "position": 3
+        }
+      ],
+      "exercises": [
+        {
+          "exercise_type": "fill_blank",
+          "question_text": "Complete the sentence: I want to ___ my English.",
+          "answer_text": "improve",
+          "hint_text": "It means make something better.",
+          "position": 1
+        }
+      ]
+    }
+  ]
+}
