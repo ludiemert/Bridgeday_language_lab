@@ -1073,3 +1073,10 @@ C:\Users\user\Downloads\Bridgeday_language_lab\data\bridgeday.db  94208 02/10/20
 
 
 _____________________________________________
+# Import the validated German A1 lesson batch into the shared SQLite database.
+.\.venv\Scripts\python.exe scripts\import_lessons.py --file data\batches\de-a1-batch-02.json
+
+Imported file: de-a1-batch-02.json
+Created lessons: 10
+Skipped lessons: 0
+_____________________________________________
