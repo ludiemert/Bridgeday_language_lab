@@ -1047,3 +1047,29 @@ LastWriteTime : 05/10/2026 21:05:55
 (.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab>
 
 __________________________
+# Create a backup copy of the real database in the project root.
+Copy-Item -LiteralPath ".\bridgeday.db" `
+    -Destination ".\bridgeday.before-data-folder-copy.db"
+
+# Preserve the accidentally created empty database instead of deleting it.
+Rename-Item -LiteralPath ".\data\bridgeday.db" `
+    -NewName "bridgeday.empty-created-2026-10-05.db"
+
+# Copy the real database into the official data folder used by the app.
+Copy-Item -LiteralPath ".\bridgeday.db" `
+    -Destination ".\data\bridgeday.db"
+
+# Confirm that both active database files now have the same size.
+Get-Item -LiteralPath ".\bridgeday.db", ".\data\bridgeday.db" |
+    Select-Object FullName, Length, LastWriteTime
+
+FullName                                                         Length LastWriteTime
+--------                                                         ------ -------------
+C:\Users\user\Downloads\Bridgeday_language_lab\bridgeday.db       94208 02/10/2026 19:35:31
+C:\Users\user\Downloads\Bridgeday_language_lab\data\bridgeday.db  94208 02/10/2026 19:35:31
+
+
+(.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab>
+
+
+_____________________________________________
