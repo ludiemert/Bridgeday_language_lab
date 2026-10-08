@@ -1105,3 +1105,33 @@ Created lessons: 10
 Skipped lessons: 0
 
 ____________________________
+
+descobrir se o projeto já possui testes automatizados. Execute:
+# List existing test files and Python project configuration files.
+rg --files -g "test_*.py" -g "*_test.py" -g "pytest.ini" -g "pyproject.toml" -g "requirements*.txt"
+
+
+rg é uma ferramenta chamada Ripgrep, mas ela não está instalada ou não está no PATH do seu Windows.
+Vamos usar o equivalente nativo do PowerShell, sem instalar nada:
+# Find project test and configuration files while ignoring the virtual environment.
+Get-ChildItem -Path . -Recurse -File |
+    Where-Object {
+        $_.FullName -notmatch "\\.venv\\" -and (
+            $_.Name -like "test_*.py" -or
+            $_.Name -like "*_test.py" -or
+            $_.Name -eq "pytest.ini" -or
+            $_.Name -eq "pyproject.toml" -or
+            $_.Name -like "requirements*.txt"
+        )
+    } |
+    Select-Object -ExpandProperty FullName
+
+
+
+    OU
+
+    # Find Python test files outside the virtual environment.
+    Get-ChildItem -Path . -Recurse -File -Include "test_*.py", "*_test.py" |
+    Where-Object { $_.FullName -notlike "*\.venv\*" } |
+    Select-Object -ExpandProperty FullName
+____________________________
