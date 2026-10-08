@@ -1080,3 +1080,15 @@ Imported file: de-a1-batch-02.json
 Created lessons: 10
 Skipped lessons: 0
 _____________________________________________
+
+validar arquivo com as licoes
+# Validate the English A2 batch JSON without importing any lesson.
+.\.venv\Scripts\python.exe -m json.tool data\batches\en-a2-batch-02.json | Out-Null
+
+# Show success only when the JSON is valid.
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "JSON valid."
+}
+
+resp => JSON valid.
+_______________________________________________
