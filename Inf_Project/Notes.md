@@ -1092,3 +1092,16 @@ if ($LASTEXITCODE -eq 0) {
 
 resp => JSON valid.
 _______________________________________________
+
+importe as 10 lições:
+
+# Import the validated English A2 lesson batch into SQLite.
+.\.venv\Scripts\python.exe scripts\import_lessons.py --file data\batches\en-a2-batch-02.json
+
+
+O esperado é:
+Imported file: en-a2-batch-02.json
+Created lessons: 10
+Skipped lessons: 0
+
+____________________________
