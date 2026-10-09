@@ -9,3 +9,7 @@ data/progress.json
 
 # This file has private keys.
 .env
+# Ignore local SQLite databases, backups, and SQLite sidecar files.
+*.db
+*.db-shm
+*.db-wal

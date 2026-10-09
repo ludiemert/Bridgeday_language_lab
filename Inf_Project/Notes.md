@@ -1149,3 +1149,14 @@ python -m alembic current
 O esperado é aparecer a migration:
 b883e40f21a4 (head)
 _____________
+
+
+SQL e execute:
+-- Show the database migration currently recorded by Alembic.
+SELECT version_num AS current_migration
+FROM alembic_version;
+
+-- Show every column in the lesson progress table.
+PRAGMA table_info(lesson_progress);
+
+________________________________________
