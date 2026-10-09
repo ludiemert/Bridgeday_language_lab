@@ -1160,3 +1160,40 @@ FROM alembic_version;
 PRAGMA table_info(lesson_progress);
 
 ________________________________________
+
+verificar se algum banco já estava sendo acompanhado pelo Git antes dessa regra:
+# Show SQLite database files that Git is already tracking.
+git ls-files "*.db"
+
+resposta
+bridgeday.before-data-folder-copy.db
+bridgeday.db
+data/bridgeday.db
+data/bridgeday.empty-created-2026-10-05.db
+(.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab>
+
+
+removê-los apenas do controle do Git, sem apagá-los do seu computador:
+# Stop tracking local SQLite files while keeping every file on this computer.
+git rm --cached -- `
+    "bridgeday.before-data-folder-copy.db" `
+    "bridgeday.db" `
+    "data/bridgeday.db" `
+    "data/bridgeday.empty-created-2026-10-05.db"
+
+    Depois confira o resultado:
+# Show the Git changes before creating the security commit.
+git status --short
+
+
+respost
+
+(.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab> # Show the Git changes before creating the security commit.
+>> git status --short
+ M Inf_Project/Notes.md
+D  bridgeday.before-data-folder-copy.db
+D  bridgeday.db
+D  data/bridgeday.db
+D  data/bridgeday.empty-created-2026-10-05.db
+(.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab>
+________________________________
