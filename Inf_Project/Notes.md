@@ -1131,7 +1131,21 @@ Get-ChildItem -Path . -Recurse -File |
     OU
 
     # Find Python test files outside the virtual environment.
-    Get-ChildItem -Path . -Recurse -File -Include "test_*.py", "*_test.py" |
+Get-ChildItem -Path . -Recurse -File -Include "test_*.py", "*_test.py" |
     Where-Object { $_.FullName -notlike "*\.venv\*" } |
     Select-Object -ExpandProperty FullName
+
+
+    A saída vazia indica que não há testes Python próprios encontrados no projeto. Isso é normal; mais adiante criaremos testes essenciais para a API.
+Agora execute somente esta verificação de sintaxe:
+# Check backend Python syntax without starting the application.
+python -m compileall backend
 ____________________________
+
+confirmar que o banco copiado está na migration mais recente:
+# Show the database migration currently applied to the active SQLite file.
+python -m alembic current
+
+O esperado é aparecer a migration:
+b883e40f21a4 (head)
+_____________
