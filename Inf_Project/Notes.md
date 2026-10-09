@@ -1197,3 +1197,16 @@ D  data/bridgeday.db
 D  data/bridgeday.empty-created-2026-10-05.db
 (.venv) PS C:\Users\user\Downloads\Bridgeday_language_lab>
 ________________________________
+
+MVP significa Minimum Viable Product — em português, Produto Mínimo Viável.
+
+No BridgeDay, o MVP já permite:
+- criar conta e entrar;
+- escolher English ou Deutsch;
+- estudar lições reais;
+- responder exercícios e receber correção;
+- salvar escrita;
+- concluir lições;
+- revisar no momento correto;
+- acompanhar histórico e progresso por idioma.
+
