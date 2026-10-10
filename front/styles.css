@@ -1184,6 +1184,21 @@ textarea {
     padding: 15px;
   }
 
+    /* Keep every navigation option visible on small phone screens. */
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    overflow-x: visible;
+  }
+
+  /* Make navigation buttons compact while keeping them easy to tap. */
+  .nav-button {
+    min-width: 0;
+    padding: 10px 4px;
+    font-size: 12px;
+  }
+
   /* This stacks the login controls on small phones. */
   .header-auth-form {
     grid-template-columns: 1fr;

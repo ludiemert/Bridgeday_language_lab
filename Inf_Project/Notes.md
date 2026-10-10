@@ -1210,3 +1210,26 @@ No BridgeDay, o MVP já permite:
 - revisar no momento correto;
 - acompanhar histórico e progresso por idioma.
 
+_________________________________
+# Stage only the Git ignore security rules.
+git add .gitignore
+
+# Save the database-ignore rules in Git history.
+git commit -m "ignore local SQLite databases"
+
+# Confirm that only your separate Notes file remains changed.
+git status --short
+
+__________________________
+responsividade, ainda dentro da etapa 6. Abra o BridgeDay em http://localhost:5500, faça login e pressione:
+F12
+Depois clique no ícone de celular/tablet no DevTools, ou use:
+Ctrl + Shift + M
+Teste primeiro em 375 × 812 e verifique:
+- menu superior continua acessível;
+- botões English e Deutsch aparecem;
+- cards não passam da largura da tela;
+- não surge barra de rolagem horizontal;
+- botões de Study, Review e Progress continuam clicáveis.
+
+______________________________________
