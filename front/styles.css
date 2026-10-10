@@ -1111,10 +1111,21 @@ textarea {
     flex-wrap: wrap;
   }
 
+  /* Keep every navigation option visible on phones and tablets. */
   .main-nav {
     order: 3;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     width: 100%;
-    overflow-x: auto;
+    gap: 4px;
+    overflow-x: visible;
+  }
+
+  /* Keep menu buttons compact and easy to tap on smaller screens. */
+  .nav-button {
+    min-width: 0;
+    padding: 10px 4px;
+    font-size: 12px;
   }
 
   .account-strip {
