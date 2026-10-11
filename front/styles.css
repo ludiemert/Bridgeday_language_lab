@@ -1191,14 +1191,11 @@ textarea {
 
 /* This changes the app on phones. */
 @media (max-width: 540px) {
-  .app-header {
-    padding: 15px;
-  }
-
-  /* Use two navigation columns so every label stays visible on small phones. */
-  .main-nav {
-    display: grid;
+  /* Force the two-column phone navigation over legacy flex styles. */
+  .app-header .main-nav {
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
     gap: 6px;
     overflow-x: visible;
   }

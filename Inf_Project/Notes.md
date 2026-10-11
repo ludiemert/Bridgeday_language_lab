@@ -1233,3 +1233,125 @@ Teste primeiro em 375 × 812 e verifique:
 - botões de Study, Review e Progress continuam clicáveis.
 
 ______________________________________
+no console do front com f12
+
+no Console:
+allow pasting
+
+Pressione Enter. Depois poderá colar as duas consultas seguras que enviei:
+
+// Show the layout currently applied to the navigation menu.
+getComputedStyle(document.querySelector(".main-nav")).display
+
+// Show the real CSS width of the current viewport.
+window.innerWidth
+___________________________
+
+Abra uma nova aba no Chrome com este endereço:
+http://localhost:5500/styles.css?check=1
+Depois use Ctrl + F e procure:
+Use two navigation columns
+
+____________________________________
+Console do DevTools, execute exatamente isto e envie as duas respostas:
+// Check whether JavaScript added an inline style to the navigation.
+document.querySelector(".main-nav").getAttribute("style")
+
+// Check whether the 540px phone media query is active.
+window.matchMedia("(max-width: 540px)").matches
+_______________________________________
+// Find every active CSS rule that sets "display" on the navigation menu.
+const nav = document.querySelector(".main-nav");
+
+function showNavigationRules(rules, source) {
+  for (const rule of rules) {
+    // Read only media-query rules currently active on this phone width.
+    if (rule instanceof CSSMediaRule) {
+      if (window.matchMedia(rule.conditionText).matches) {
+        showNavigationRules(rule.cssRules, `${source} @media ${rule.conditionText}`);
+      }
+      continue;
+    }
+
+    // Show rules that match the menu and define a display value.
+    if (
+      rule instanceof CSSStyleRule &&
+      nav.matches(rule.selectorText) &&
+      rule.style.display
+    ) {
+      console.log(source, rule.selectorText, "=>", rule.style.display);
+    }
+  }
+}
+
+// Check every stylesheet loaded by this page.
+for (const sheet of document.styleSheets) {
+  try {
+    showNavigationRules(sheet.cssRules, sheet.href || "inline stylesheet");
+  } catch {
+    console.log("Could not read stylesheet:", sheet.href);
+  }
+}
+
+__________________________________________________________
+// List every media query that the browser successfully read from styles.css.
+[...document.styleSheets]
+  .flatMap((sheet) => {
+    try {
+      return [...sheet.cssRules].map((rule) => ({
+        file: sheet.href,
+        type: rule.constructor.name,
+        media: rule.conditionText || null,
+      }));
+    } catch {
+      return [];
+    }
+  })
+  .filter((rule) => rule.type === "CSSMediaRule");
+  _______________________________________________-
+// Show every navigation rule inside each responsive media block.
+[...document.styleSheets]
+  .flatMap((sheet) => {
+    try {
+      return [...sheet.cssRules]
+        .filter((rule) => rule instanceof CSSMediaRule)
+        .map((mediaRule) => ({
+          media: mediaRule.conditionText,
+          navigationRules: [...mediaRule.cssRules]
+            .filter(
+              (rule) =>
+                rule instanceof CSSStyleRule &&
+                rule.selectorText.includes("main-nav"),
+            )
+            .map((rule) => ({
+              selector: rule.selectorText,
+              display: rule.style.display || "(no display property)",
+              priority: rule.style.getPropertyPriority("display") || "normal",
+            })),
+        }));
+    } catch {
+      return [];
+    }
+  });
+
+  __________________________________________________________
+O “teste sem backend” verifica somente o front-end:
+- servidor do front, porta 5500: entrega index.html, styles.css e JavaScript;
+- servidor do backend, porta 8000: fornece login, lições, progresso, revisões e salva dados no banco.
+A navegação responsiva é CSS puro, então não precisa do backend para ser testada. Na imagem, o texto “Sign in to see your saved progress” e os números zerados mostram que o front está aberto, mas não está recebendo os dados salvos da API.
+Ele passou a funcionar porque o novo comando serviu explicitamente a pasta correta:
+# This serves the exact front folder you edited.
+python -m http.server 5500 --directory "C:\Users\user\Downloads\Bridgeday_language_lab\front"
+Antes, o navegador provavelmente recebia uma cópia/versão diferente do styles.css.
+Para usar o MVP normalmente, deixe os dois terminais ativos: front em 5500 e backend em 8000.
+
+# Start the front server.
+.\.venv\Scripts\python.exe -m http.server 5500 --directory front
+
+# Start the API server.
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+
+>> .\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+INFO:     Will watch for changes in these directories: ['C:\\Users\\user\\Downloads\\Bridgeday_language_lab']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+__________________________________________________________
