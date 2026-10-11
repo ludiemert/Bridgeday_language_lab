@@ -1,3 +1,176 @@
+# BridgeDay — Daily Language Lab
+
+BridgeDay is a local app for daily **English** and **German** study.
+
+It has short lessons, vocabulary, exercises, writing, progress by language, and spaced review.
+
+## Current status
+
+The local MVP is working.
+
+- Login and user session.
+- Separate English A2 and German A1 tracks.
+- Lessons with text, listening, grammar, vocabulary, and speaking/writing.
+- `fill_blank` exercises with correction and saved attempts.
+- Progress and history for each language.
+- Spaced review after 1, 3, 7, 14, and 30 days.
+- Import of reviewed lesson batches.
+- Responsive mobile layout.
+- Local SQLite database not tracked by Git.
+
+## MVP
+
+MVP means **Minimum Viable Product**.
+
+BridgeDay already lets a learner:
+
+1. Create an account and sign in.
+2. Choose English or German.
+3. Study real lessons.
+4. Answer exercises and see corrections.
+5. Save a written answer.
+6. Complete lessons.
+7. See progress for each language.
+8. Review lessons when they are ready.
+
+## Technologies
+
+| Area | Technology |
+| --- | --- |
+| Front-end | HTML, CSS, JavaScript |
+| Back-end | Python, FastAPI |
+| Database | SQLite |
+| Database ORM | SQLAlchemy |
+| Database migrations | Alembic |
+| Login security | JWT, Passlib, bcrypt |
+| API documentation | FastAPI Swagger Docs |
+| Version control | Git and GitHub |
+
+## Project structure
+
+```text
+Bridgeday_language_lab/
+├── front/                  # Learner interface
+├── backend/                # FastAPI application
+├── data/
+│   ├── bridgeday.db        # Active SQLite database
+│   └── batches/            # Reviewed lesson batches
+├── scripts/                # Import tools
+├── .env                    # Private settings
+├── .gitignore
+├── alembic.ini
+└── README.md
+```
+
+## Start the project
+
+Open two terminals in the main project folder:
+
+```text
+C:\Users\user\Downloads\Bridgeday_language_lab
+```
+
+### Start the front-end
+
+```powershell
+# Serve the front folder for the browser.
+.\.venv\Scripts\python.exe -m http.server 5500 --directory front
+```
+
+Open:
+
+```text
+http://localhost:5500
+```
+
+### Start the back-end
+
+```powershell
+# Start the API server and reload after Python changes.
+.\.venv\Scripts\python.exe -m uvicorn backend.app.main:app --reload
+```
+
+Open API documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+## Database
+
+The active database is:
+
+```text
+data\bridgeday.db
+```
+
+Do not delete this file.
+
+It stores users, language profiles, lessons, translations, vocabulary, exercises, attempts, progress, reviews, and writing entries.
+
+## Available content
+
+| Language | Level | Lessons |
+| --- | --- | ---: |
+| German | A1 | 16 |
+| English | A2 | 17 |
+| **Total** | — | **33** |
+
+Imported batches:
+
+```text
+data\batches\de-a1-batch-02.json
+data\batches\en-a2-batch-02.json
+```
+
+## Validate a lesson batch
+
+```powershell
+# Validate JSON without changing the database.
+.\.venv\Scripts\python.exe -m json.tool data\batches\BATCH-NAME.json | Out-Null
+```
+
+## Import a lesson batch
+
+```powershell
+# Import only lesson codes that do not exist yet.
+.\.venv\Scripts\python.exe scripts\import_lessons.py --file data\batches\BATCH-NAME.json
+```
+
+## Spaced review
+
+A completed lesson can appear again after:
+
+```text
+1 day → 3 days → 7 days → 14 days → 30 days
+```
+
+A learner cannot complete a review before its planned date.
+
+## Completed checks
+
+- API starts without errors.
+- SQLite database is connected.
+- Database migrations are applied.
+- Login was tested.
+- Lessons load from the API.
+- Correct and wrong exercise answers were tested.
+- Exercise attempts are saved.
+- Progress history works by language.
+- Early reviews are blocked.
+- English and German lesson batches were imported.
+- Mobile navigation was tested.
+- Local database files are ignored by Git.
+
+## Future work
+
+1. Add more reviewed lesson batches.
+2. Add automated API tests.
+3. Add multiple-choice exercises.
+4. Add word-order exercises.
+5. Add audio-comprehension exercises.
+6. Improve profile and password recovery.
+7. Prepare public deployment.
 
 
 ________________________________________
@@ -25,8 +198,9 @@ ________________________________________
 
 ________________________________________
 
-_______________________________________________________________
-### Version - Portugues - Br
+---
+
+# Versão em Português
 
 # BridgeDay — Daily Language Lab
 
