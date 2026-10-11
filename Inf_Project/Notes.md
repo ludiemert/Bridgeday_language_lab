@@ -1355,3 +1355,16 @@ Para usar o MVP normalmente, deixe os dois terminais ativos: front em 5500 e bac
 INFO:     Will watch for changes in these directories: ['C:\\Users\\user\\Downloads\\Bridgeday_language_lab']
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 __________________________________________________________
+
+liste os bancos que realmente existem:
+# Show database files located in the project root.
+Get-ChildItem -LiteralPath . -File -Filter "*.db" |
+  Select-Object Name, Length, LastWriteTime
+# Show database files located in the active data folder.
+Get-ChildItem -LiteralPath .\data -File -Filter "*.db" |
+  Select-Object Name, Length, LastWriteTime
+
+# Remove only the empty accidental database backup.
+# The active data\bridgeday.db file remains untouched.
+Remove-Item -LiteralPath .\data\bridgeday.empty-created-2026-10-05.db
+  ________________________________
