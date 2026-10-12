@@ -1,171 +1,173 @@
 # BridgeDay — Learning Guide
 
-Este arquivo reúne os principais conceitos aprendidos durante o desenvolvimento do BridgeDay.
+This file explains the main ideas learned while building BridgeDay.
 
-## 1. O que é o BridgeDay
+## 1. What is BridgeDay?
 
-BridgeDay é um aplicativo de aprendizagem de idiomas.
+BridgeDay is a local app for daily language study.
 
-O usuário pode estudar English ou Deutsch usando:
+A learner can study English and German with:
 
-- lições;
-- vocabulário;
-- gramática;
-- exercícios;
-- escrita;
-- progresso;
-- revisões.
+- lessons;
+- vocabulary;
+- grammar;
+- exercises;
+- writing;
+- progress;
+- reviews.
 
-O projeto é um MVP local.
+BridgeDay is an MVP.
 
-MVP significa **Minimum Viable Product**, ou Produto Mínimo Viável: uma versão pequena, útil e funcional, pronta para uso inicial e melhoria contínua.
+MVP means **Minimum Viable Product**. It is a small version of a product that is useful and working.
 
 ## 2. Front-end
 
-O front-end é a parte que o aluno vê e usa no navegador.
+The front-end is the part that the learner sees in the browser.
 
-No BridgeDay, ele está na pasta:
+In BridgeDay, it is inside:
 
 ```text
 front/
 ```
 
-Arquivos principais:
+Important files:
 
-| Arquivo | Função |
+| File | Purpose |
 | --- | --- |
-| `index.html` | Estrutura da página |
-| `styles.css` | Cores, tamanho, posição e responsividade |
-| `app.js` | Regras principais da interface |
-| `js/exercises.js` | Regras dos exercícios |
+| `index.html` | Page structure |
+| `styles.css` | Page style and mobile layout |
+| `app.js` | Main page behavior |
+| `js/exercises.js` | Exercise behavior |
 
-### HTML
+## 3. HTML
 
-HTML cria a estrutura da página.
+HTML creates the page structure.
 
-Exemplos de elementos:
+Example:
 
 ```html
-<!-- A button lets the learner click an action. -->
+<!-- A button lets the learner start an action. -->
 <button type="button">Start lesson</button>
 
-<!-- A section groups related page content. -->
+<!-- A section groups related content. -->
 <section class="study-content">
   <h2>Grammar</h2>
 </section>
 ```
 
-Conceitos importantes:
+Important ideas:
 
-- `id`: nome único de um elemento.
-- `class`: nome reutilizável para estilo ou JavaScript.
-- `hidden`: esconde um elemento.
-- `button`: cria botão.
-- `section`: agrupa conteúdo relacionado.
+- `id` is a unique name for one HTML element.
+- `class` is a reusable name for style or JavaScript.
+- `hidden` hides an element.
+- `button` creates a button.
+- `section` groups page content.
 
-### CSS
+## 4. CSS
 
-CSS controla a aparência do HTML.
+CSS controls how the page looks.
 
-Exemplo:
+Example:
 
 ```css
-/* This styles the main navigation menu. */
+/* This styles the main menu. */
 .main-nav {
   display: flex;
   gap: 6px;
 }
 ```
 
-Conceitos importantes:
+Important ideas:
 
-- `display: flex`: organiza itens em linha ou coluna.
-- `display: grid`: organiza itens em uma grade.
-- `gap`: espaço entre itens.
-- `padding`: espaço interno.
-- `margin`: espaço externo.
-- `border-radius`: arredonda cantos.
-- `@media`: muda o layout para telas menores.
+| CSS word | Meaning |
+| --- | --- |
+| `display: flex` | Puts items in a flexible line or column |
+| `display: grid` | Puts items in rows and columns |
+| `gap` | Space between items |
+| `padding` | Space inside an element |
+| `margin` | Space outside an element |
+| `border-radius` | Rounded corners |
+| `@media` | Style rules for smaller screens |
 
-### Responsividade
+## 5. Responsive design
 
-Responsividade significa que a tela continua utilizável em celular, tablet e computador.
+Responsive design means that the page works on phones, tablets, and computers.
 
-No BridgeDay, o menu mobile usa duas colunas para manter as quatro opções visíveis:
+On small phones, the BridgeDay menu uses two columns:
 
 ```text
 Home     Study
 Review   Progress
 ```
 
-O front-end pode ser testado sem backend quando o objetivo é somente verificar HTML, CSS e JavaScript visual.
+The front-end can be tested without the back-end when the goal is only to check the visual page.
 
-## 3. JavaScript
+## 6. JavaScript
 
-JavaScript faz a página reagir ao usuário.
+JavaScript makes the page react to the learner.
 
-Ele pode:
+It can:
 
-- trocar a trilha entre English e Deutsch;
-- mostrar a próxima lição;
-- chamar a API;
-- mostrar progresso;
-- enviar respostas de exercícios;
-- atualizar feedback de acerto ou erro.
+- change English and German tracks;
+- show the next lesson;
+- call the API;
+- show progress;
+- send exercise answers;
+- show correct or incorrect feedback.
 
-Exemplo:
+Example:
 
 ```javascript
-// Find the element with the selected CSS class.
+// Find a page element.
 const grammarText = document.querySelector(".grammar-content .page-help");
 
-// Update text shown on the page.
+// Change the text on the page.
 grammarText.textContent = "Grammar will appear here.";
 ```
 
-Conceitos importantes:
+Important ideas:
 
-| Conceito | Significado |
+| JavaScript word | Meaning |
 | --- | --- |
-| `const` | Guarda uma referência que não será trocada |
-| `document.querySelector()` | Encontra um elemento HTML |
-| `textContent` | Altera texto visível |
-| `addEventListener()` | Espera uma ação, como clique |
-| `fetch()` | Faz pedido para a API |
-| `async` / `await` | Espera uma resposta da API |
+| `const` | Saves a value or page element |
+| `querySelector()` | Finds an HTML element |
+| `textContent` | Changes visible text |
+| `addEventListener()` | Waits for an action, like a click |
+| `fetch()` | Sends a request to the API |
+| `async` and `await` | Wait for an API response |
 
-## 4. Back-end
+## 7. Back-end
 
-O back-end é a parte que roda no Python e protege as regras do sistema.
+The back-end is the Python part of the project.
 
-No BridgeDay, ele está em:
+It is inside:
 
 ```text
 backend/
 ```
 
-O back-end:
+The back-end:
 
-- recebe pedidos do front-end;
-- valida dados;
-- protege senhas;
-- consulta o banco;
-- salva progresso;
-- corrige exercícios;
-- calcula revisões;
-- devolve respostas ao navegador.
+- receives requests from the front-end;
+- checks data;
+- protects passwords;
+- reads the database;
+- saves progress;
+- checks exercise answers;
+- plans reviews;
+- sends data back to the browser.
 
-## 5. FastAPI
+## 8. FastAPI
 
-FastAPI é a ferramenta Python usada para criar a API do BridgeDay.
+FastAPI is the Python tool used to create the BridgeDay API.
 
-A aplicação principal está em:
+The main application file is:
 
 ```text
 backend/app/main.py
 ```
 
-FastAPI cria rotas, por exemplo:
+The API has routes such as:
 
 ```text
 GET  /api/health
@@ -176,54 +178,52 @@ GET  /api/progress/history
 GET  /api/reviews
 ```
 
-A documentação automática fica em:
+FastAPI documentation is here:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-A página `/docs` é uma ferramenta de desenvolvimento. Ela não é a página usada pelo aluno.
+The `/docs` page is for development and testing. It is not the learner page.
 
-## 6. API
+## 9. API
 
-API significa **Application Programming Interface**.
+API means **Application Programming Interface**.
 
-No BridgeDay, a API é a ponte entre a interface e o banco.
+The API is the connection between the front-end and the database.
 
 ```text
 Browser
-  ↓ request
+  ↓
 FastAPI API
-  ↓ query or save
+  ↓
 SQLite database
-  ↓ response
+  ↓
+API response
+  ↓
 Browser
 ```
 
-Exemplo:
+Example:
 
 ```text
-Front-end asks:
-“Which lesson is next?”
-
-API checks the database.
-
-API returns lesson data in JSON.
-
-Front-end shows the lesson to the learner.
+The front-end asks for the next lesson.
+The API reads the database.
+The API sends lesson data in JSON.
+The front-end shows the lesson.
 ```
 
-## 7. HTTP methods
+## 10. HTTP methods
 
-| Método | Função |
+| Method | Meaning |
 | --- | --- |
-| `GET` | Busca dados sem alterar nada |
-| `POST` | Cria ou envia novos dados |
-| `PUT` | Atualiza dados completos |
-| `PATCH` | Atualiza parte dos dados |
-| `DELETE` | Remove dados |
+| `GET` | Read data |
+| `POST` | Create or send data |
+| `PUT` | Update full data |
+| `PATCH` | Update part of data |
+| `DELETE` | Remove data |
 
-Exemplos no BridgeDay:
+Examples:
 
 ```text
 GET  /api/lessons/next
@@ -232,25 +232,27 @@ POST /api/exercises/1/attempts
 POST /api/reviews/lesson-code/complete
 ```
 
-## 8. HTTP status codes
+## 11. HTTP status codes
 
-| Código | Significado |
+| Code | Meaning |
 | ---:| --- |
-| `200 OK` | Pedido concluído com sucesso |
-| `201 Created` | Novo item criado |
-| `400 Bad Request` | Dados enviados estão incorretos |
-| `401 Unauthorized` | Login ou token é necessário |
-| `404 Not Found` | Rota ou dado não existe |
-| `409 Conflict` | A ação não pode acontecer naquele momento |
-| `500 Internal Server Error` | Erro interno do servidor |
+| `200 OK` | The request worked |
+| `201 Created` | A new item was created |
+| `400 Bad Request` | The sent data is not correct |
+| `401 Unauthorized` | Login is needed |
+| `404 Not Found` | The route or data does not exist |
+| `409 Conflict` | The action cannot happen now |
+| `500 Internal Server Error` | The server has an internal problem |
 
-No BridgeDay, `409 Conflict` ao concluir uma revisão cedo é correto. Ele protege a regra de revisão espaçada.
+In BridgeDay, `409 Conflict` is correct when a learner tries to complete a review too early.
 
-## 9. JSON
+## 12. JSON
 
-JSON é um formato de texto usado para trocar dados entre front-end, API e arquivos de conteúdo.
+JSON is a text format for data.
 
-Exemplo:
+BridgeDay uses JSON for API responses and lesson batches.
+
+Example:
 
 ```json
 {
@@ -261,31 +263,29 @@ Exemplo:
 }
 ```
 
-Regras importantes:
+Important JSON rules:
 
-- JSON não aceita comentários.
-- Todo texto deve usar aspas duplas.
-- Vírgulas devem estar no lugar correto.
-- Cada objeto deve ter estrutura válida.
-- O arquivo deve ser validado antes de importar.
+- JSON does not allow comments.
+- Text uses double quotes.
+- Commas must be correct.
+- The file must be valid before import.
 
-## 10. SQLite
+## 13. SQLite
 
-SQLite é o banco de dados local do BridgeDay.
+SQLite is the local BridgeDay database.
 
-Ele é um arquivo:
+The active file is:
 
 ```text
 data\bridgeday.db
 ```
 
-O banco guarda dados organizados em tabelas.
+It stores data in tables.
 
-Exemplos de tabelas:
+Examples:
 
 ```text
 users
-user_language_profiles
 lessons
 lesson_translations
 vocabulary_items
@@ -293,226 +293,190 @@ exercises
 exercise_attempts
 lesson_progress
 writing_entries
-alembic_version
 ```
 
-SQLite é uma boa escolha para o MVP porque:
+SQLite is good for the MVP because it is free, simple, and uses one local file.
 
-- é gratuito;
-- não precisa instalar um servidor de banco;
-- funciona em um arquivo;
-- é simples para desenvolvimento local.
+## 14. SQLAlchemy
 
-## 11. SQLAlchemy
+SQLAlchemy connects Python to SQLite.
 
-SQLAlchemy conecta o Python ao banco SQLite.
-
-Em vez de escrever SQL em toda parte, o projeto usa modelos Python.
-
-Exemplo de ideia:
+BridgeDay uses Python models instead of writing SQL everywhere.
 
 ```text
-Python model Lesson
-        ↓
+Python model
+  ↓
 SQLAlchemy
-        ↓
-SQLite table lessons
+  ↓
+SQLite table
 ```
 
-Os modelos ficam em:
+The models are inside:
 
 ```text
 backend/app/models/
 ```
 
-## 12. Schemas
+## 15. Schemas
 
-Schemas definem e validam os dados enviados e recebidos pela API.
+Schemas check the data sent to and from the API.
 
-Eles ficam em:
+They are inside:
 
 ```text
 backend/app/schemas/
 ```
 
-Exemplo:
+Example:
 
 ```text
-A request sends:
-- email
-- password
-
-A schema checks:
-- email format
-- required fields
-- password rules
+A login request sends email and password.
+A schema checks if the data is complete and valid.
 ```
 
-Isso ajuda a API a não receber dados incompletos ou incorretos.
+## 16. Login and security
 
-## 13. Autenticação
+BridgeDay uses:
 
-O BridgeDay usa login com:
+- protected passwords;
+- JWT tokens;
+- user sessions;
+- protected API routes.
 
-- senha protegida;
-- token JWT;
-- usuário atual;
-- sessão no navegador.
-
-Fluxo:
+Login flow:
 
 ```text
-User enters email and password
-        ↓
+Learner sends email and password
+  ↓
 API checks the password
-        ↓
+  ↓
 API creates a token
-        ↓
+  ↓
 Browser saves the token
-        ↓
+  ↓
 Browser sends the token in protected requests
 ```
 
-A senha nunca deve ser salva como texto normal.
+A password must never be saved as normal text.
 
-## 14. CORS
+## 17. CORS
 
-O front-end usa a porta `5500`.
+The front-end uses port `5500`.
 
-A API usa a porta `8000`.
+The back-end uses port `8000`.
 
-Como são endereços diferentes, o navegador precisa de uma regra de segurança chamada CORS.
-
-CORS permite:
+CORS is a browser security rule that allows these two local addresses to work together.
 
 ```text
 localhost:5500
-        ↓
-request allowed
-        ↓
+  ↓
+allowed request
+  ↓
 127.0.0.1:8000
 ```
 
-Sem CORS, o navegador bloquearia os pedidos da interface para a API.
+## 18. Database migrations
 
-## 15. Migrations
+A migration is a saved change to the database structure.
 
-Migration é um arquivo que registra mudanças na estrutura do banco.
-
-Exemplo:
+Example:
 
 ```text
 Add review_count to lesson_progress
 ```
 
-Alembic cria e aplica migrations.
+BridgeDay uses Alembic for migrations.
 
-Isso permite alterar tabelas sem apagar os dados existentes.
-
-Fluxo:
+Flow:
 
 ```text
-Change SQLAlchemy model
-        ↓
-Create migration
-        ↓
-Review migration file
-        ↓
-Apply migration
-        ↓
-SQLite structure is updated
+Change a Python database model
+  ↓
+Create a migration
+  ↓
+Check the migration file
+  ↓
+Apply the migration
+  ↓
+SQLite database is updated
 ```
 
-A migration atual do BridgeDay é:
+Current migration:
 
 ```text
 b883e40f21a4 (head)
 ```
 
-## 16. Revisão espaçada
+## 19. Spaced review
 
-Revisão espaçada significa revisar uma lição depois de alguns dias, e não imediatamente.
+Spaced review means that a lesson returns after some days.
 
-No BridgeDay:
+BridgeDay review plan:
 
 ```text
-Lesson completed
-        ↓
-Review after 1 day
-        ↓
-Review after 3 days
-        ↓
-Review after 7 days
-        ↓
-Review after 14 days
-        ↓
-Review after 30 days
+1 day → 3 days → 7 days → 14 days → 30 days
 ```
 
-A coluna `review_count` registra quantas revisões uma lição teve.
+The `review_count` value saves the number of completed reviews.
 
-## 17. Importação de lições
+## 20. Lesson batches
 
-As lições ficam em arquivos JSON dentro de:
+Lesson batches are JSON files inside:
 
 ```text
 data\batches/
 ```
 
-Fluxo:
+Flow:
 
 ```text
-Create reviewed JSON batch
-        ↓
+Create a reviewed JSON file
+  ↓
 Validate JSON
-        ↓
-Run import script
-        ↓
-New lessons go to SQLite
-        ↓
-API can return the lessons
-        ↓
-Front-end can show the lessons
+  ↓
+Run the import script
+  ↓
+Save new lessons in SQLite
+  ↓
+Show lessons in the app
 ```
 
-O importador ignora códigos repetidos. Isso evita duplicar lições.
+The importer skips lesson codes that already exist.
 
-## 18. Git
+## 21. Git
 
-Git registra a história do código.
+Git saves the history of the project.
 
-Conceitos:
-
-| Conceito | Significado |
+| Git word | Meaning |
 | --- | --- |
-| Repository | Pasta do projeto com histórico |
-| Commit | Foto salva de uma mudança |
-| Branch | Linha de desenvolvimento |
-| `main` | Branch principal |
-| `git status` | Mostra mudanças locais |
-| `git add` | Prepara arquivos para commit |
-| `git commit` | Salva uma mudança no histórico |
-| `git push` | Envia commits ao GitHub |
+| Repository | Project folder with history |
+| Commit | Saved project change |
+| Branch | A line of work |
+| `main` | Main project branch |
+| `git status` | Shows local changes |
+| `git add` | Prepares files for a commit |
+| `git commit` | Saves a project change |
+| `git push` | Sends commits to GitHub |
 
-Fluxo seguro:
+Safe Git flow:
 
 ```text
 Change files
-        ↓
+  ↓
 git status --short
-        ↓
+  ↓
 git add specific-file
-        ↓
+  ↓
 git commit
-        ↓
+  ↓
 git push
 ```
 
-## 19. .gitignore
+## 22. .gitignore
 
-`.gitignore` diz ao Git quais arquivos locais não devem ser enviados ao GitHub.
+`.gitignore` tells Git which local files must not go to GitHub.
 
-No BridgeDay, ele protege:
+BridgeDay ignores:
 
 ```text
 .env
@@ -523,91 +487,50 @@ No BridgeDay, ele protege:
 __pycache__/
 ```
 
-Por que isso importa:
+This protects private settings and local study data.
 
-- `.env` pode ter chaves privadas;
-- `.venv` é recriada localmente;
-- bancos SQLite podem conter dados pessoais de estudo;
-- caches Python não precisam ficar no Git.
+## 23. Beekeeper Studio
 
-## 20. Beekeeper Studio
+Beekeeper Studio is a visual tool for SQLite.
 
-Beekeeper Studio é uma ferramenta visual para abrir e consultar o banco SQLite.
+It can:
 
-Ele ajuda a:
+- show tables;
+- show columns;
+- run SQL;
+- check saved data;
+- help find database problems.
 
-- ver tabelas;
-- verificar colunas;
-- executar SQL;
-- confirmar dados salvos;
-- investigar problemas de banco.
+It is a development tool. The app still uses the API to read and save data.
 
-Ele não substitui a API. Ele é uma ferramenta de desenvolvimento.
+## 24. Content quality rules
 
-## 21. Responsividade
+For good language lessons:
 
-A interface deve funcionar em telas pequenas.
+1. Write first in the study language.
+2. Use the correct level, such as A1 or A2.
+3. Write natural translations.
+4. Check grammar and meaning.
+5. Add useful vocabulary.
+6. Add one good exercise.
+7. Validate the JSON file.
+8. Import the batch.
+9. Test the lesson in the API and in the browser.
 
-Para testar:
+## 25. Main development rule
 
-```text
-Chrome DevTools
-  ↓
-Device toolbar
-  ↓
-320 × 750 or 375 × 812
-```
-
-Verificar:
-
-- menu acessível;
-- botões visíveis;
-- cards dentro da largura;
-- sem rolagem horizontal;
-- ações clicáveis.
-
-## 22. Regra para conteúdo de idiomas
-
-Para criar lições com qualidade:
-
-1. Escrever primeiro no idioma estudado.
-2. Usar nível adequado, como A1 ou A2.
-3. Criar traduções naturais, não palavra por palavra.
-4. Revisar sentido, tom, gramática e contexto.
-5. Criar vocabulário útil.
-6. Criar exercício coerente com a lição.
-7. Validar o JSON.
-8. Importar o lote.
-9. Testar a lição pela API e pelo front-end.
-
-## 23. Próximo nível do projeto
-
-Quando o MVP estiver maduro, o BridgeDay pode evoluir com:
-
-- mais idiomas;
-- mais conteúdo;
-- tipos novos de exercício;
-- testes automatizados;
-- perfil de usuário;
-- recuperação de senha;
-- áudio avançado;
-- publicação online;
-- recursos de IA para personalizar estudo.
-
-## Regra principal
-
-Sempre trabalhar com cuidado:
+Use this process:
 
 ```text
 Read first
-        ↓
+  ↓
 Understand the real problem
-        ↓
+  ↓
 Change one thing
-        ↓
+  ↓
 Test the result
-        ↓
+  ↓
 Save with Git
 ```
 
-Isso protege o projeto e evita alterações por tentativa.
+This helps protect the project and avoids changes based only on guesses.
