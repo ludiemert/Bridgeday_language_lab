@@ -185,8 +185,8 @@ ________________________________________
                 <p style="margin-top: 5px;">Front_127.0.0.1_8000_docs</p>
             </td>
             <td style="width: 50%; text-align: center;">
-                <img src="Img_Project/66_Beekeeper-testes_invoice0018.png" style="width: 90%;" alt="Beekeeper-testes">
-                <p style="margin-top: 5px;">Beekeeper-testes</p>
+                <img src="Img_Project/6_users_user_language_profiles_BeekeeperStudio.png" style="width: 90%;" alt="users_user_language_profiles_BeekeeperStudio">
+                <p style="margin-top: 5px;">Users_user_language_profiles_BeekeeperStudio</p>
             </td>
         </tr>
     </table>
