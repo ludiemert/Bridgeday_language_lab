@@ -173,8 +173,6 @@ A learner cannot complete a review before its planned date.
 7. Prepare public deployment.
 
 
-________________________________________
-
 <h4 align="center">Img Project - Bridgeday_language_lab 🥰 🚀</h4>
 
 <div align="center">
@@ -195,7 +193,6 @@ ________________________________________
   <br/>
   <br/>
 
-________________________________________
 
 <h4 align="center">Img Project - Bridgeday_language_lab 🥰 🚀</h4>
 
@@ -217,7 +214,6 @@ ________________________________________
   <br/>
   <br/>
 
-________________________________________
 
 <h4 align="center">Img Project - Bridgeday_language_lab 🥰 🚀</h4>
 
@@ -238,7 +234,7 @@ ________________________________________
 
   <br/>
   <br/>
-________________________________________
+
 
 <h4 align="center">Img Project - Bridgeday_language_lab 🥰 🚀</h4>
 
@@ -259,7 +255,7 @@ ________________________________________
 
   <br/>
   <br/>
-________________________________________
+
 
 <h4 align="center">Img Project - Bridgeday_language_lab 🥰 🚀</h4>
 
@@ -280,7 +276,7 @@ ________________________________________
 
   <br/>
   <br/>
-________________________________________
+
 
 <h4 align="center">Img Project - Bridgeday_language_lab 🥰 🚀</h4>
 
@@ -301,7 +297,7 @@ ________________________________________
 
   <br/>
   <br/>
-________________________________________
+
 
 <h4 align="center">Img Project - Bridgeday_language_lab 🥰 🚀</h4>
 
@@ -322,10 +318,6 @@ ________________________________________
 
   <br/>
   <br/>
-________________________________________
-
-
-
 
 ---
 
